@@ -16,14 +16,11 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "template/main.html"
     })
     .state('app.dashboard', {
-      url: "/state2",
-      templateUrl: "partials/state2.html"
+      url: "/dashboard",
+      templateUrl: "template/dashboard.html"
     })
-    .state('state2.list', {
+    .state('list', {
       url: "/list",
-      templateUrl: "partials/state2.list.html",
-      controller: function($scope) {
-        $scope.things = ["A", "Set", "Of", "Things"];
-      }
+      templateUrl: "template/dashboard.html"
     });
 });
