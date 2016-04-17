@@ -48,7 +48,8 @@ CRM.controller('loginCtrl', function ($rootScope, $scope, $state) {
     $scope.userd = {
                     "username": "",
                     "password": ""
-                   };
+    };
+    $rootScope.currentUser = "";
 
     $scope.login = function (logincredentials) {
 
