@@ -19,8 +19,24 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
       url: "/dashboard",
       templateUrl: "template/dashboard.html"
     })
-    .state('list', {
-      url: "/list",
-      templateUrl: "template/dashboard.html"
+    .state('app.customers', {
+      url: "/customers",
+      templateUrl: "template/customers.html"
+    })
+    .state('app.staff', {
+      url: "/staff",
+      templateUrl: "template/staff.html"
+    })
+    .state('app.appoinment', {
+      url: "/appoinment",
+      templateUrl: "template/appoinment.html"
+    })
+    .state('app.case', {
+      url: "/case",
+      templateUrl: "template/case.html"
+    })
+    .state('app.profile', {
+      url: "/profile",
+      templateUrl: "template/profile.html"
     });
 });

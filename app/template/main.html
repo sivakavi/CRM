@@ -1,11 +1,66 @@
 <!-- header part -->
-<header class="header">
-    
+<header class="header block--shadow">
+
 </header>
 
 <!-- left side menu part -->
 <section class="main-menu">
-    
+    <header class="main-menu__header">
+        <img class="block--center" src="img/logo.png" alt="Logo" />
+    </header>
+
+    <section class="main-menu__user-info">
+        <div class="user-picto">
+            <img ng-src="img/background.jpg" alt="user pic" class="circle" />
+        </div>
+        
+    </section>
+    <section class="main-menu__items">
+        <ul>
+            <li>
+                <a ui-sref="app.dashboard" class="waves-effect waves-light">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="app.customers" class="waves-effect waves-light">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span>Customers</span>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="app.staff" class="waves-effect waves-light">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>Staff</span>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="app.appoinment" class="waves-effect waves-light">
+                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                    <span>Appoinment</span>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="app.case" class="waves-effect waves-light">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <span>Case</span>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="app.profile" class="waves-effect waves-light">
+                    <i class="fa fa-user-secret" aria-hidden="true"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="app.profile" class="waves-effect waves-light">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+        </ul>
+    </section>
 </section>
 <!-- Main content -->
 <section class="main-content">
@@ -13,6 +68,6 @@
 </section>
 
 <!-- footer part -->
-<footer class="footer">
-    
+<footer class="footer block--shadow">
+    <div class="align--right">Powered by ZeroDot Consultancy.</div>
 </footer>
