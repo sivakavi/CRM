@@ -1,15 +1,14 @@
 <!-- header part -->
-<header class="header block--shadow">
-    <span>Welcome, Sivakavi!</span>
-    <i class="material-icons dropdown-button btn" data-activates='demoDropdown' dropdown>more_vert</i>
+<header class="header block--shadow right-align">
+    <a class="btn-floating btn-large waves-effect waves-light" data-activates='demoDropdown' dropdown data-constrainwidth="true">
+        <i class="material-icons">more_vert</i>
+    </a>
 
     <!-- Dropdown Structure -->
     <ul id='demoDropdown' class='dropdown-content'>
-        <li><a href="javascript:void(0);">Link 1</a></li>
-        <li><a href="javascript:void(0);">Link 2</a></li>
-        <li><a href="javascript:void(0);">Link 3</a></li>
-        <li><a href="javascript:void(0);">Link 4</a></li>
-        <li><a href="javascript:void(0);">Link 5</a></li>
+        <li><a ui-sref="app.profile" class="waves-effect waves-teal"><i class="material-icons">perm_identity</i><span>Profile</span></a></li>
+        <li><a ui-sref="app.profile" class="waves-effect waves-teal"><i class="material-icons">settings</i><span>Change password</span></a></li>
+        <li><a ui-sref="login" class="waves-effect waves-teal"><i class="material-icons">power_settings_new</i><span>Logout</span></a></li>
     </ul>
 </header>
 

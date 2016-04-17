@@ -9,7 +9,17 @@ body{
 .header {
     width: 100%;
     height: 85px;
-    padding-left: 290px;
+    padding: 14px 20px 14px 290px;
+}
+.header .dropdown-content {     
+    width: 215px !important;    
+}
+.header .dropdown-content i {
+    margin-right: 10px;
+}
+.header .dropdown-content i, 
+.header .dropdown-content span { 
+    vertical-align: middle;
 }
 .main-content {
     overflow-y: scroll; 
@@ -95,7 +105,7 @@ body{
     position: relative;
 }
 .main-menu__user-info .user-picto {
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0,0,0,.7);
     height: 100%; 
 }
 .main-menu__user-info img {
