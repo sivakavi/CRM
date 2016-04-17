@@ -1,6 +1,16 @@
 <!-- header part -->
 <header class="header block--shadow">
+    <span>Welcome, Sivakavi!</span>
+    <i class="material-icons dropdown-button btn" data-activates='demoDropdown' dropdown>more_vert</i>
 
+    <!-- Dropdown Structure -->
+    <ul id='demoDropdown' class='dropdown-content'>
+        <li><a href="javascript:void(0);">Link 1</a></li>
+        <li><a href="javascript:void(0);">Link 2</a></li>
+        <li><a href="javascript:void(0);">Link 3</a></li>
+        <li><a href="javascript:void(0);">Link 4</a></li>
+        <li><a href="javascript:void(0);">Link 5</a></li>
+    </ul>
 </header>
 
 <!-- left side menu part -->
@@ -13,48 +23,48 @@
         <div class="user-picto">
             <img ng-src="img/background.jpg" alt="user pic" class="circle" />
         </div>
-        
+
     </section>
     <section class="main-menu__items">
         <ul>
             <li>
-                <a ui-sref="app.dashboard" class="waves-effect waves-light">
+                <a ui-sref="app.dashboard" class="waves-effect waves-light active" ng-class="{active: $state.is('app.dashboard')}">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li>
-                <a ui-sref="app.customers" class="waves-effect waves-light">
+                <a ui-sref="app.customers" class="waves-effect waves-light" ng-class="{active: $state.is('app.customers')}">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span>Customers</span>
                 </a>
             </li>
             <li>
-                <a ui-sref="app.staff" class="waves-effect waves-light">
+                <a ui-sref="app.staff" class="waves-effect waves-light" ng-class="{active: $state.includes('app.staff')}">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     <span>Staff</span>
                 </a>
             </li>
             <li>
-                <a ui-sref="app.appoinment" class="waves-effect waves-light">
+                <a ui-sref="app.appoinment" class="waves-effect waves-light" ng-class="{active: $state.includes('app.appoinment')}">
                     <i class="fa fa-file-text" aria-hidden="true"></i>
                     <span>Appoinment</span>
                 </a>
             </li>
             <li>
-                <a ui-sref="app.case" class="waves-effect waves-light">
+                <a ui-sref="app.case" class="waves-effect waves-light" ng-class="{active: $state.includes('app.case')}">
                     <i class="fa fa-book" aria-hidden="true"></i>
                     <span>Case</span>
                 </a>
             </li>
             <li>
-                <a ui-sref="app.profile" class="waves-effect waves-light">
+                <a ui-sref="app.profile" class="waves-effect waves-light" ng-class="{active: $state.includes('app.profile')}">
                     <i class="fa fa-user-secret" aria-hidden="true"></i>
                     <span>Profile</span>
                 </a>
             </li>
             <li>
-                <a ui-sref="app.profile" class="waves-effect waves-light">
+                <a ui-sref="app.profile" class="waves-effect waves-light" ng-class="{active: $state.includes('app.dashboard')}">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <span>Dashboard</span>
                 </a>
