@@ -8,7 +8,8 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('login', {
       url: "/login",
-      templateUrl: "template/login.html"
+      templateUrl: "template/login.html",
+      controller: 'loginCtrl'
     })
     .state('app', {
       url: "/app",

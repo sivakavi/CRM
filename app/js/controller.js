@@ -39,3 +39,30 @@ var leadsourcceObj = [
                        { 'id': '3', 'ltype': 'Facebook' },
                        { 'id': '4', 'ltype': 'Twitter' }
 ];
+
+
+
+CRM.controller('loginCtrl', function ($rootScope, $scope, $state) {
+    //console.log("login controller working.....");
+    $scope.user = userObj;
+
+    $scope.login = function (logincredentials) {
+
+        var flag = false;
+        
+        for (var i = 0; i < $scope.user.length; i++) {
+            if ($scope.user[i].username == logincredentials.username && $scope.user[i].password == logincredentials.password) {
+                $rootScope.currentUser = $scope.user[i];
+                flag = true;
+                $state.go('app.dashboard');
+                break;
+            }
+        }
+
+        if (!flag) {
+            Materialize.toast('I am a toast!', 5000);
+        }
+
+    };
+
+});
