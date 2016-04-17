@@ -3,22 +3,22 @@
         <div class="login__form-header">
             <img class="block--center" src="img/logo.png"/>
         </div>
-        <form>
+        <form name="loginForm">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="username" type="text" class="validate" ng-model="user.username">
+                    <input id="username" type="text" class="validate" ng-model="userd.username" required>
                     <label for="username" data-error="Please enter valid User ID">Username</label>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password" type="password" class="validate" ng-model="user.password">
+                    <input id="password" type="password" class="validate" ng-model="userd.password" required>
                     <label for="password">Password</label>
                 </div>
             </div>
-            
-            <a ng-click="login(user)" class="btn-floating btn-large waves-effect waves-light "><i class="material-icons">vpn_key</i></a>
+
+            <button type="submit" ng-disabled="loginForm.$invalid" ng-click="login(userd)" class="btn-floating btn-large waves-effect waves-light "><i class="material-icons">vpn_key</i></button>
         </form>
     </div>
     

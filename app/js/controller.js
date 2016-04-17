@@ -45,6 +45,10 @@ var leadsourcceObj = [
 CRM.controller('loginCtrl', function ($rootScope, $scope, $state) {
     //console.log("login controller working.....");
     $scope.user = userObj;
+    $scope.userd = {
+                    "username": "",
+                    "password": ""
+                   };
 
     $scope.login = function (logincredentials) {
 
@@ -60,7 +64,9 @@ CRM.controller('loginCtrl', function ($rootScope, $scope, $state) {
         }
 
         if (!flag) {
-            Materialize.toast('I am a toast!', 5000);
+            $scope.userd.username = "";
+            $scope.userd.password = "";
+            Materialize.toast('Invalid Username and Password', 3000);
         }
 
     };
