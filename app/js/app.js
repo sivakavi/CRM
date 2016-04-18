@@ -22,7 +22,8 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('app.customers', {
       url: "/customers",
-      templateUrl: "template/customers.html"
+      templateUrl: "template/customers.html",
+      controller: 'customerCtrl'
     })
     .state('app.staff', {
       url: "/staff",
@@ -39,5 +40,8 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
     .state('app.profile', {
       url: "/profile",
       templateUrl: "template/profile.html"
+    }).state('app.manage', {
+        url: "/manage",
+        templateUrl: "template/manage.html"
     });
 });

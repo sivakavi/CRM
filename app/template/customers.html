@@ -4,34 +4,24 @@
             <ul class="tabs" tabs>
                 <li class="tab col s2"><a class="active" href="#test1">Customer List</a></li>
                 <li class="tab col s2"><a href="#test2">Add Customer</a></li>
-                <li class="tab col s2 disabled"><a href="#test3">Edit Customer</a></li>
-                <li class="tab col s2 disabled"><a href="#test4">view Customer</a></li>
+                <li class="tab col s2"><a href="#test3">Edit Customer</a></li>
+                <li class="tab col s2"><a href="#test4">view Customer</a></li>
             </ul>
         </div>
         <div id="test1" class="col s12" style="padding-top:20px;">
-            <table datatable="" class="row-border hover">
+            <table datatable="ng" class="row-border hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>First name</th>
-                        <th>Last name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Lead Source</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Foo</td>
-                        <td>Bar</td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td>Someone</td>
-                        <td>Youknow</td>
-                    </tr>
-                    <tr>
-                        <td>987</td>
-                        <td>Iamout</td>
-                        <td>Ofinspiration</td>
+                    <tr ng-repeat="cus in customerlist">
+                        <td>{{ cus.fname }}</td>
+                        <td>{{ cus.lname }}</td>
+                        <td>{{ cus.leadsourceid | leadSource }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -173,7 +163,220 @@
             </div>
 
         </div>
-        <div id="test3" class="col s12">Edit customer</div>
-        <div id="test4" class="col s12">View customer</div>
+        <div id="test3" class="col s12">
+            <div style="padding-top:20px;">
+                <ul class="collapsible popout" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header active"><i class="material-icons">assignment_ind</i>GENERAL INFORMATION</div>
+                        <div class="collapsible-body">
+                            <div class="row" style="padding-top:10px;">
+                                <div class="col s12 m6">
+                                    <img src="img/background.jpg" alt="" class="circle responsive-img">
+                                </div>
+                                <div class="col s12 m6">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="fname" type="text" class="validate">
+                                            <label class="active" for="fname">First Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="lname" type="text" class="validate">
+                                            <label class="active" for="lname">Last Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <select material-select id="leadsource">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="1">Web</option>
+                                                <option value="2">Google</option>
+                                                <option value="3">Facebook</option>
+                                                <option value="4">Twitter</option>
+                                            </select>
+                                            <label class="active" for="leadsource">Lead Source</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">info</i>ABOUT</div>
+                        <div class="collapsible-body">
+                            <div class="row" style="padding-top:10px;">
+                                <div class="input-field col s12 m6">
+                                    <input id="dob" type="text" class="validate">
+                                    <label class="active" for="dob">DOB</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <select material-select id="gender">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3">Others</option>
+                                    </select>
+                                    <label class="active" for="pincode">Gender</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="occupation" type="text" class="validate">
+                                    <label class="active" for="occupation">Occupation</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="interest" type="text" class="validate">
+                                    <label class="active" for="interest">Interest</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">place</i>CONTACT INFORMATION</div>
+                        <div class="collapsible-body">
+                            <div class="row" style="padding-top:10px;">
+                                <div class="input-field col s12 m6">
+                                    <input id="phone" type="text" class="validate">
+                                    <label class="active" for="phone">Phone</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="mobile" type="text" class="validate">
+                                    <label class="active" for="mobile">Mobile</label>
+                                </div>
+                                <div class="input-field col s12 m12">
+                                    <input id="email" type="text" class="validate">
+                                    <label class="active" for="email">Email</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="address1" type="text" class="validate">
+                                    <label class="active" for="address1">Address 1</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="address2" type="text" class="validate">
+                                    <label class="active" for="address2">Address 2</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="city" type="text" class="validate">
+                                    <label class="active" for="city">City</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="state" type="text" class="validate">
+                                    <label class="active" for="state">State</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="country" type="text" class="validate">
+                                    <label class="active" for="country">Country</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="pincode" type="text" class="validate">
+                                    <label class="active" for="pincode">Pincode</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="test4" class="col s12 offset-m1 m10 offset-l1 l10">
+            <div style="padding-top:20px;">
+                <ul class="collapsible popout" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header active"><i class="material-icons">assignment_ind</i>GENERAL INFORMATION</div>
+                        <div class="collapsible-body">
+                            <div class="row" style="padding-top:10px;">
+                                <div class="col s12 m6">
+                                    <img src="img/background.jpg" alt="" class="circle responsive-img">
+                                </div>
+                                <div class="col s12 m6">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input readonly id="fname" type="text" class="validate">
+                                            <label class="active" for="fname">First Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input readonly id="lname" type="text" class="validate">
+                                            <label class="active" for="lname">Last Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input readonly id="leadsource" type="text" class="validate">
+                                            <label class="active" for="leadsource">Lead Source</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">info</i>ABOUT</div>
+                        <div class="collapsible-body">
+                            <div class="row" style="padding-top:10px;">
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="dob" type="text" class="validate">
+                                    <label class="active" for="dob">DOB</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="gender" type="text" class="validate">
+                                    <label class="active" for="pincode">Gender</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="occupation" type="text" class="validate">
+                                    <label class="active" for="occupation">Occupation</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="interest" type="text" class="validate">
+                                    <label class="active" for="interest">Interest</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">place</i>CONTACT INFORMATION</div>
+                        <div class="collapsible-body">
+                            <div class="row" style="padding-top:10px;">
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="phone" type="text" class="validate">
+                                    <label class="active" for="phone">Phone</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="mobile" type="text" class="validate">
+                                    <label class="active" for="mobile">Mobile</label>
+                                </div>
+                                <div class="input-field col s12 m12">
+                                    <input readonly id="email" type="text" class="validate">
+                                    <label class="active" for="email">Email</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="address1" type="text" class="validate">
+                                    <label class="active" for="address1">Address 1</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="address2" type="text" class="validate">
+                                    <label class="active" for="address2">Address 2</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="city" type="text" class="validate">
+                                    <label class="active" for="city">City</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="state" type="text" class="validate">
+                                    <label class="active" for="state">State</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="country" type="text" class="validate">
+                                    <label class="active" for="country">Country</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input readonly id="pincode" type="text" class="validate">
+                                    <label class="active" for="pincode">Pincode</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
