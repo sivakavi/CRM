@@ -22,9 +22,12 @@ body{
     vertical-align: middle;
 }
 .main-content {
-    overflow-y: scroll; 
-    padding-left: 290px;
+    overflow-y: scroll;
+    padding-left: 310px;
+    padding-right: 20px;
     height: 82vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .footer {
     height: 50px;
@@ -114,10 +117,13 @@ body{
 }
 .main-menu__items ul li a {
     font-size: 17px;
-    color: #fff;
+    color: #fff !important;
     width: 100%;
-    padding: 10px 10px 10px 20px;
+    padding: 10px 10px 10px 20px !important;
     display: block;
+    border-left: 5px solid transparent;
+    height: auto;
+    line-height: 0;
 }
 .main-menu__items ul li a i {
     margin-right: 10px;
@@ -125,6 +131,53 @@ body{
 .main-menu__items ul li a:hover {
     background: #00645a;
 }
+.main-menu__items ul li {
+    line-height: 0;
+}
 .main-menu__items ul li a.active {
     border-left: 5px solid #fff;
+}
+.show-tablet,
+.show-disktop {
+    display: none;
+}
+
+.row .card-wrapper {
+    border-radius: 2px;
+    padding: 0;
+    
+    width: calc(50% - 40px);
+    margin: 0 20px;
+}
+.card-wrapper .card-panel {
+    margin: 0;
+    color: #fff;
+    border-radius: 0;
+}
+.card-wrapper .card-panel-body {
+    padding: 20px;
+}
+.btn-perple,
+.btn-perple:hover {
+    background-color: rgb(255,64,129);
+}
+@media only screen and (max-width : 767px) {
+    .row .card-wrapper {
+        width: calc(100% - 40px);
+        margin: 0 20px; 
+    }
+}
+@media only screen and (max-width : 992px) {
+    .header, .main-content, .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .show-tablet {
+        display: block;
+    }
+}
+@media only screen and (min-width : 993px) {
+    .show-disktop {
+        display: block;
+    }
 }

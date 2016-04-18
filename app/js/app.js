@@ -1,4 +1,4 @@
-var CRM = angular.module('CRM', ['ui.router','ui.materialize']);
+var CRM = angular.module('CRM', ['ui.router','ui.materialize','gridshore.c3js.chart']);
 CRM.config(function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /state1

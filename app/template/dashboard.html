@@ -1,1 +1,63 @@
-<h3>Hello!!</h3>
+<div ng-controller="GraphCtrl">
+  <div class="row">
+    <div class="card-wrapper block--shadow col">
+      <div class="card-panel teal">This is a card panel with a teal lighten-2 class</div>
+      <div class="card-panel-body">
+        <c3chart bindto-id="pie-plot1-chart">
+          <chart-column column-id="Data 1" column-values="70" column-type="pie" />
+          <chart-column column-id="Data 2" column-values="35" column-type="pie" />
+          <chart-column column-id="Data 3" column-values="60" column-type="pie" />
+          <chart-pie expand="true" />
+        </c3chart>
+      </div>
+    </div>
+    <div class="card-wrapper block--shadow col">
+      <div class="card-panel teal">To do list</div>
+      <div class="card-panel-body">
+        <p>
+          <input type="checkbox" id="test5" />
+          <label for="test5">Meeting with Nabindar Singh</label>
+        </p>
+        <p>
+          <input type="checkbox" id="test6" />
+          <label for="test6">Meeting with Nabindar Singh</label>
+        </p>
+        <p>
+          <input type="checkbox" id="test7" />
+          <label for="test7">Meeting with Nabindar Singh</label>
+        </p>
+        <p>
+          <input type="checkbox" id="test8" />
+          <label for="test8">Meeting with Nabindar Singh</label>
+        </p>
+        <p>
+          <input type="checkbox" id="test9" />
+          <label for="test9">Meeting with Nabindar Singh</label>
+        </p>
+      </div>
+      <div class="card-panel-footer">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <a class="btn-floating btn-large waves-effect waves-light btn-perple">
+            <i class="material-icons">done</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card-wrapper block--shadow col">
+      <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">query_builder</i> Notification</div>
+      <div class="card-panel-body">
+        <ul class="">
+          <li class="collection-item">
+            <a href="#!"><i class="material-icons">send</i><span>Alvin</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

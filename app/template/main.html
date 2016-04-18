@@ -13,7 +13,7 @@
 </header>
 
 <!-- left side menu part -->
-<section class="main-menu">
+<section class="main-menu side-nav fixed" id="slide-out">
     <header class="main-menu__header">
         <img class="block--center" src="img/logo.png" alt="Logo" />
     </header>
@@ -58,19 +58,50 @@
             </li>
             <li>
                 <a ui-sref="app.profile" class="waves-effect waves-light" ng-class="{active: $state.includes('app.profile')}">
-                    <i class="fa fa-user-secret" aria-hidden="true"></i>
-                    <span>Profile</span>
+                    <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                    <span>Product</span>
                 </a>
             </li>
             <li>
                 <a ui-sref="app.profile" class="waves-effect waves-light" ng-class="{active: $state.includes('app.dashboard')}">
-                    <i class="fa fa-home" aria-hidden="true"></i>
-                    <span>Dashboard</span>
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                    <span>Manage</span>
                 </a>
             </li>
         </ul>
     </section>
 </section>
+<!--<ul id="slide-out" class="side-nav fixed">
+      <li><a href="#!">First Sidebar Link</a></li>
+      <li><a href="#!">Second Sidebar Link</a></li>
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">Dropdown<i class="mdi-navigation-arrow-drop-down"></i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">First</a></li>
+                <li><a href="#!">Second</a></li>
+                <li><a href="#!">Third</a></li>
+                <li><a href="#!">Fourth</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#!">First Sidebar Link</a></li>
+      <li><a href="#!">Second Sidebar Link</a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#!">First</a></li>
+        <li><a href="#!">Second</a></li>
+        <li><a href="#!">Third</a></li>
+        <li><a href="#!">Fourth</a></li>
+      </ul>
+    </ul>-->
+    
 <!-- Main content -->
 <section class="main-content">
     <div ui-view></div>
@@ -78,5 +109,9 @@
 
 <!-- footer part -->
 <footer class="footer block--shadow">
-    <div class="align--right">Powered by ZeroDot Consultancy.</div>
+    <div class="align--right">Powered by ZeroDot Consultancy.
+        <a href="#" data-activates="slide-out" class="button-collapse show-disktop" data-sidenav="left" data-menuwidth="290" data-closeonclick="false"><i class="mdi-navigation-menu">sample</i></a>
+       
+    </div>
+    
 </footer>
