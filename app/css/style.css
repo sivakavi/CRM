@@ -110,6 +110,11 @@ body{
 .main-menu__user-info .user-picto {
     background-color: rgba(0,0,0,.7);
     height: 100%; 
+    color: #fff;
+    padding: 25px;
+}
+.main-menu__user-info .user-picto p{
+    margin-left: 20px;
 }
 .main-menu__user-info img {
     height: 70px;
@@ -145,9 +150,11 @@ body{
 .row .card-wrapper {
     border-radius: 2px;
     padding: 0;
-    
     width: calc(50% - 40px);
     margin: 0 20px;
+}
+.row .card-to-do {
+    min-height: 422px;
 }
 .card-wrapper .card-panel {
     margin: 0;
@@ -157,6 +164,18 @@ body{
 .card-wrapper .card-panel-body {
     padding: 20px;
 }
+.card-to-do .card-panel-body {
+    height: 248px;
+    overflow-y: auto;
+}
+.card-wrapper .card-panel-footer {
+    padding: 20px 20px 20px 10px;
+}    
+.card-wrapper .card-panel-footer .to-do-input {
+    width: calc(100% - 60px);
+    display: inline-block;
+    padding: 0 10px;
+} 
 .btn-perple,
 .btn-perple:hover {
     background-color: rgb(255,64,129);

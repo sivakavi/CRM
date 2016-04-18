@@ -1,5 +1,85 @@
 <div ng-controller="GraphCtrl">
   <div class="row">
+  <div class="card-mini-progress valign-wrapper block--shadow col" style="width: calc(33.3% - 40px);min-height: 120px;margin: 0 20px;">
+    <div style="width:86px;margin-right: 20px;display: inline-block;">
+      <div
+        round-progress
+        max="100"
+        current="50"
+        color="#45ccce"
+        bgcolor="#eaeaea"
+        radius="100"
+        stroke="20"
+        semi="false"
+        rounded="false"
+        clockwise="true"
+        responsive="true"
+        duration="800"
+        animation="easeInBounce"
+        animation-delay="0" >
+        </div>
+     </div>
+     <div>
+       <span style="font-size:18px;"> Goals Achieved </span>
+       <div>
+         <span>15% Up this month</span>
+       </div>
+     </div>
+  </div>
+  <div class="card-mini-progress valign-wrapper block--shadow col" style="width: calc(33.3% - 40px);min-height: 120px;margin: 0 20px;">
+    <div style="width:86px;margin-right: 20px;display: inline-block;">
+      <div
+        round-progress
+        max="100"
+        current="50"
+        color="#F800FC"
+        bgcolor="#F5E5F5"
+        radius="100"
+        stroke="20"
+        semi="false"
+        rounded="false"
+        clockwise="true"
+        responsive="true"
+        duration="800"
+        animation="easeInBounce"
+        animation-delay="0" >
+        </div>
+     </div>
+     <div>
+       <span style="font-size:18px;"> Sales </span>
+       <div>
+         <span>25% Up this month</span>
+       </div>
+     </div>
+  </div>
+  <div class="card-mini-progress valign-wrapper block--shadow col" style="width: calc(33.3% - 40px);min-height: 120px;margin: 0 20px;">
+    <div style="width:86px;margin-right: 20px;display: inline-block;">
+      <div
+        round-progress
+        max="100"
+        current="50"
+        color="#00D554"
+        bgcolor="#C7F9DB"
+        radius="100"
+        stroke="20"
+        semi="false"
+        rounded="false"
+        clockwise="true"
+        responsive="true"
+        duration="800"
+        animation="easeInBounce"
+        animation-delay="0" >
+        </div>
+     </div>
+     <div>
+       <span style="font-size:18px;"> Cutomers </span>
+       <div>
+         <span>10% Up this month</span>
+       </div>
+     </div>
+  </div>
+  </div>
+  <div class="row">
     <div class="card-wrapper block--shadow col">
       <div class="card-panel teal">This is a card panel with a teal lighten-2 class</div>
       <div class="card-panel-body">
@@ -11,7 +91,7 @@
         </c3chart>
       </div>
     </div>
-    <div class="card-wrapper block--shadow col">
+    <div class="card-wrapper card-to-do block--shadow col">
       <div class="card-panel teal">To do list</div>
       <div class="card-panel-body">
         <p>
@@ -36,15 +116,13 @@
         </p>
       </div>
       <div class="card-panel-footer">
-        <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field to-do-input">
             <input id="first_name" type="text" class="validate">
             <label for="first_name">First Name</label>
           </div>
           <a class="btn-floating btn-large waves-effect waves-light btn-perple">
             <i class="material-icons">done</i>
           </a>
-        </div>
       </div>
     </div>
   </div>
@@ -56,8 +134,10 @@
           <li class="collection-item">
             <a href="#!"><i class="material-icons">send</i><span>Alvin</span></a>
           </li>
+          
         </ul>
       </div>
     </div>
   </div>
+  
 </div>
