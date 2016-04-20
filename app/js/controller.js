@@ -1,30 +1,29 @@
 var customerObj = [
-    { 'id': '1', 'fname': 'sivakavi', 'lname': 'rew', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '2', 'fname': 'dsf', 'lname': 'jayaeredevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '3', 'fname': 'sadf', 'lname': 'geg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '4', 'fname': 'asdf', 'lname': 'grdeg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '5', 'fname': 'sivaasdfkavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '6', 'fname': 'sivakavi', 'lname': 'qqafe', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '7', 'fname': 'asdf', 'lname': 'jdx', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '8', 'fname': 'sivakavi', 'lname': 'dfgs', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '9', 'fname': 'sivaksdfsavi', 'lname': 'sadfadf', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '10', 'fname': 'ukhly', 'lname': 'bbbb', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '11', 'fname': 'sivaksfdavi', 'lname': 'dfg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '12', 'fname': 'sivacasckavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '13', 'fname': 'fghft', 'lname': 'dfg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '14', 'fname': 'uireg', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '15', 'fname': 'ghrntrt', 'lname': 'sdfgs', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '16', 'fname': 'fgd', 'lname': 'fgdfrg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'leadsourceid': '1', 'interest': 'xxxxxx', 'photo': '' }
+    { 'id': '1', 'fname': 'sivakavi', 'lname': 'rew', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '1', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '2', 'fname': 'dsf', 'lname': 'jayaeredevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '1', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '3', 'fname': 'sadf', 'lname': 'geg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '4', 'member_id': '3', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '4', 'fname': 'asdf', 'lname': 'grdeg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '5', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '5', 'fname': 'sivaasdfkavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '4', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '6', 'fname': 'sivakavi', 'lname': 'qqafe', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '3', 'member_id': '2', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '7', 'fname': 'asdf', 'lname': 'jdx', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '3', 'member_id': '3', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '8', 'fname': 'sivakavi', 'lname': 'dfgs', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '3', 'member_id': '1', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '9', 'fname': 'sivaksdfsavi', 'lname': 'sadfadf', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '2', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '10', 'fname': 'ukhly', 'lname': 'bbbb', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '4', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '11', 'fname': 'sivaksfdavi', 'lname': 'dfg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '3', 'member_id': '3', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '12', 'fname': 'sivacasckavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '5', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '13', 'fname': 'fghft', 'lname': 'dfg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '4', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '14', 'fname': 'uireg', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '4', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '15', 'fname': 'ghrntrt', 'lname': 'sdfgs', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '5', 'interest': 'xxxxxx', 'photo': '' },
+    { 'id': '16', 'fname': 'fgd', 'lname': 'fgdfrg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '4', 'member_id': '2', 'interest': 'xxxxxx', 'photo': '' }
 ];
 
 var userObj = [
-    { 'id': '1', 'fname': 'sivakavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'photo': '', 'role': '1', 'username': 'sivakavi', 'password': 'sivakavi', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
-    { 'id': '1', 'fname': 'janaki', 'lname': 'r', 'phone': '2436587', 'mobile': '9715261931', 'email': 'surendar@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '28/11/1989', 'gender': '2', 'photo': '', 'role': '2', 'username': 'surendar', 'password': 'surendar', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
-    { 'id': '1', 'fname': 'santhosh', 'lname': 'k', 'phone': '2436587', 'mobile': '9894252587', 'email': 'santhosh@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '04/06/1992', 'gender': '1', 'photo': 'img/profile.jpg', 'role': '3', 'username': 'santhosh', 'password': 'santhosh', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
-    { 'id': '1', 'fname': 'srini', 'lname': 'r', 'phone': '2436587', 'mobile': '8973738954', 'email': 'srini@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '25/05/1988', 'gender': '1', 'photo': '', 'role': '4', 'username': 'srini', 'password': 'srini', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
-    { 'id': '1', 'fname': 'kavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9843926580', 'email': 'kavi@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'photo': '', 'role': '5', 'username': 'kavi', 'password': 'kavi', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' }
+    { 'id': '1', 'fname': 'sivakavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'photo': '', 'role_id': '1', 'username': 'sivakavi', 'password': 'sivakavi', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
+    { 'id': '1', 'fname': 'janaki', 'lname': 'r', 'phone': '2436587', 'mobile': '9715261931', 'email': 'surendar@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '28/11/1989', 'gender': '2', 'photo': '', 'role_id': '2', 'username': 'surendar', 'password': 'surendar', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
+    { 'id': '1', 'fname': 'santhosh', 'lname': 'k', 'phone': '2436587', 'mobile': '9894252587', 'email': 'santhosh@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '04/06/1992', 'gender': '1', 'photo': 'img/profile.jpg', 'role_id': '3', 'username': 'santhosh', 'password': 'santhosh', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
+    { 'id': '1', 'fname': 'srini', 'lname': 'r', 'phone': '2436587', 'mobile': '8973738954', 'email': 'srini@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '25/05/1988', 'gender': '1', 'photo': '', 'role_id': '4', 'username': 'srini', 'password': 'srini', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
+    { 'id': '1', 'fname': 'kavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9843926580', 'email': 'kavi@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'photo': '', 'role_id': '5', 'username': 'kavi', 'password': 'kavi', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' }
 ];
-
 
 var leadSource = [
     { 'lead_id': '1', 'lead_name': 'Web' },
@@ -38,7 +37,7 @@ var userRole = [
     { 'role_id': '2', 'role_type': 'Sales' },
     { 'role_id': '3', 'role_type': 'Marketing' },
     { 'role_id': '4', 'role_type': 'Support' },
-    { 'role_id': '4', 'role_type': 'Telecaller' }
+    { 'role_id': '5', 'role_type': 'Telecaller' }
 ];
 
 var memberType = [
@@ -46,7 +45,7 @@ var memberType = [
     { 'member_id': '2', 'member_type': 'Silver' },
     { 'member_id': '3', 'member_type': 'Gold' },
     { 'member_id': '4', 'member_type': 'Diamond' },
-    { 'member_id': '4', 'member_type': 'Platinum' }
+    { 'member_id': '5', 'member_type': 'Platinum' }
 ];
 
 var appoinmentStatus = [
@@ -61,7 +60,7 @@ var productCategory = [
     { 'product_id': '2', 'product_name': 'Furniture' },
     { 'product_id': '3', 'product_name': 'Electronics' },
     { 'product_id': '4', 'product_name': 'Tiles' },
-    { 'product_id': '4', 'product_name': 'Mechanical tools'}
+    { 'product_id': '5', 'product_name': 'Mechanical tools'}
 ];
 
 
@@ -103,18 +102,39 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state) {
 
 
 CRM.controller('CustomerCtrl', function ($rootScope, $scope, $state) {
+
     $scope.customerlist = customerObj;
+    
+    $scope.singleCustomer = {
+        'id': '',
+        'fname': '',
+        'lname': '',
+        'phone': '',
+        'mobile': '',
+        'email': '',
+        'address1': '',
+        'address2': '',
+        'city': '',
+        'state': '',
+        'country': '',
+        'pincode': '',
+        'dob': '',
+        'gender': '',
+        'occupation': '',
+        'lead_id': '',
+        'member_id': '',
+        'interest': '',
+        'photo': ''
+    }
+
 });
 
 CRM.controller('ManageCtrl', function ($rootScope, $scope, $state) {
-    $scope.customerlist = customerObj;
     $scope.userRoleList = userRole;
     $scope.leadSourceList = leadSource;
     $scope.memberTypeList = memberType;
     $scope.appoinmentStatusList = appoinmentStatus;
     $scope.productCategoryList = productCategory;
-    
-    
 });
 
 CRM.controller('UiCalendarCtrl',
@@ -249,28 +269,38 @@ CRM.controller('UiCalendarCtrl',
         $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
     });
 
+CRM.controller('ApplicationCtrl', function ($rootScope, $scope, $state) {
+    console.log($rootScope.currentUser);
+    $scope.userinfo = $rootScope.currentUser;
+});
 
 CRM.filter('leadSource', function () {
     return function (number) {
         for (var i = 0; i < leadSource.length; i++) {
-            if (leadSource[i].id == number) {
-                return leadSource[i].ltype;
+            if (leadSource[i].lead_id == number) {
+                return leadSource[i].lead_name;
             }
         }
     }
-});
-
-CRM.controller('ApplicationCtrl', function ($rootScope, $scope, $state) {
-    console.log($rootScope.currentUser);
-    $scope.userinfo = $rootScope.currentUser;
 });
 
 CRM.filter('userRole', function() {
     return function(number){
     
         for(var i=0;i<userRole.length;i++){
-            if(userRole[i].id==number){
-                return userRole[i].roletype;
+            if (userRole[i].role_id == number) {
+                return userRole[i].role_type;
+            }
+        }
+    }
+});
+
+CRM.filter('memberType', function () {
+    return function (number) {
+
+        for (var i = 0; i < memberType.length; i++) {
+            if (memberType[i].member_id == number) {
+                return memberType[i].member_type;
             }
         }
     }
