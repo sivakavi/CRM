@@ -267,11 +267,16 @@ CRM.controller('UiCalendarCtrl',
             calendar: {
                 height: 450,
                 editable: true,
+                selectable: true,
                 header: {
-                    left: 'title',
-                    center: '',
-                    right: 'today prev,next'
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
                 },
+                select: function(start, end, allDay) {
+                    uiCalendarConfig.calendars.availabilityCalendar.fullCalendar('refetchEvents');
+                },
+
                 eventClick: $scope.alertOnEventClick,
                 eventDrop: $scope.alertOnDrop,
                 eventResize: $scope.alertOnResize,

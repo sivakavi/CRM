@@ -15,6 +15,21 @@ body{
     height: 85px;
     padding: 14px 20px 14px 290px;
 }
+.header .header__logo {
+    height: 57px;
+    width: 200px;
+    position: relative;
+    float: left;
+}
+.header .header__logo a {
+    position: absolute;
+    top: -6px;
+    right: -52px;
+    color: rgba(0,0,0,0.75);
+}
+.header .header__logo a i{
+    font-size: 3rem;
+}
 .header .dropdown-content {     
     width: 215px !important;    
 }
@@ -238,15 +253,33 @@ body{
 .manage-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     background: rgb(255,64,129);
 }
+
+.card-mini-progress {
+    width: calc(33.3% - 40px);
+    min-height: 120px;
+    margin: 0 20px;
+}
+.card-mini-progress .card-mini__progress {
+    width:86px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
 @media only screen and (max-width : 767px) {
+    .dashboard-wrapper .row {
+        margin-bottom: auto;
+    }
     .row .card-wrapper {
         width: calc(100% - 40px);
-        margin: 0 20px; 
+        margin: 20px; 
     }
     .manage-wrapper .get-input-from-User::after {
         display: none;
     }
-    
+    .card-mini-progress { 
+        width: calc(100% - 42px);
+        margin: 20px;
+    }
     /* datatables class overrides */
     div.dataTables_wrapper div.dataTables_info, 
     div.dataTables_wrapper div.dataTables_paginate {
@@ -261,9 +294,13 @@ body{
     .show-tablet {
         display: block;
     }
+    .header, .footer {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 @media only screen and (min-width : 993px) {
-    .show-disktop {
-        display: block;
+    .show-tablet {
+        display: none;
     }
 }
