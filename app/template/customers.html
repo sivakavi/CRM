@@ -107,14 +107,18 @@
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">perm_contact_calendar</i>
-                                <input input-date
+                                <!--<input input-date
                                        type="text"
                                        name="dob"
                                        id="dob"
                                        ng-model="currentTime"
                                        container="body"
                                        format="dd/mm/yyyy"
-                                       />
+                                       />-->
+
+                                <datepicker date-format="dd/mm/yyyy"  class="datepic">
+                                    <input ng-model="singleCustomer.dob" type="text" />
+                                </datepicker>
                                 <label class="active" for="dob">DOB</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
