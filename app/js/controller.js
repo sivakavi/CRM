@@ -125,7 +125,33 @@ CRM.controller('CustomerCtrl', function ($rootScope, $scope, $state) {
         'member_id': '',
         'interest': '',
         'photo': ''
-    }
+    };
+
+    $scope.clickCustomer = function () {
+        $("#customerHead").empty();
+        $("#customerHead").append("Add Customer");
+        $("#viewsection").hide();
+        $("#addeditsection").show();
+        $scope.singleCustomer = {};
+    };
+    
+    $scope.customerEdit = function (customer) {
+        $("#customerHead").empty();
+        $("#customerHead").append("Edit Customer");
+        $("#viewsection").hide();
+        $("#addeditsection").show();
+        $scope.singleCustomer = customer;
+        $('ul.tabs').tabs('select_tab', 'test2');
+    };
+
+    $scope.customerView = function (customer) {
+        $("#customerHead").empty();
+        $("#customerHead").append("View Customer");
+        $("#addeditsection").hide();
+        $("#viewsection").show();
+        $scope.singleCustomer = customer;
+        $('ul.tabs').tabs('select_tab', 'test2');
+    };
 
 });
 
@@ -301,6 +327,24 @@ CRM.filter('memberType', function () {
         for (var i = 0; i < memberType.length; i++) {
             if (memberType[i].member_id == number) {
                 return memberType[i].member_type;
+            }
+        }
+    }
+});
+
+CRM.filter('genderType', function () {
+
+    var genderSource = [
+    { 'id': '1', 'type': 'Male' },
+    { 'id': '2', 'type': 'Female' },
+    { 'id': '3', 'type': 'Other' }
+    ];
+
+    return function (number) {
+
+        for (var i = 0; i < genderSource.length; i++) {
+            if (genderSource[i].id == number) {
+                return genderSource[i].type;
             }
         }
     }

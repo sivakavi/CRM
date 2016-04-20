@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs" tabs>
-                <li class="tab col s2"><a class="active" href="#test1">Customer List</a></li>
+                <li class="tab col s2" ng-click="clickCustomer()"><a class="active" href="#test1">Customer List</a></li>
                 <li class="tab col s2"><a href="#test2" id="customerHead">Add Customer</a></li>
             </ul>
         </div>
@@ -10,24 +10,27 @@
             <table datatable="ng" class="row-border hover">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Mobile</th>
                         <th>Email</th>
                         <th>Member Type</th>
                         <th>Lead Source</th>
+                        
 
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="cus in customerlist">
+                        <td><i ng-click="customerEdit(cus)" class="material-icons" style="cursor:pointer">mode_edit</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i ng-click="customerView(cus)" class="material-icons" style="cursor:pointer">visibility</i></td>
                         <td>{{ cus.fname }}</td>
                         <td>{{ cus.lname }}</td>
                         <td>{{ cus.mobile }}</td>
                         <td>{{ cus.email }}</td>
                         <td>{{ cus.member_id | memberType }}</td>
                         <td>{{ cus.lead_id | leadSource }}</td>
-                        <td></td>
+                        
                     </tr>
                 </tbody>
             </table>
@@ -39,32 +42,32 @@
                         <div class="row">
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">account_circle</i>
-                                <input id="fname" type="text" class="validate">
+                                <input id="fname" type="text" class="validate" ng-model="singleCustomer.fname">
                                 <label for="fname">First Name</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">account_circle</i>
-                                <input id="lname" type="text" class="validate">
+                                <input id="lname" type="text" class="validate" ng-model="singleCustomer.lname">
                                 <label for="lname">Last Name</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">phone</i>
-                                <input id="phone" type="tel" class="validate">
+                                <input id="phone" type="tel" class="validate" ng-model="singleCustomer.phone">
                                 <label for="phone">Telephone</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">stay_primary_portrait</i>
-                                <input id="mobile" type="tel" class="validate">
+                                <input id="mobile" type="tel" class="validate" ng-model="singleCustomer.mobile">
                                 <label for="mobile">Mobile</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">email</i>
-                                <input id="email" type="email" class="validate">
+                                <input id="email" type="email" class="validate" ng-model="singleCustomer.email">
                                 <label for="email">Email</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">perm_identity</i>
-                                <select material-select id="gender">
+                                <select material-select id="gender" ng-model="singleCustomer.gender">
                                     <option value="" disabled selected>Choose your option</option>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
@@ -74,32 +77,32 @@
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">location_on</i>
-                                <input id="address1" type="text" class="validate">
+                                <input id="address1" type="text" class="validate" ng-model="singleCustomer.address1">
                                 <label for="address1">Address Line1</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">location_on</i>
-                                <input id="address2" type="text" class="validate">
+                                <input id="address2" type="text" class="validate" ng-model="singleCustomer.address2">
                                 <label for="address2">Address Line2</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">location_on</i>
-                                <input id="city" type="text" class="validate">
+                                <input id="city" type="text" class="validate" ng-model="singleCustomer.city">
                                 <label for="city">City</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">location_on</i>
-                                <input id="state" type="text" class="validate">
+                                <input id="state" type="text" class="validate" ng-model="singleCustomer.state">
                                 <label for="state">State</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">location_on</i>
-                                <input id="country" type="text" value="Singapore" class="validate">
+                                <input id="country" type="text" value="Singapore" class="validate" ng-model="singleCustomer.country">
                                 <label class="active" for="country">Country</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">location_on</i>
-                                <input id="pincode" type="number" class="validate">
+                                <input id="pincode" type="text" class="validate" ng-model="singleCustomer.pincode">
                                 <label for="pincode">Pincode</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
@@ -111,29 +114,12 @@
                                        ng-model="currentTime"
                                        container="body"
                                        format="dd/mm/yyyy"
-                                       months-full="{{ month }}"
-                                       months-short="{{ monthShort }}"
-                                       weekdays-full="{{ weekdaysFull }}"
-                                       weekdays-short="{{ weekdaysShort }}"
-                                       weekdays-letter="{{ weekdaysLetter }}"
-                                       disable="disable"
-                                       min="{{ minDate }}"
-                                       max="{{ maxDate }}"
-                                       today="today"
-                                       clear="clear"
-                                       close="close"
-                                       select-years="15"
-                                       on-start="onStart()"
-                                       on-render="onRender()"
-                                       on-open="onOpen()"
-                                       on-close="onClose()"
-                                       on-set="onSet()"
-                                       on-stop="onStop()" />
+                                       />
                                 <label class="active" for="dob">DOB</label>
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">assignment</i>
-                                <select material-select id="leadsource">
+                                <select material-select id="leadsource" ng-model="singleCustomer.lead_id">
                                     <option value="" disabled selected>Choose your option</option>
                                     <option value="1">Web</option>
                                     <option value="2">Google</option>
@@ -144,7 +130,7 @@
                             </div>
                             <div class="input-field col l6 m12 s12">
                                 <i class="material-icons prefix">work</i>
-                                <input id="occupation" type="text" class="validate">
+                                <input id="occupation" type="text" class="validate" ng-model="singleCustomer.occupation">
                                 <label for="occupation">Occupation</label>
                             </div>
                             <div class="file-field input-field col l6 m12 s12">
@@ -156,7 +142,7 @@
                             </div>
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">mode_edit</i>
-                                <textarea id="interest" class="materialize-textarea"></textarea>
+                                <textarea id="interest" class="materialize-textarea" ng-model="singleCustomer.interest"></textarea>
                                 <label for="interest">Interest</label>
                             </div>
                         </div>
@@ -180,19 +166,25 @@
                                     <div class="col s12 m6">
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <input readonly id="fname" type="text" class="validate">
-                                                <label class="active" for="fname">First Name</label>
+                                                <input readonly id="fname" type="text" class="validate" ng-model="singleCustomer.fname">
+                                                <label class=" active" for="fname">First Name</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <input readonly id="lname" type="text" class="validate">
+                                                <input readonly id="lname" type="text" class="validate" ng-model="singleCustomer.lname">
                                                 <label class="active" for="lname">Last Name</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <input readonly id="leadsource" type="text" class="validate">
+                                                <input readonly id="lname" type="text" class="validate" ng-model="singleCustomer.member_id | memberType">
+                                                <label class="active" for="lname">Member Type</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input readonly id="leadsource" type="text" class="validate" ng-model="singleCustomer.lead_id | leadSource">
                                                 <label class="active" for="leadsource">Lead Source</label>
                                             </div>
                                         </div>
@@ -205,19 +197,19 @@
                             <div class="collapsible-body">
                                 <div class="row" style="padding-top:10px;">
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="dob" type="text" class="validate">
+                                        <input readonly id="dob" type="text" class="validate" ng-model="singleCustomer.dob">
                                         <label class="active" for="dob">DOB</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="gender" type="text" class="validate">
+                                        <input readonly id="gender" type="text" class="validate" ng-model="singleCustomer.gender | genderType">
                                         <label class="active" for="pincode">Gender</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="occupation" type="text" class="validate">
+                                        <input readonly id="occupation" type="text" class="validate" ng-model="singleCustomer.occupation">
                                         <label class="active" for="occupation">Occupation</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="interest" type="text" class="validate">
+                                        <input readonly id="interest" type="text" class="validate" ng-model="singleCustomer.interest">
                                         <label class="active" for="interest">Interest</label>
                                     </div>
                                 </div>
@@ -228,39 +220,39 @@
                             <div class="collapsible-body">
                                 <div class="row" style="padding-top:10px;">
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="phone" type="text" class="validate">
+                                        <input readonly id="phone" type="text" class="validate" ng-model="singleCustomer.phone">
                                         <label class="active" for="phone">Phone</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="mobile" type="text" class="validate">
+                                        <input readonly id="mobile" type="text" class="validate" ng-model="singleCustomer.mobile">
                                         <label class="active" for="mobile">Mobile</label>
                                     </div>
                                     <div class="input-field col s12 m12">
-                                        <input readonly id="email" type="text" class="validate">
+                                        <input readonly id="email" type="text" class="validate" ng-model="singleCustomer.email">
                                         <label class="active" for="email">Email</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="address1" type="text" class="validate">
+                                        <input readonly id="address1" type="text" class="validate" ng-model="singleCustomer.address1">
                                         <label class="active" for="address1">Address 1</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="address2" type="text" class="validate">
+                                        <input readonly id="address2" type="text" class="validate" ng-model="singleCustomer.address2">
                                         <label class="active" for="address2">Address 2</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="city" type="text" class="validate">
+                                        <input readonly id="city" type="text" class="validate" ng-model="singleCustomer.city">
                                         <label class="active" for="city">City</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="state" type="text" class="validate">
+                                        <input readonly id="state" type="text" class="validate" ng-model="singleCustomer.state">
                                         <label class="active" for="state">State</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="country" type="text" class="validate">
+                                        <input readonly id="country" type="text" class="validate" ng-model="singleCustomer.country">
                                         <label class="active" for="country">Country</label>
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input readonly id="pincode" type="text" class="validate">
+                                        <input readonly id="pincode" type="text" class="validate" ng-model="singleCustomer.pincode">
                                         <label class="active" for="pincode">Pincode</label>
                                     </div>
                                 </div>
