@@ -1,4 +1,4 @@
-var CRM = angular.module('CRM', ['ui.router','ui.materialize','gridshore.c3js.chart', 'datatables', 'angular-svg-round-progressbar']);
+var CRM = angular.module('CRM', ['ui.router','ui.materialize','gridshore.c3js.chart', 'datatables', 'angular-svg-round-progressbar', 'ui.calendar']);
 CRM.config(function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /state1
@@ -9,7 +9,7 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
     .state('login', {
       url: "/login",
       templateUrl: "template/login.html",
-      controller: 'loginCtrl'
+      controller: 'LoginCtrl'
     })
     .state('app', {
       url: "/app",
@@ -23,7 +23,7 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
     .state('app.customers', {
       url: "/customers",
       templateUrl: "template/customers.html",
-      controller: 'customerCtrl'
+      controller: 'CustomerCtrl'
     })
     .state('app.staff', {
       url: "/staff",
@@ -31,7 +31,8 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('app.appoinment', {
       url: "/appoinment",
-      templateUrl: "template/appoinment.html"
+      templateUrl: "template/appoinment.html",
+      controller: 'UiCalendarCtrl'
     })
     .state('app.case', {
       url: "/case",
@@ -42,6 +43,7 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "template/profile.html"
     }).state('app.manage', {
         url: "/manage",
-        templateUrl: "template/manage.html"
+        templateUrl: "template/manage.html",
+        controller: 'ManageCtrl'
     });
 });

@@ -184,10 +184,73 @@ body{
 .btn-perple:hover {
     background-color: rgb(255,64,129);
 }
+.manage-wrapper {
+    padding-top:30px;
+}
+.manage-wrapper .collapsible-body .row {
+    position: relative;
+}
+.manage-wrapper .get-input-from-User {
+    text-align: center;    
+}
+.manage-wrapper .get-input-from-User a {
+    margin-top: 20px;
+}
+.manage-wrapper .get-input-from-User::after {
+    content: '';
+    position: absolute;
+    left: 33%;
+    height: 100%;
+    width: 3px;
+    background-color: rgb(255,64,129);
+    top: 10px;
+}
+    
+.manage-wrapper .manage-wrapper__input {
+    padding: 0 0.75rem;
+    text-align: left;
+}
+.manage-wrapper .collapsible-header.active {
+    background-color: rgb(255,64,129);
+    color: #fff;
+}
+
+
+/* label focus color */
+.manage-wrapper .manage-wrapper__input input[type=text]:focus + label {
+    color: rgb(255,64,129);
+}
+/* label underline focus color */
+.manage-wrapper .manage-wrapper__input input[type=text]:focus {
+    border-bottom: 1px solid rgb(255,64,129);
+    box-shadow: 0 1px 0 0 rgb(255,64,129);
+}
+
+.manage-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+.manage-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: rgb(255,64,129);
+}
+.manage-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, 
+.manage-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, 
+.manage-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    background: transparent;
+}
+.manage-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: rgb(255,64,129);
+}
 @media only screen and (max-width : 767px) {
     .row .card-wrapper {
         width: calc(100% - 40px);
         margin: 0 20px; 
+    }
+    .manage-wrapper .get-input-from-User::after {
+        display: none;
+    }
+    
+    /* datatables class overrides */
+    div.dataTables_wrapper div.dataTables_info, 
+    div.dataTables_wrapper div.dataTables_paginate {
+        text-align: left;    
     }
 }
 @media only screen and (max-width : 992px) {

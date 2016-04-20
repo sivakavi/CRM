@@ -1,35 +1,185 @@
-<div style="padding-top:30px;">
+<div class="manage-wrapper">
     <div class="row">
         <div class="col s12">
-            <ul class="collapsible" data-collapsible="accordion">
+            <ul class="collapsible popout" data-collapsible="accordion">
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>User Role</div>
+                    <div class="collapsible-header waves-effect waves-light "><i class="material-icons">filter_drama</i>User Role</div>
                     <div class="collapsible-body">
-
+                        <div class="row">
+                            <div class="col m4 s12 get-input-from-User">
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="fname" type="text" class="validate" ng-model="userRole.id">
+                                    <label for="fname">User ID</label>
+                                </div>
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="lname" type="text" class="validate" ng-model="userRole.name">
+                                    <label for="lname">User Name</label>
+                                </div>
+                                <a class="btn-floating btn-large waves-effect waves-light btn-perple">
+                                    <i class="material-icons">done</i>
+                                </a>
+                            </div>
+                            <div class="col m8 s12">
+                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            <th>User ID</th>
+                                            <th>User Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="user in userRoleList">
+                                            <td>{{ user.role_id }}</td>
+                                            <td>{{ user.role_type }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">place</i>Lead Source</div>
+                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">place</i>Lead Source</div>
                     <div class="collapsible-body">
-
+                        <div class="row">
+                            <div class="col m4 s12 get-input-from-User">
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="fname" type="text" class="validate" ng-model="leadSource.id">
+                                    <label for="fname">Lead Source ID</label>
+                                </div>
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="lname" type="text" class="validate" ng-model="leadSource.name">
+                                    <label for="lname">Lead Source Name</label>
+                                </div>
+                                <a class="btn-floating btn-large waves-effect waves-light btn-perple">
+                                    <i class="material-icons">done</i>
+                                </a>
+                            </div>
+                            <div class="col m8 s12">
+                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Lead Source ID</th>
+                                            <th>Lead Source Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="lead in leadSourceList">
+                                            <td>{{ lead.lead_id }}</td>
+                                            <td>{{ lead.lead_name }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Member Type</div>
+                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">whatshot</i>Member Type</div>
                     <div class="collapsible-body">
-
+                        <div class="row">
+                            <div class="col m4 s12 get-input-from-User">
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="fname" type="text" class="validate" ng-model="memberInfo.id">
+                                    <label for="fname">Member Type ID</label>
+                                </div>
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="lname" type="text" class="validate" ng-model="memberInfo.name">
+                                    <label for="lname">Member Type Name</label>
+                                </div>
+                                <a class="btn-floating btn-large waves-effect waves-light btn-perple">
+                                    <i class="material-icons">done</i>
+                                </a>
+                            </div>
+                            <div class="col m8 s12">
+                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Member Type ID</th>
+                                            <th>Member Type Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="member in memberTypeList">
+                                            <td>{{ member.member_id }}</td>
+                                            <td>{{ member.member_type }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Appoinment Status</div>
+                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">whatshot</i>Appoinment Status</div>
                     <div class="collapsible-body">
-
+                        <div class="row">
+                            <div class="col m4 s12 get-input-from-User">
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="fname" type="text" class="validate" ng-model="appoinmentStatus.id">
+                                    <label for="fname">Appoinment Status ID</label>
+                                </div>
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="lname" type="text" class="validate" ng-model="appoinmentStatus.name">
+                                    <label for="lname">Status Name</label>
+                                </div>
+                                <a class="btn-floating btn-large waves-effect waves-light btn-perple">
+                                    <i class="material-icons">done</i>
+                                </a>
+                            </div>
+                            <div class="col m8 s12">
+                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" data-info="false" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Appoinment Status ID</th>
+                                            <th>Status Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="appoinment in appoinmentStatusList">
+                                            <td>{{ appoinment.status_id }}</td>
+                                            <td>{{ appoinment.status_name }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Role Type</div>
+                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">whatshot</i>Product Category</div>
                     <div class="collapsible-body">
-
+                        <div class="row">
+                            <div class="col m4 s12 get-input-from-User">
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="fname" type="text" class="validate" ng-model="productCategory.id">
+                                    <label for="fname">Product Category ID</label>
+                                </div>
+                                <div class="input-field manage-wrapper__input">
+                                    <input id="lname" type="text" class="validate" ng-model="productCategory.name">
+                                    <label for="lname">Product Category Name</label>
+                                </div>
+                                <a class="btn-floating btn-large waves-effect waves-light btn-perple">
+                                    <i class="material-icons">done</i>
+                                </a>
+                            </div>
+                            <div class="col m8 s12">
+                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Product ID</th>
+                                            <th>Product Category Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="product in productCategoryList">
+                                            <td>{{ product.product_id }}</td>
+                                            <td>{{ product.product_name }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                        
                     </div>
                 </li>
             </ul>
