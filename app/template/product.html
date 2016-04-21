@@ -1,0 +1,69 @@
+<div id="tablemode">
+    <div class="row center-align">
+        
+        <button data-target="addProduct" class="btn modal-trigger waves-effect waves-light">Add Product<i class="material-icons right">add</i></button>
+        
+    </div>
+
+    <div>
+        <table datatable="ng" class="row-border hover" data-display-length="5">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Prize</th>
+                  
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pro in productlist">
+                    <td><i class="material-icons" style="cursor:pointer">mode_edit</i></td>
+                    <td>{{ pro.pname }}</td>
+                    <td>{{ pro.category | productType }}</td>
+                    <td>{{ pro.brand }}</td>
+                    <td>{{ pro.prize }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="addProduct" class="modal bottom-sheet">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input id="pname" type="text" class="validate">
+                    <label for="pname">Product Name</label>
+                </div>
+                <div class="input-field col m6 s12">
+                    <input id="prize" type="text" class="validate">
+                    <label for="prize">Prize ($)</label>
+                </div>
+                <div class="input-field col m6 s12">
+                    <select material-select id="gender">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">System accessories</option>
+                        <option value="2">Furniture</option>
+                        <option value="3">Electronics</option>
+                        <option value="4">Tiles</option>
+                        <option value="5">Mechanical tools</option>
+                    </select>
+                    <label for="lname">Product Category</label>
+                </div>
+                <div class="input-field col m6 s12">
+                    <input id="brand" type="text" class="validate">
+                    <label for="brand">Brand</label>
+                </div>
+                
+            </div>
+            <div class="row center-align">
+                <button class="btn waves-effect waves-light">Submit<i class="material-icons right">add</i></button>
+            </div>
+       </div>
+      </div>  
+</div>

@@ -7,7 +7,7 @@
             </ul>
         </div>
         <div id="test1" class="col s12" style="padding-top:20px;">
-            <table datatable="ng" class="row-border hover">
+            <table datatable="ng" class="row-border hover" data-display-length="4">
                 <thead>
                     <tr>
                         <th></th>
@@ -17,7 +17,7 @@
                         <th>Email</th>
                         <th>Member Type</th>
                         <th>Lead Source</th>
-                        
+
 
                     </tr>
                 </thead>
@@ -30,7 +30,7 @@
                         <td>{{ cus.email }}</td>
                         <td>{{ cus.member_id | memberType }}</td>
                         <td>{{ cus.lead_id | leadSource }}</td>
-                        
+
                     </tr>
                 </tbody>
             </table>

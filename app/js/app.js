@@ -38,12 +38,45 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('app.case', {
       url: "/case",
-      templateUrl: "template/case.html"
+      templateUrl: "template/case.html",
+      controller: 'CaseCtrl'
+    })
+    .state('app.addcase', {
+        url: "/addcase",
+        templateUrl: "template/addcase.html",
+        controller: 'CaseCtrl'
+    })
+    .state('app.editcase', {
+        url: "/editcase",
+        templateUrl: "template/editcase.html",
+        controller: 'CaseCtrl'
+    })
+      .state('app.product', {
+          url: "/product",
+          templateUrl: "template/product.html",
+          controller: 'ProductCtrl'
+      })
+    .state('app.addproduct', {
+        url: "/addproduct",
+        templateUrl: "template/addproduct.html",
+        controller: 'ProductCtrl'
+    })
+    .state('app.editproduct', {
+        url: "/editproduct",
+        templateUrl: "template/editproduct.html",
+        controller: 'ProductCtrl'
     })
     .state('app.profile', {
       url: "/profile",
-      templateUrl: "template/profile.html"
-    }).state('app.manage', {
+      templateUrl: "template/profile.html",
+      controller: 'StaffCtrl'
+    })
+    .state('app.changepassword', {
+        url: "/changepassword",
+        templateUrl: "template/changepassword.html",
+        controller: 'StaffCtrl'
+    })
+    .state('app.manage', {
         url: "/manage",
         templateUrl: "template/manage.html",
         controller: 'ManageCtrl'
