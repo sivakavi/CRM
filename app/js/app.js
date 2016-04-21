@@ -14,7 +14,8 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
     .state('app', {
       url: "/app",
       abstract: true,
-      templateUrl: "template/main.html"
+      templateUrl: "template/main.html",
+      controller: 'MainCtrl'
     })
     .state('app.dashboard', {
       url: "/dashboard",

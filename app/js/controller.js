@@ -95,9 +95,39 @@ CRM.controller('LoginCtrl', function ($rootScope, $scope, $state) {
     };
 
 });
+CRM.controller('GraphCtrl', function ($rootScope, $scope, $state) {});
 
-CRM.controller('GraphCtrl', function ($rootScope, $scope, $state) {
-    
+CRM.controller('MainCtrl', function ($rootScope, $scope, $state) {
+    $scope.isMobile = false;
+    // media query event handler
+if (matchMedia) {
+  var mq = window.matchMedia("(max-width: 992px)");
+  mq.addListener(WidthChange);
+  WidthChange(mq);
+}
+
+// media query change
+function WidthChange(mq) {
+
+  if (mq.matches) {
+    $scope.isMobile = true;
+  } else {
+    $scope.isMobile = false;
+  }
+
+}
+
+// $(window).on('resize', function() {
+//     var width = $(window).innerWidth();
+//     console.log(width);
+//     if (width > 992) {
+//         $scope.isMobile = false;
+//       } else if(width <= 992) {
+//         $scope.isMobile = true;
+//       }
+//             });
+
+
 });
 
 
