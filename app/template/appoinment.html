@@ -1,3 +1,18 @@
-<h3>appoinment.html</h3>
+<div id="calandermode">
+    <div class="row center-align">
+        <button class="btn waves-effect waves-light" type="button" name="action" ng-click="switchtotable()">
+            Appointment View in Table
+            <i class="material-icons right">web</i>
+        </button>
+    </div>
+    <div class="calendar" ng-model="eventSources" calendar="calendar" ui-calendar="uiConfig.calendar"></div>
+</div>
 
-<div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
+<div id="tablemode" style="display:none">
+    <div class="row center-align">
+        <button class="btn waves-effect waves-light" type="button" name="action" ng-click="switchtocalander()">
+            Appointment View in Calander
+            <i class="material-icons right">today</i>
+        </button>
+    </div>
+</div>

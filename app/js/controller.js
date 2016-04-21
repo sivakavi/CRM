@@ -155,6 +155,68 @@ CRM.controller('CustomerCtrl', function ($rootScope, $scope, $state) {
 
 });
 
+
+CRM.controller('StaffCtrl', function ($rootScope, $scope, $state) {
+
+    $scope.stafflist = userObj;
+
+    $scope.singleStaff = {
+        'id': '',
+        'fname': '',
+        'lname': '',
+        'phone': '',
+        'mobile': '',
+        'email': '',
+        'address1': '',
+        'address2': '',
+        'city': '',
+        'state': '',
+        'country': '',
+        'pincode': '',
+        'dob': '',
+        'gender': '',
+        'photo': '',
+        'role_id': '',
+        'username': '',
+        'password': '',
+        'host': '',
+        'port': '',
+        'smtp_name': '',
+        'smtp_pass': ''
+    };
+
+    $scope.clickStaff = function () {
+        $("#staffHead").empty();
+        $("#staffHead").append("Add Staff");
+        $("#viewsection").hide();
+        $("#addeditsection").show();
+        $scope.showconfirmpassword = true;
+        $scope.singleStaff= {};
+    };
+
+    $scope.staffEdit = function (staff) {
+        $("#staffHead").empty();
+        $("#staffHead").append("Edit Staff");
+        $("#viewsection").hide();
+        $("#addeditsection").show();
+        $scope.showconfirmpassword = false;
+        $scope.singleStaff = staff;
+        $('ul.tabs').tabs('select_tab', 'test2');
+    };
+
+    $scope.staffView = function (staff) {
+        $("#staffHead").empty();
+        $("#staffHead").append("View Staff");
+        $("#addeditsection").hide();
+        $("#viewsection").show();
+        $scope.showconfirmpassword = true;
+        $scope.singleStaff = staff;
+        $('ul.tabs').tabs('select_tab', 'test2');
+    };
+
+});
+
+
 CRM.controller('ManageCtrl', function ($rootScope, $scope, $state) {
     $scope.userRoleList = userRole;
     $scope.leadSourceList = leadSource;
@@ -170,6 +232,18 @@ CRM.controller('UiCalendarCtrl',
         var m = date.getMonth();
         var y = date.getFullYear();
 
+
+        $scope.switchtotable = function () {
+            $("#calandermode").hide();
+            $("#tablemode").show();
+        };
+
+        $scope.switchtocalander = function () {
+            $("#tablemode").hide();
+            $("#calandermode").show();
+        };
+
+
         $scope.changeTo = 'Hungarian';
         /* event source that pulls from google.com */
         $scope.eventSource = {
@@ -180,7 +254,7 @@ CRM.controller('UiCalendarCtrl',
         /* event source that contains custom events on the scope */
         $scope.events = [
             { title: 'All Day Event', start: new Date(y, m, 1) },
-            { title: 'Long Event', start: new Date(y, m, d - 5), end: new Date(y, m, d - 2) },
+            { title: 'Long Event', start: new Date(y, m, 22), end: new Date(y, m, 22) },
             { id: 999, title: 'Repeating Event', start: new Date(y, m, d - 3, 16, 0), allDay: false },
             { id: 999, title: 'Repeating Event', start: new Date(y, m, d + 4, 16, 0), allDay: false },
             { title: 'Birthday Party', start: new Date(y, m, d + 1, 19, 0), end: new Date(y, m, d + 1, 22, 30), allDay: false },

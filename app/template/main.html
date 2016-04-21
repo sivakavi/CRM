@@ -2,7 +2,7 @@
 <header class="header block--shadow right-align">
     <div class="header__logo show-tablet">
         <div class="block--center" style="top: 54%;">
-            <img src="img/login-logo.png" alt="Logo" />
+            <img src="img/login-logo.png" alt="Logo" style="margin-left:100px;" />
             <a href="#" data-activates="slide-out" class="button-collapse" data-sidenav="left" data-menuwidth="290" data-closeonclick="true"><i class="material-icons">view_list</i></a>
         </div>
     </div>
@@ -21,7 +21,7 @@
 <!-- left side menu part -->
 <section class="main-menu side-nav fixed" id="slide-out" ng-controller="ApplicationCtrl">
     <header class="main-menu__header">
-        <img class="block--center" src="img/logo.png" alt="Logo" />
+        <img class="block--center" src="img/logo.png" alt="Logo"/>
     </header>
 
     <section class="main-menu__user-info">
@@ -29,14 +29,14 @@
             <img ng-src="{{userinfo.photo}}" alt="user pic" class="circle" />
             <p>
                 <span>{{userinfo.fname}} {{userinfo.lname}}</span><br/>
-                <span>{{userinfo.role | userRole}}</span>
+                <span>{{userinfo.role_id | userRole}}</span>
             </p>
         </div>
     </section>
     <section class="main-menu__items">
         <ul>
             <li>
-                <a ui-sref="app.dashboard" class="waves-effect waves-light active" ng-class="{active: $state.is('app.dashboard')}">
+                <a ui-sref="app.dashboard" class="waves-effect waves-light" ng-class="{active: $state.is('app.dashboard')}">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <span>Dashboard</span>
                 </a>
@@ -75,6 +75,12 @@
                 <a ui-sref="app.manage" class="waves-effect waves-light" ng-class="{active: $state.includes('app.manage')}">
                     <i class="fa fa-cogs" aria-hidden="true"></i>
                     <span>Manage</span>
+                </a>
+            </li>
+            <li>
+                <a ui-sref="app.dashboard" class="waves-effect waves-light" ng-class="{active: $state.includes('app.dashboard')}">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    <span>Report</span>
                 </a>
             </li>
         </ul>

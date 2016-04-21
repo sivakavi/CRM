@@ -29,7 +29,8 @@ body{
 .header .header__logo a {
     position: absolute;
     top: -6px;
-    right: -52px;
+    /*right: -52px;*/
+    left:40px;
     color: rgba(0,0,0,0.75);
 }
 .header .header__logo a i{
@@ -54,8 +55,9 @@ body{
     padding-bottom: 20px;
 }
 .footer {
-    height: 50px;
-    padding: 15px 20px;
+    height: 55px;
+    padding: 6px 20px;
+    border-top: 2px solid #000;
 }
 
 .login--bgcolor {
@@ -148,7 +150,7 @@ body{
     font-size: 17px;
     color: #fff !important;
     width: 100%;
-    padding: 10px 10px 10px 20px !important;
+    padding: 11px 10px 11px 20px !important;
     display: block;
     border-left: 5px solid transparent;
     height: auto;
