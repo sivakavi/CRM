@@ -46,7 +46,7 @@ CRM.service('HTTPService', function($http){
    this.editTodo = function(todo) {
       return $http({
                         method: "post",
-                        url: domainURL+"todo/"+todo.id,
+                        url: domainURL+"todo/edit/"+todo.id,
                         data:todo
                     });
    }
