@@ -136,4 +136,8 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
             authenticated: authenticated
         }
     });
-});
+}).run(['$rootScope', '$http', '$state', '$stateParams', function ($rootScope, $http, $state, $stateParams) {
+    $rootScope.isLoading = function () {
+        return $http.pendingRequests.length !== 0;
+    };
+}]);

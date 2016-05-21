@@ -88,7 +88,7 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state) {
 
 });
 
-CRM.controller('MainCtrl', function ($rootScope, $scope, $state) {
+CRM.controller('MainCtrl', function ($rootScope, $scope, $state, $http) {
     $scope.isMobile = false;
 
     $scope.logout = function () {
@@ -100,7 +100,6 @@ CRM.controller('MainCtrl', function ($rootScope, $scope, $state) {
         $scope.userinfo = args;
         console.log(args);
     });
-
     // media query event handler
 if (matchMedia) {
   var mq = window.matchMedia("(max-width: 992px)");
@@ -528,6 +527,7 @@ CRM.controller('UiCalendarCtrl',
 
 CRM.controller('ApplicationCtrl', function ($rootScope, $scope, $state, AuthFactory) {
     $scope.userinfo = AuthFactory.getCurrentUser();
+    $scope.isStaff = $scope.userinfo.role != '2' ? true : false;
     console.log($scope.currentUser);
 });
 
