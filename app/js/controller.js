@@ -103,32 +103,9 @@ var productObj = [
 
 
 CRM.controller('LoginCtrl', function ($rootScope, $scope, $state) {
-    $scope.user = userObj;
     $scope.userd = {
-        "username": "",
+        "user_name": "",
         "password": ""
-    };
-    $rootScope.currentUser = "";
-
-    $scope.login = function (logincredentials) {
-
-        var flag = false;
-
-        for (var i = 0; i < $scope.user.length; i++) {
-            if ($scope.user[i].username == logincredentials.username && $scope.user[i].password == logincredentials.password) {
-                $rootScope.currentUser = $scope.user[i];
-                flag = true;
-                $state.go('app.dashboard');
-                break;
-            }
-        }
-
-        if (!flag) {
-            $scope.userd.username = "";
-            $scope.userd.password = "";
-            Materialize.toast('Invalid Username and Password', 3000);
-        }
-
     };
 
 });

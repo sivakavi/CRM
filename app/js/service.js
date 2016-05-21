@@ -7,3 +7,14 @@
 //     }, function(error){
         
 //     });
+
+
+CRM.service('loginService', function($http){
+   this.login = function(credentials) {
+      return $http({
+                        method: "post",
+                        url: domainURL+"/login",
+                        data: credentials
+                    });
+   }
+});
