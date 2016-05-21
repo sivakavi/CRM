@@ -51,7 +51,7 @@
                     <span>Customers</span>
                 </a>
             </li>
-            <li>
+            <li ng-if="isStaff">
                 <a ui-sref="app.staff" class="waves-effect waves-light" ng-class="{active: $state.includes('app.staff')}">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     <span>Staff</span>
@@ -81,7 +81,7 @@
                     <span>Manage</span>
                 </a>
             </li>
-            <li ng-if="">
+            <li ng-if="isStaff">
                 <a ui-sref="app.dashboard" class="waves-effect waves-light" ng-class="{active: $state.includes('app.dashboard')}">
                     <i class="fa fa-bar-chart" aria-hidden="true"></i>
                     <span>Report</span>
