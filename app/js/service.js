@@ -19,6 +19,39 @@ CRM.service('loginService', function($http){
    }
 });
 
+
+CRM.service('HTTPService', function($http){
+   this.addTodo = function(todo) {
+      return $http({
+                        method: "post",
+                        url: domainURL+"todo",
+                        data: todo
+                    });
+   }
+
+   this.getTodo = function() {
+      return $http({
+                        method: "get",
+                        url: domainURL+"todo"
+                    });
+   }
+
+   this.getSingleTodo = function(id) {
+      return $http({
+                        method: "get",
+                        url: domainURL+"todo/"+id
+                    });
+   }
+
+   this.editTodo = function(todo) {
+      return $http({
+                        method: "post",
+                        url: domainURL+"todo/"+todo.id,
+                        data:todo
+                    });
+   }
+});
+
 CRM.factory('AuthFactory', ['$q', '$rootScope', '$http', '$state',
         function ($q, $rootScope, $http, $state) {
             var currentUser = '';
