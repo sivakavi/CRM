@@ -32,6 +32,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
     .state('app.dashboard', {
       url: "/dashboard",
       templateUrl: "template/dashboard.html",
+      controller: 'GraphCtrl',
       resolve: {
           authenticated: authenticated
       }
@@ -138,6 +139,8 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
     });
 }).run(['$rootScope', '$http', '$state', '$stateParams', function ($rootScope, $http, $state, $stateParams) {
     $rootScope.isLoading = function () {
+        console.log($http.pendingRequests.length !== 0);
         return $http.pendingRequests.length !== 0;
+        //return true;
     };
 }]);
