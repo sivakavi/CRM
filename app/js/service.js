@@ -21,6 +21,8 @@ CRM.service('loginService', function($http){
 
 
 CRM.service('HTTPService', function($http){
+
+	// Todo api services 
    this.addTodo = function(todo) {
       return $http({
                         method: "post",
@@ -50,6 +52,74 @@ CRM.service('HTTPService', function($http){
                         data:todo
                     });
    }
+
+
+   //Product Category Services
+   this.addProductCategory = function(category) {
+      return $http({
+                        method: "post",
+                        url: domainURL+"category",
+                        data: category
+                    });
+   }
+
+   this.getProductCategory = function() {
+      return $http({
+                        method: "get",
+                        url: domainURL+"category"
+                    });
+   }
+
+   this.getSingleProductCategory = function(id) {
+      return $http({
+                        method: "get",
+                        url: domainURL+"category/"+id
+                    });
+   }
+
+   this.editProductCategory = function(category) {
+      return $http({
+                        method: "post",
+                        url: domainURL+"category/edit/"+category.id,
+                        data:category
+                    });
+   }
+
+
+   //Membership services
+   this.addMembership = function(membership) {
+      return $http({
+                        method: "post",
+                        url: domainURL+"membership",
+                        data: membership
+                    });
+   }
+
+   this.getMembership = function() {
+      return $http({
+                        method: "get",
+                        url: domainURL+"membership"
+                    });
+   }
+
+   this.getSingleMembership = function(id) {
+      return $http({
+                        method: "get",
+                        url: domainURL+"membership/"+id
+                    });
+   }
+
+   this.editMembership = function(membership) {
+      return $http({
+                        method: "post",
+                        url: domainURL+"membership/edit/"+membership.id,
+                        data:membership
+                    });
+   }
+
+
+
+
 });
 
 CRM.factory('AuthFactory', ['$q', '$rootScope', '$http', '$state',

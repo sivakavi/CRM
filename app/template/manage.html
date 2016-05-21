@@ -3,7 +3,7 @@
         <div class="col s12">
             <ul class="collapsible popout" data-collapsible="accordion">
                 <li>
-                    <div class="collapsible-header waves-effect waves-light active"><i class="material-icons">assignment_ind</i>User Role</div>
+                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">assignment_ind</i>User Role</div>
                     <div class="collapsible-body">
                         <div class="row">
                             <div class="col m4 s12 get-input-from-User">
@@ -36,6 +36,91 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                </li>
+                                <li>
+                    <div class="collapsible-header waves-effect waves-light active"><i class="material-icons">person_pin</i>Membership Type</div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <div class="col m4 s12 get-input-from-User" style="margin-top:25px;">
+                                <form name="membershipform">
+                                   <div class="input-field manage-wrapper__input" style="display:none;">
+                                        <input id="mid" type="text" class="validate" name="mid" ng-model="membership.id">
+                                        <label for="mid">MemberShip ID</label>
+                                    </div>
+
+                                   <div class="input-field manage-wrapper__input">
+                                        <input id="membership_name" type="text" class="validate" name="membership_name" ng-model="membership.membership_name" required="true">
+                                        <label for="membership_name">Membership Name</label>
+                                    </div>
+
+                                    <button style="margin-top:25px;" type="button" class="btn-floating btn-large waves-effect waves-light btn-perple" ng-disabled="membershipform.$invalid" ng-click="addMembership(membership)">
+                                        <i class="material-icons">done</i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col m8 s12">
+                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Membership ID</th>
+                                            <th>Membership Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="member in memberTypeList">
+                                            <td><i ng-click="membershipEdit(member)" class="material-icons" style="cursor:pointer">mode_edit</i></td>
+                                            <td>{{ member.id }}</td>
+                                            <td>{{ member.membership_name }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">call_merge</i>Product Category</div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <div class="col m4 s12 get-input-from-User" style="margin-top:25px;">
+                               <form name="productcategoryform">
+                                   <div class="input-field manage-wrapper__input" style="display:none;">
+                                        <input id="pcid" type="text" class="validate" name="pcid" ng-model="productCategory.id">
+                                        <label for="pcid">Product Category ID</label>
+                                    </div>
+
+                                   <div class="input-field manage-wrapper__input">
+                                        <input id="category_name" type="text" class="validate" name="category_name" ng-model="productCategory.category_name" required="true">
+                                        <label for="category_name">Product Category Name</label>
+                                    </div>
+
+                                    <button style="margin-top:25px;" type="button" class="btn-floating btn-large waves-effect waves-light btn-perple" ng-disabled="productcategoryform.$invalid" ng-click="addProductCategory(productCategory)">
+                                        <i class="material-icons">done</i>
+                                    </button>
+                                </form>
+                            </div>
+                           
+                            <div class="col m8 s12">
+                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Product Category ID</th>
+                                            <th>Product Category Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="product in productCategoryList">
+                                            <td><i ng-click="productCategoryEdit(product)" class="material-icons" style="cursor:pointer">mode_edit</i></td>
+                                            <td>{{ product.id }}</td>
+                                            <td>{{ product.category_name }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                        
                     </div>
                 </li>
                 <li>
@@ -75,42 +160,6 @@
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">person_pin</i>Member Type</div>
-                    <div class="collapsible-body">
-                        <div class="row">
-                            <div class="col m4 s12 get-input-from-User">
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="fname" type="text" class="validate" ng-model="memberInfo.id">
-                                    <label for="fname">Member Type ID</label>
-                                </div>
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="lname" type="text" class="validate" ng-model="memberInfo.name">
-                                    <label for="lname">Member Type Name</label>
-                                </div>
-                                <a class="btn-floating btn-large waves-effect waves-light btn-perple">
-                                    <i class="material-icons">done</i>
-                                </a>
-                            </div>
-                            <div class="col m8 s12">
-                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" class="row-border hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Member Type ID</th>
-                                            <th>Member Type Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="member in memberTypeList">
-                                            <td>{{ member.member_id }}</td>
-                                            <td>{{ member.member_type }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
                     <div class="collapsible-header waves-effect waves-light"><i class="material-icons">today</i>Appoinment Status</div>
                     <div class="collapsible-body">
                         <div class="row">
@@ -142,70 +191,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">call_merge</i>Product Category</div>
-                    <div class="collapsible-body">
-                        <div class="row">
-                            <div class="col m4 s12 get-input-from-User">
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="fname" type="text" class="validate" ng-model="productCategory.id">
-                                    <label for="fname">Product Category ID</label>
-                                </div>
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="lname" type="text" class="validate" ng-model="productCategory.name">
-                                    <label for="lname">Product Category Name</label>
-                                </div>
-                                <a class="btn-floating btn-large waves-effect waves-light btn-perple">
-                                    <i class="material-icons">done</i>
-                                </a>
-                            </div>
-                            <div class="col m8 s12">
-                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" class="row-border hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Product ID</th>
-                                            <th>Product Category Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="product in productCategoryList">
-                                            <td>{{ product.product_id }}</td>
-                                            <td>{{ product.product_name }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>                        
-                    </div>
-                </li>
-                <li>
-                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">dns</i>Email Configuration</div>
-                    <div class="collapsible-body">
-                        <div class="row center-align">
-                            <div class="col m8 s12">
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="host" type="text" class="validate">
-                                    <label for="host">Host</label>
-                                </div>
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="port" type="text" class="validate">
-                                    <label for="port">Port</label>
-                                </div>
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="smtp_name" type="text" class="validate">
-                                    <label for="smtp_name">Smpt Username</label>
-                                </div>
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="smtp_pass" type="password" class="validate">
-                                    <label for="smtp_pass">Smtp Password</label>
-                                </div>
-                                <a class="btn-floating btn-large waves-effect waves-light btn-perple">
-                                    <i class="material-icons">done</i>
-                                </a>
                             </div>
                         </div>
                     </div>
