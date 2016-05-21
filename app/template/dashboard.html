@@ -1,4 +1,4 @@
-<div class="dashboard-wrapper" ng-controller="GraphCtrl"> 
+<div class="dashboard-wrapper"> 
   <div class="row">
   <div class="card-mini-progress valign-wrapper block--shadow col">
     <div class="card-mini__progress">
@@ -131,25 +131,9 @@
             <div class="card-wrapper card-to-do block--shadow col">
                 <div class="card-panel teal">To do list</div>
                 <div class="card-panel-body">
-                    <p>
-                        <input type="checkbox" id="test5" />
-                        <label for="test5">Meeting with Nabindar Singh</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" id="test6" />
-                        <label for="test6">Meeting with Nabindar Singh</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" id="test7" />
-                        <label for="test7">Meeting with Nabindar Singh</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" id="test8" />
-                        <label for="test8">Meeting with Nabindar Singh</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" id="test9" />
-                        <label for="test9">Meeting with Nabindar Singh</label>
+                    <p ng-repeat="list in todoList" ng-if="list.status !=1">
+                        <input type="checkbox" id="test{{list.id}}" />
+                        <label for="test{{list.id}}">{{list.title}}</label>
                     </p>
                 </div>
                 <div class="card-panel-footer">

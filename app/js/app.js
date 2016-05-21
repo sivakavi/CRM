@@ -32,6 +32,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
     .state('app.dashboard', {
       url: "/dashboard",
       templateUrl: "template/dashboard.html",
+      controller: 'GraphCtrl',
       resolve: {
           authenticated: authenticated
       }

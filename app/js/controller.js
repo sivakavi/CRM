@@ -1,29 +1,4 @@
-var customerObj = [
-    { 'id': '1', 'fname': 'sivakavi', 'lname': 'rew', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '2', 'fname': 'dsf', 'lname': 'jayaeredevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '3', 'fname': 'sadf', 'lname': 'geg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '4', 'member_id': '3', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '4', 'fname': 'asdf', 'lname': 'grdeg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '5', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '5', 'fname': 'sivaasdfkavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '4', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '6', 'fname': 'sivakavi', 'lname': 'qqafe', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '3', 'member_id': '2', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '7', 'fname': 'asdf', 'lname': 'jdx', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '3', 'member_id': '3', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '8', 'fname': 'sivakavi', 'lname': 'dfgs', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '3', 'member_id': '1', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '9', 'fname': 'sivaksdfsavi', 'lname': 'sadfadf', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '2', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '10', 'fname': 'ukhly', 'lname': 'bbbb', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '4', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '11', 'fname': 'sivaksfdavi', 'lname': 'dfg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '3', 'member_id': '3', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '12', 'fname': 'sivacasckavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '5', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '13', 'fname': 'fghft', 'lname': 'dfg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '4', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '14', 'fname': 'uireg', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '1', 'member_id': '4', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '15', 'fname': 'ghrntrt', 'lname': 'sdfgs', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '2', 'member_id': '5', 'interest': 'xxxxxx', 'photo': '' },
-    { 'id': '16', 'fname': 'fgd', 'lname': 'fgdfrg', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'occupation': 'Software Developer', 'lead_id': '4', 'member_id': '2', 'interest': 'xxxxxx', 'photo': '' }
-];
 
-var userObj = [
-    { 'id': '1', 'fname': 'sivakavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9629129377', 'email': 'sivakavi63@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'photo': '', 'role_id': '1', 'username': 'sivakavi', 'password': 'sivakavi', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
-    { 'id': '2', 'fname': 'janaki', 'lname': 'r', 'phone': '2436587', 'mobile': '9715261931', 'email': 'surendar@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '28/11/1989', 'gender': '2', 'photo': '', 'role_id': '2', 'username': 'surendar', 'password': 'surendar', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
-    { 'id': '3', 'fname': 'santhosh', 'lname': 'k', 'phone': '2436587', 'mobile': '9894252587', 'email': 'santhosh@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '04/06/1992', 'gender': '1', 'photo': 'img/profile.jpg', 'role_id': '3', 'username': 'santhosh', 'password': 'santhosh', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
-    { 'id': '4', 'fname': 'srini', 'lname': 'r', 'phone': '2436587', 'mobile': '8973738954', 'email': 'srini@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '25/05/1988', 'gender': '1', 'photo': '', 'role_id': '4', 'username': 'srini', 'password': 'srini', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' },
-    { 'id': '5', 'fname': 'kavi', 'lname': 'jayadevan', 'phone': '2436587', 'mobile': '9843926580', 'email': 'kavi@gmail.com', 'address1': '44 Main Road', 'address2': 'Kalmandapam', 'city': 'Puducherry', 'state': 'Puducherry', 'country': 'India', 'pincode': '605106', 'dob': '21/02/1990', 'gender': '1', 'photo': '', 'role_id': '5', 'username': 'kavi', 'password': 'kavi', 'host': '', 'port': '', 'smtp_name': '', 'smtp_pass': '' }
-];
 
 var leadSource = [
     { 'lead_id': '1', 'lead_name': 'Web' },
@@ -37,67 +12,12 @@ var userRole = [
     { 'role_id': '2', 'role_type': 'Staff' }
 ];
 
-var memberType = [
-    { 'member_id': '1', 'member_type': 'Bronze' },
-    { 'member_id': '2', 'member_type': 'Silver' },
-    { 'member_id': '3', 'member_type': 'Gold' },
-    { 'member_id': '4', 'member_type': 'Diamond' },
-    { 'member_id': '5', 'member_type': 'Platinum' }
-];
-
 var appoinmentStatus = [
     { 'status_id': '1', 'status_name': 'Confirmed' },
     { 'status_id': '2', 'status_name': 'Pending' },
     { 'status_id': '3', 'status_name': 'Inprogress' },
     { 'status_id': '4', 'status_name': 'Cancelled' }
 ];
-
-var productCategory = [
-    { 'product_id': '1', 'product_name': 'System accessories' },
-    { 'product_id': '2', 'product_name': 'Furniture' },
-    { 'product_id': '3', 'product_name': 'Electronics' },
-    { 'product_id': '4', 'product_name': 'Tiles' },
-    { 'product_id': '5', 'product_name': 'Mechanical tools'}
-];
-
-var appointmentObj = [
-    { 'id': '1', 'date': '21/04/2016', 'time': '10:00 AM', 'customer': '2', 'cmobile': '9629129377', 'assignee': '2', 'status': '1'},
-    { 'id': '2', 'date': '21/04/2016', 'time': '06:00 PM', 'customer': '3', 'cmobile': '9629129377', 'assignee': '2', 'status': '4' },
-    { 'id': '3', 'date': '22/04/2016', 'time': '12:00 AM', 'customer': '2', 'cmobile': '9629129377', 'assignee': '2', 'status': '1' },
-    { 'id': '4', 'date': '22/04/2016', 'time': '12:30 PM', 'customer': '5', 'cmobile': '9629129377', 'assignee': '2', 'status': '1' },
-    { 'id': '5', 'date': '22/04/2016', 'time': '03:45 AM', 'customer': '16', 'cmobile': '9629129377', 'assignee': '3', 'status': '1' },
-    { 'id': '6', 'date': '22/04/2016', 'time': '09:00 AM', 'customer': '13', 'cmobile': '9629129377', 'assignee': '4', 'status': '4' },
-    { 'id': '7', 'date': '22/04/2016', 'time': '05:30 PM', 'customer': '1', 'cmobile': '9629129377', 'assignee': '4', 'status': '2' },
-    { 'id': '8', 'date': '24/04/2016', 'time': '11:00 AM', 'customer': '2', 'cmobile': '9629129377', 'assignee': '2', 'status': '2' },
-    { 'id': '9', 'date': '24/04/2016', 'time': '04:00 PM', 'customer': '7', 'cmobile': '9629129377', 'assignee': '3', 'status': '1' },
-    { 'id': '10', 'date': '26/04/2016', 'time': '10:00 AM', 'customer': '9', 'cmobile': '9629129377', 'assignee': '3', 'status': '1' },
-    { 'id': '11', 'date': '27/04/2016', 'time': '11:30 AM', 'customer': '4', 'cmobile': '9629129377', 'assignee': '4', 'status': '1' },
-    { 'id': '12', 'date': '27/04/2016', 'time': '04:00 PM', 'customer': '8', 'cmobile': '9629129377', 'assignee': '2', 'status': '1' },
-    { 'id': '13', 'date': '29/04/2016', 'time': '10:00 AM', 'customer': '10', 'cmobile': '9629129377', 'assignee': '2', 'status': '1' },
-    { 'id': '14', 'date': '29/04/2016', 'time': '10:30 AM', 'customer': '9', 'cmobile': '9629129377', 'assignee': '2', 'status': '1' },
-    { 'id': '15', 'date': '29/04/2016', 'time': '07:00 PM', 'customer': '2', 'cmobile': '9629129377', 'assignee': '3', 'status': '2' },
-    { 'id': '16', 'date': '30/04/2016', 'time': '09:00 AM', 'customer': '6', 'cmobile': '9629129377', 'assignee': '4', 'status': '1' },
-    { 'id': '17', 'date': '30/04/2016', 'time': '05:00 PM', 'customer': '9', 'cmobile': '9629129377', 'assignee': '4', 'status': '4' },
-];
-
-
-var caseObj = [
-    { 'id': '1', 'casename': 'Case Name', 'cdate': '21/04/2016', 'edate': '25/04/2016', 'customer': '2', 'cmobile': '9629129377', 'assignee': '2', 'status': '3', 'description': 'Case Details' },
-    { 'id': '2', 'casename': 'Case Name', 'cdate': '23/04/2016', 'edate': '26/04/2016', 'customer': '13', 'cmobile': '9629129377', 'assignee': '3', 'status': '3', 'description': 'Case Details' },
-    { 'id': '3', 'casename': 'Case Name', 'cdate': '24/04/2016', 'edate': '26/04/2016', 'customer': '10', 'cmobile': '9629129377', 'assignee': '4', 'status': '3', 'description': 'Case Details' },
-    { 'id': '4', 'casename': 'Case Name', 'cdate': '26/04/2016', 'edate': '29/04/2016', 'customer': '6', 'cmobile': '9629129377', 'assignee': '3', 'status': '3', 'description': 'Case Details' },
-    { 'id': '5', 'casename': 'Case Name', 'cdate': '29/04/2016', 'edate': '30/04/2016', 'customer': '11', 'cmobile': '9629129377', 'assignee': '2', 'status': '3', 'description': 'Case Details' },
-];
-
-
-var productObj = [
-    { 'id': '1', 'pname': 'Monitor', 'category': '1', 'brand':'Dell', 'prize':'$ 500'},
-    { 'id': '2', 'pname': 'Mouse', 'category': '1', 'brand': 'Dell', 'prize': '$ 50' },
-    { 'id': '3', 'pname': 'Mobile', 'category': '3', 'brand': 'Sony', 'prize': '$ 1000' },
-    { 'id': '4', 'pname': 'RAM', 'category': '1', 'brand': 'Dell', 'prize': '$ 300' },
-    { 'id': '5', 'pname': 'Hard Disk', 'category': '1', 'brand': 'Dell', 'prize': '$ 500' },
-];
-
 
 CRM.controller('LoginCtrl', function ($rootScope, $scope, $state, loginService) {
     $scope.userd = {
@@ -120,9 +40,16 @@ CRM.controller('LoginCtrl', function ($rootScope, $scope, $state, loginService) 
     };
     
 });
-CRM.controller('GraphCtrl', function ($rootScope, $scope, $state) {
-
-
+CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    $scope.getTodoList = function () {
+        HTTPService.getTodo().then(function (res) {
+            console.log(res);
+            $scope.todoList = res.data;
+        }, function (err) {
+            console.log(err);
+        });
+    }
+    $scope.getTodoList();
 });
 
 CRM.controller('MainCtrl', function ($rootScope, $scope, $state, $http) {
