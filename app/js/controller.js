@@ -19,6 +19,24 @@ var appoinmentStatus = [
     { 'status_id': '4', 'status_name': 'Cancelled' }
 ];
 
+var caseObj = [
+    { 'id': '1', 'casename': 'Case Name', 'cdate': '21/04/2016', 'edate': '25/04/2016', 'customer': '2', 'cmobile': '9629129377', 'assignee': '2', 'status': '3', 'description': 'Case Details' },
+    { 'id': '2', 'casename': 'Case Name', 'cdate': '23/04/2016', 'edate': '26/04/2016', 'customer': '13', 'cmobile': '9629129377', 'assignee': '3', 'status': '3', 'description': 'Case Details' },
+    { 'id': '3', 'casename': 'Case Name', 'cdate': '24/04/2016', 'edate': '26/04/2016', 'customer': '10', 'cmobile': '9629129377', 'assignee': '4', 'status': '3', 'description': 'Case Details' },
+    { 'id': '4', 'casename': 'Case Name', 'cdate': '26/04/2016', 'edate': '29/04/2016', 'customer': '6', 'cmobile': '9629129377', 'assignee': '3', 'status': '3', 'description': 'Case Details' },
+    { 'id': '5', 'casename': 'Case Name', 'cdate': '29/04/2016', 'edate': '30/04/2016', 'customer': '11', 'cmobile': '9629129377', 'assignee': '2', 'status': '3', 'description': 'Case Details' },
+];
+
+
+var productObj = [
+    { 'id': '1', 'pname': 'Monitor', 'category': '1', 'brand':'Dell', 'prize':'$ 500'},
+    { 'id': '2', 'pname': 'Mouse', 'category': '1', 'brand': 'Dell', 'prize': '$ 50' },
+    { 'id': '3', 'pname': 'Mobile', 'category': '3', 'brand': 'Sony', 'prize': '$ 1000' },
+    { 'id': '4', 'pname': 'RAM', 'category': '1', 'brand': 'Dell', 'prize': '$ 300' },
+    { 'id': '5', 'pname': 'Hard Disk', 'category': '1', 'brand': 'Dell', 'prize': '$ 500' },
+];
+
+
 CRM.controller('LoginCtrl', function ($rootScope, $scope, $state, loginService) {
     $scope.userd = {
         "user_name": "",
@@ -212,12 +230,130 @@ CRM.controller('StaffCtrl', function ($rootScope, $scope, $state) {
 });
 
 
-CRM.controller('ManageCtrl', function ($rootScope, $scope, $state) {
+CRM.controller('ManageCtrl', function ($rootScope, $scope, $state, HTTPService) {
     $scope.userRoleList = userRole;
     $scope.leadSourceList = leadSource;
-    $scope.memberTypeList = memberType;
     $scope.appoinmentStatusList = appoinmentStatus;
-    $scope.productCategoryList = productCategory;
+
+    $scope.editProduct=false;
+    $scope.editMembership=false;
+    
+    function loadProductCategoryData(){
+
+        HTTPService.getProductCategory().then(function (res) {
+            $scope.productCategoryList = res.data;
+        }, function (err) {
+            console.log(err)
+        });
+
+    }
+
+    function loadMembershipData(){
+
+        HTTPService.getMembership().then(function (res) {
+            $scope.memberTypeList = res.data;
+        }, function (err) {
+            console.log(err)
+        });
+
+    }
+
+    loadProductCategoryData();
+    loadMembershipData();
+
+    $scope.productCategoryEdit=function(productCategory){
+        $scope.editProduct=true;
+        $scope.productCategory=productCategory;
+    }
+
+    $scope.addProductCategory = function(productCategory){
+        if(!$scope.editProduct){
+        HTTPService.addProductCategory(productCategory).then(function (res) {
+            if(res.data.status=="1"){
+                Materialize.toast('Product Category added successfully', 2000);
+                loadProductCategoryData();
+                $scope.productCategory={};
+                $scope.editProduct=false;
+            }else{
+                $scope.productCategory={};
+                loadProductCategoryData();
+                $scope.editProduct=false;
+            }
+        }, function (err) {
+            console.log(err);
+            $scope.productCategory={};
+            loadProductCategoryData();
+            $scope.editProduct=false;
+        });
+    }else if($scope.editProduct){
+        HTTPService.editProductCategory(productCategory).then(function (res) {
+            if(res.data.status=="1"){
+                Materialize.toast('Product Category edited successfully', 2000);
+                loadProductCategoryData();
+                $scope.productCategory={};
+                $scope.editProduct=false;
+            }else{
+                $scope.productCategory={};
+                loadProductCategoryData();
+                $scope.editProduct=false;
+            }
+        }, function (err) {
+            console.log(err);
+            $scope.productCategory={};
+            loadProductCategoryData();
+            $scope.editProduct=false;
+        });
+    }
+
+    }
+
+    $scope.membershipEdit=function(member){
+        $scope.editMembership=true;
+        $scope.membership=member;
+    }
+
+    $scope.addMembership = function(membership){
+        if(!$scope.editMembership){
+        HTTPService.addMembership(membership).then(function (res) {
+            if(res.data.status=="1"){
+                Materialize.toast('Membership added successfully', 2000);
+                loadMembershipData();
+                $scope.membership={};
+                $scope.editMembership=false;
+            }else{
+                $scope.membership={};
+                loadMembershipData();
+                $scope.editMembership=false;
+            }
+        }, function (err) {
+            console.log(err);
+            $scope.membership={};
+            loadMembershipData();
+            $scope.editMembership=false;
+        });
+    }else if($scope.editMembership){
+        HTTPService.editMembership(membership).then(function (res) {
+            if(res.data.status=="1"){
+                Materialize.toast('Membership edited successfully', 2000);
+                loadMembershipData();
+                $scope.membership={};
+                $scope.editMembership=false;
+            }else{
+                $scope.membership={};
+                loadMembershipData();
+                $scope.editMembership=false;
+            }
+        }, function (err) {
+            console.log(err);
+            $scope.membership={};
+            loadMembershipData();
+            $scope.editMembership=false;
+        });
+    }
+
+    }
+
+
 });
 
 CRM.controller('UiCalendarCtrl',
