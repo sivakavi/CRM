@@ -1,0 +1,26 @@
+<div>
+        <table datatable="ng" class="row-border hover" data-display-length="5">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Prize</th>
+                  
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pro in productlist">
+                    <td><i class="material-icons" style="cursor:pointer">mode_edit</i></td>
+                    <td>{{ pro.pname }}</td>
+                    <td>{{ pro.category | productType }}</td>
+                    <td>{{ pro.brand }}</td>
+                    <td>{{ pro.prize }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
