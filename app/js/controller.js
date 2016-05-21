@@ -66,7 +66,8 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
         }, function (err) {
             console.log(err);
         });
-    }
+    };
+    //$scope.chkbox = true;
     $scope.getTodoList();
 
     $scope.addTodo = function () {
@@ -83,20 +84,26 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
             console.log(res);
         });
     }
-    $scope.editTodo = function (list) {
-        var params = {
-            title: list.title,
-            status: '1',
-            id: list.id,
-            uid: localStorage.getItem('user_id')
+    $scope.editTodo = function (event,list) {
+        var res = confirm("Are you sure to check it!!");
+        if (res == true) {
+            var params = {
+                title: list.title,
+                status: '1',
+                id: list.id,
+                uid: localStorage.getItem('user_id')
+            }
+            HTTPService.editTodo(params).then(function (res) {
+                $scope.todayTask = "";
+                $scope.getTodoList();
+            }, function (err) {
+                $scope.todayTask = "";
+                console.log(res);
+            });
+        } else {
+            angular.element(event.currentTarget).prop('checked', false);
         }
-        HTTPService.editTodo(params).then(function (res) {
-            $scope.todayTask = "";
-            $scope.getTodoList();
-        }, function (err) {
-            $scope.todayTask = "";
-            console.log(res);
-        });
+        
     }
     
 });

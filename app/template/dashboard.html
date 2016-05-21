@@ -102,7 +102,7 @@
                 <div class="card-panel teal">To do list</div>
                 <div class="card-panel-body">
                     <p ng-repeat="list in todoList" ng-if="list.status !=1">
-                        <input type="checkbox" id="test{{list.id}}" ng-model="chkbox" ng-change="editTodo(list )"/>
+                        <input type="checkbox" id="test{{list.id}}" ng-model="chkbox" ng-click="editTodo($event, list)"/>
                         <label for="test{{list.id}}">{{list.title}}</label>
                     </p>
                 </div>
