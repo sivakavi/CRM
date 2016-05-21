@@ -68,6 +68,37 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
         });
     }
     $scope.getTodoList();
+
+    $scope.addTodo = function () {
+        var params = {
+            title: $scope.todayTask,
+            status: '0',
+            uid: localStorage.getItem('user_id')
+        }
+        HTTPService.addTodo(params).then(function (res) {
+            $scope.todayTask = "";
+            $scope.getTodoList();
+        }, function (err) {
+            $scope.todayTask = "";
+            console.log(res);
+        });
+    }
+    $scope.editTodo = function (list) {
+        var params = {
+            title: list.title,
+            status: '1',
+            id: list.id,
+            uid: localStorage.getItem('user_id')
+        }
+        HTTPService.editTodo(params).then(function (res) {
+            $scope.todayTask = "";
+            $scope.getTodoList();
+        }, function (err) {
+            $scope.todayTask = "";
+            console.log(res);
+        });
+    }
+    
 });
 
 CRM.controller('MainCtrl', function ($rootScope, $scope, $state, $http) {

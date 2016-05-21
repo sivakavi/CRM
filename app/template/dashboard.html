@@ -20,59 +20,29 @@
         </div>
      </div>
      <div>
-       <span style="font-size:18px;"> Goals Achieved </span>
+       <span style="font-size:18px;"> Sales Achieved </span>
        <div>
          <span>15% Up this month</span>
        </div>
      </div>
   </div>
   <div class="card-mini-progress valign-wrapper block--shadow col">
-    <div class="card-mini__progress">
-      <div
-        round-progress
-        max="100"
-        current="20"
-        color="#F800FC"
-        bgcolor="#F5E5F5"
-        radius="100"
-        stroke="20"
-        semi="false"
-        rounded="false"
-        clockwise="true"
-        responsive="true"
-        duration="800"
-        animation="easeInBounce"
-        animation-delay="0" >
-        </div>
-     </div>
+      <div class="card-mini__progress">
+          <div class="purple accent-3 dashround"><span class="count block--center">100</span></div>
+      </div>
      <div>
-       <span style="font-size:18px;"> Sales </span>
+       <span style="font-size:18px;"> Open Cases </span>
        <div>
          <span>25% Up this month</span>
        </div>
      </div>
   </div>
   <div class="card-mini-progress valign-wrapper block--shadow col">
-    <div class="card-mini__progress">
-      <div
-        round-progress
-        max="100"
-        current="65"
-        color="#00D554"
-        bgcolor="#C7F9DB"
-        radius="100"
-        stroke="20"
-        semi="false"
-        rounded="false"
-        clockwise="true"
-        responsive="true"
-        duration="800"
-        animation="easeInBounce"
-        animation-delay="0" >
-        </div>
-     </div>
+      <div class="card-mini__progress">
+          <div class="green accent-3 dashround"><span class="count block--center">100</span></div>
+      </div>
      <div>
-       <span style="font-size:18px;"> Cutomers </span>
+       <span style="font-size:18px;"> Appointments </span>
        <div>
          <span>10% Up this month</span>
        </div>
@@ -82,10 +52,10 @@
     <div class="row">
         <div class="card-mini-progress valign-wrapper block--shadow col">
             <div class="card-mini__progress">
-                <div class="lime accent-3 dashround"><span class="count">100</span></div>
+                <div class="lime accent-3 dashround"><span class="count block--center">100</span></div>
             </div>
             <div>
-                <span style="font-size:18px;"> Cutomers </span>
+                <span style="font-size:18px;"> Closed Deals </span>
                 <div>
                     <span>10% Up this month</span>
                 </div>
@@ -94,10 +64,10 @@
 
         <div class="card-mini-progress valign-wrapper block--shadow col">
             <div class="card-mini__progress">
-                <div class="blue-grey lighten-2 dashround"><span class="count">5</span></div>
+                <div class="blue-grey lighten-2 dashround"><span class="count block--center">5</span></div>
             </div>
             <div>
-                <span style="font-size:18px;"> Cutomers </span>
+                <span style="font-size:18px;"> Hot Leads </span>
                 <div>
                     <span>10% Up this month</span>
                 </div>
@@ -106,7 +76,7 @@
 
         <div class="card-mini-progress valign-wrapper block--shadow col">
             <div class="card-mini__progress">
-                <div class="purple lighten-2 dashround"><span class="count">65</span></div>
+                <div class="purple lighten-2 dashround"><span class="count block--center">65</span></div>
             </div>
             <div>
                 <span style="font-size:18px;"> Cutomers </span>
@@ -132,20 +102,31 @@
                 <div class="card-panel teal">To do list</div>
                 <div class="card-panel-body">
                     <p ng-repeat="list in todoList" ng-if="list.status !=1">
-                        <input type="checkbox" id="test{{list.id}}" />
+                        <input type="checkbox" id="test{{list.id}}" ng-model="chkbox" ng-change="editTodo(list )"/>
                         <label for="test{{list.id}}">{{list.title}}</label>
                     </p>
                 </div>
                 <div class="card-panel-footer">
                     <div class="input-field to-do-input">
-                        <input id="first_name" type="text" class="validate">
+                        <input id="first_name" type="text" class="validate" ng-model="todayTask">
                         <label for="first_name">To Do content</label>
                     </div>
-                    <a class="btn-floating btn-large waves-effect waves-light btn-perple">
+                    <a class="btn-floating btn-large waves-effect waves-light btn-perple" ng-click="addTodo();">
                         <i class="material-icons">done</i>
                     </a>
                 </div>
             </div>
+      <div class="card-wrapper block--shadow col">
+          <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">query_builder</i> Notification</div>
+          <div class="card-panel-body">
+              <ul class="">
+                  <li class="collection-item">
+                      <a href="#!"><i class="material-icons">send</i><span>Alvin</span></a>
+                  </li>
+
+              </ul>
+          </div>
+      </div>
         </div>
         <div class="row">
             <div class="card-wrapper block--shadow col">

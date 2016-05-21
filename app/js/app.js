@@ -140,5 +140,6 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
 }).run(['$rootScope', '$http', '$state', '$stateParams', function ($rootScope, $http, $state, $stateParams) {
     $rootScope.isLoading = function () {
         return $http.pendingRequests.length !== 0;
+        //return true;
     };
 }]);
