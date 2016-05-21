@@ -17,7 +17,7 @@
     <ul id='demoDropdown' class='dropdown-content'>
         <li><a ui-sref="app.profile" class="waves-effect waves-teal"><i class="material-icons">perm_identity</i><span>Profile</span></a></li>
         <li><a ui-sref="app.changepassword" class="waves-effect waves-teal"><i class="material-icons">settings</i><span>Change password</span></a></li>
-        <li><a ui-sref="login" class="waves-effect waves-teal"><i class="material-icons">power_settings_new</i><span>Logout</span></a></li>
+        <li><a ng-click="logout();" class="waves-effect waves-teal"><i class="material-icons">power_settings_new</i><span>Logout</span></a></li>
     </ul>
 </header>
 
@@ -29,10 +29,11 @@
 
     <section class="main-menu__user-info">
         <div class="user-picto valign-wrapper">
-            <img ng-src="{{userinfo.photo}}" alt="user pic" class="circle" />
+            <img ng-src="img/default.png" alt="user pic" class="circle" ng-if="userinfo.image ==''"/>
+            <img ng-src="{{userinfo.image}}" alt="user pic" class="circle" ng-if="userinfo.image" />
             <p>
                 <span>{{userinfo.fname}} {{userinfo.lname}}</span><br/>
-                <span>{{userinfo.role_id | userRole}}</span>
+                <span>{{userinfo.role | userRole}}</span>
             </p>
         </div>
     </section>
@@ -80,7 +81,7 @@
                     <span>Manage</span>
                 </a>
             </li>
-            <li>
+            <li ng-if="">
                 <a ui-sref="app.dashboard" class="waves-effect waves-light" ng-class="{active: $state.includes('app.dashboard')}">
                     <i class="fa fa-bar-chart" aria-hidden="true"></i>
                     <span>Report</span>

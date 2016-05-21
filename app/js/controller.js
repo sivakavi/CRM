@@ -34,10 +34,7 @@ var leadSource = [
 
 var userRole = [
     { 'role_id': '1', 'role_type': 'Admin' },
-    { 'role_id': '2', 'role_type': 'Sales' },
-    { 'role_id': '3', 'role_type': 'Marketing' },
-    { 'role_id': '4', 'role_type': 'Support' },
-    { 'role_id': '5', 'role_type': 'Telecaller' }
+    { 'role_id': '2', 'role_type': 'Staff' }
 ];
 
 var memberType = [
@@ -109,8 +106,14 @@ CRM.controller('LoginCtrl', function ($rootScope, $scope, $state, loginService) 
     };
     $scope.login = function (params) {
         loginService.login(params).then(function (res) {
-            localStorage.setItem('user_id', res.data.id);
-            $state.go('app.dashboard');
+            if (res.data.status) {
+                Materialize.toast('Invalid Username and Password', 3000);
+            } else {
+                localStorage.setItem('user_id', res.data.id);
+                Materialize.toast('Login Success!!', 3000);
+                $state.go('app.dashboard');
+            }
+            
         }, function (err) {
             console.log(err)
         });
@@ -124,6 +127,17 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state) {
 
 CRM.controller('MainCtrl', function ($rootScope, $scope, $state) {
     $scope.isMobile = false;
+
+    $scope.logout = function () {
+        localStorage.removeItem('user_id');
+        $state.go('login');
+    };
+
+    $rootScope.$on('CurrentUser', function (event, args) {
+        $scope.userinfo = args;
+        console.log(args);
+    });
+
     // media query event handler
 if (matchMedia) {
   var mq = window.matchMedia("(max-width: 992px)");
@@ -431,9 +445,9 @@ CRM.controller('UiCalendarCtrl',
         $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
     });
 
-CRM.controller('ApplicationCtrl', function ($rootScope, $scope, $state) {
-    console.log($rootScope.currentUser);
-    $scope.userinfo = $rootScope.currentUser;
+CRM.controller('ApplicationCtrl', function ($rootScope, $scope, $state, AuthFactory) {
+    $scope.userinfo = AuthFactory.getCurrentUser();
+    console.log($scope.currentUser);
 });
 
 
