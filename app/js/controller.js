@@ -102,12 +102,20 @@ var productObj = [
 ];
 
 
-CRM.controller('LoginCtrl', function ($rootScope, $scope, $state) {
+CRM.controller('LoginCtrl', function ($rootScope, $scope, $state, loginService) {
     $scope.userd = {
         "user_name": "",
         "password": ""
     };
-
+    $scope.login = function (params) {
+        loginService.login(params).then(function (res) {
+            localStorage.setItem('user_id', res.data.id);
+            $state.go('app.dashboard');
+        }, function (err) {
+            console.log(err)
+        });
+    };
+    
 });
 CRM.controller('GraphCtrl', function ($rootScope, $scope, $state) {
 

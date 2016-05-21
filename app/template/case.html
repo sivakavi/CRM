@@ -2,39 +2,7 @@
     <div class="row center-align">
         <button data-target="addCase" class="btn modal-trigger waves-effect waves-light">Add Case<i class="material-icons right">add</i></button>
     </div>
-
-    <div>
-        <table datatable="ng" class="row-border hover" data-display-length="3">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Case Name</th>
-                    <th>Customer Name</th>
-                    <th>Customer Mobile</th>
-                    <th>Assignee</th>
-                    <th>Status</th>
-                    <th>Created Date</th>
-                    <th>Finish Date</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="case in caselist">
-                    <td><i class="material-icons" style="cursor:pointer">mode_edit</i></td>
-                    <td>{{ case.casename }}</td>
-                    <td>{{ case.customer | customerType }}</td>
-                    <td>{{ case.cmobile }}</td>
-                    <td>{{ case.assignee | staffType }}</td>
-                    <td>{{ case.status | statusType }}</td>
-                    <td>{{ case.cdate }}</td>
-                    <td>{{ case.edate }}</td>
-                    <td>{{ case.description }}</td>
-
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
+    <div ui-view="caseTables"></div>
 
     <!-- Modal Structure -->
     <div id="addCase" class="modal modal-fixed-footer">

@@ -389,3 +389,31 @@ body{
   font-size: 2em;
   color: #3F51B5;
 }
+
+.dashround{
+    height: 80px;
+    width: 80px;
+    border: 2px solid black;
+    border-radius: 40px 40px;
+    padding: 20px 23px;
+}
+span.count{
+    font-size: 25px;
+    color: #fff;
+}
+
+.orange{
+    background-color:#ff5722;
+}
+.purple{
+    background-color:#9c27b0;
+}
+.red{
+    background-color:#f44336;
+}
+.pink{
+    background-color:rgb(255,64,129);
+}
+.blue{
+    background-color:#75b1f3;
+}

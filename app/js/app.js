@@ -37,10 +37,20 @@ CRM.config(function($stateProvider, $urlRouterProvider) {
       controller: 'UiCalendarCtrl'
     })
     .state('app.case', {
-      url: "/case",
-      templateUrl: "template/case.html",
-      controller: 'CaseCtrl'
+        url: "/case",
+        abstract: true,
+        templateUrl: "template/case.html"
+      
     })
+      .state('app.case.list', {
+          url: "/case/list",
+          views: {
+              'caseTables': {
+                  templateUrl: "template/case-list.html"
+              }
+          }
+
+      })
     .state('app.addcase', {
         url: "/addcase",
         templateUrl: "template/addcase.html",
