@@ -105,6 +105,83 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
         }
         
     }
+
+
+    function getallcount() {
+        HTTPService.getopencase(localStorage.getItem('user_id')).then(function (res) {
+            //console.log("open----" + res.data.length);
+            $scope.opencasecount = res.data.length;
+        }, function (err) {
+            console.log(err);
+        });
+
+        HTTPService.getcloasecase(localStorage.getItem('user_id')).then(function (res) {
+            //console.log("close----" + res.data.length);
+            $scope.qshow = false;
+            $scope.closecasecount = res.data.length;
+
+            var per = 0;
+            var max = 100;
+            var target = 50;
+
+            $scope.percentage = 0;
+            $scope.percentageset = 0;
+            $scope.max = max;
+            $scope.target = target;
+            $scope.qty = per;
+
+            if (res.data.length != 0) {
+
+                for(var i=0;i<res.data.length;i++)
+                {
+                    per = per + parseInt(res.data[i].qty);
+                }
+
+                var percentage = (per / target) * max;
+
+                //console.log("per---"+per);
+
+                $scope.percentage = percentage;
+                $scope.percentageset = percentage;
+                $scope.max = max;
+                $scope.target = target;
+                $scope.qty = per;
+                
+
+                if ($scope.percentage >= $scope.max) {
+                    $scope.percentageset = max;
+                    $scope.qshow = true;
+                }
+
+            }
+
+        }, function (err) {
+            console.log(err);
+        });
+
+        HTTPService.getCustomer().then(function (res) {
+            //console.log("cus----" + res.data.length);
+            $scope.customercount = res.data.length;
+        }, function (err) {
+            console.log(err);
+        });
+
+        HTTPService.getHotCustomer().then(function (res) {
+            //console.log("hot----" + res.data.length);
+            $scope.hotcustomercount = res.data.length;
+        }, function (err) {
+            console.log(err);
+        });
+
+        HTTPService.getAppoinment().then(function (res) {
+           // console.log("appoint----"+res.data.length);
+            $scope.appoinmentcount = res.data.length;
+        }, function (err) {
+            console.log(err);
+        });
+    }
+
+    getallcount();
     
 });
 
@@ -402,7 +479,7 @@ CRM.controller('UiCalendarCtrl',
         var y = date.getFullYear();
 
 
-        $scope.appointmentlist = appointmentObj;
+        //$scope.appointmentlist = appointmentObj;
 
         $scope.switchtotable = function () {
             $("#calandermode").hide();

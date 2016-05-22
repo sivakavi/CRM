@@ -4,8 +4,8 @@
     <div class="card-mini__progress">
       <div
         round-progress
-        max="100"
-        current="90"
+        max="max"
+        current="percentageset"
         color="#45ccce"
         bgcolor="#eaeaea"
         radius="100"
@@ -22,83 +22,59 @@
      <div>
        <span style="font-size:18px;"> Sales Achieved </span>
        <div>
-         <span>15% Up this month</span>
+           <span>{{percentage}}% Up this month</span><br/>
+           <span>Target : {{target}}</span><br />
+           <span>Achieved : {{qty}}</span>
        </div>
      </div>
   </div>
   <div class="card-mini-progress valign-wrapper block--shadow col">
       <div class="card-mini__progress">
-          <div class="purple accent-3 dashround"><span class="count block--center">100</span></div>
+          <div class="purple accent-3 dashround"><span class="count block--center">{{opencasecount}}</span></div>
       </div>
      <div>
        <span style="font-size:18px;"> Open Cases </span>
-       <div>
-         <span>25% Up this month</span>
        </div>
-     </div>
   </div>
   <div class="card-mini-progress valign-wrapper block--shadow col">
       <div class="card-mini__progress">
-          <div class="green accent-3 dashround"><span class="count block--center">100</span></div>
+          <div class="green accent-3 dashround"><span class="count block--center">{{appoinmentcount}}</span></div>
       </div>
      <div>
-       <span style="font-size:18px;"> Appointments </span>
-       <div>
-         <span>10% Up this month</span>
+       <span style="font-size:18px;"> Upcoming Appointments </span>
        </div>
-     </div>
   </div>
   </div>
     <div class="row">
         <div class="card-mini-progress valign-wrapper block--shadow col">
             <div class="card-mini__progress">
-                <div class="lime accent-3 dashround"><span class="count block--center">100</span></div>
+                <div class="lime accent-3 dashround"><span class="count block--center">{{closecasecount}}</span></div>
             </div>
             <div>
                 <span style="font-size:18px;"> Closed Deals </span>
-                <div>
-                    <span>10% Up this month</span>
                 </div>
-            </div>
         </div>
 
         <div class="card-mini-progress valign-wrapper block--shadow col">
             <div class="card-mini__progress">
-                <div class="blue-grey lighten-2 dashround"><span class="count block--center">5</span></div>
+                <div class="blue-grey lighten-2 dashround"><span class="count block--center">{{hotcustomercount}}</span></div>
             </div>
             <div>
                 <span style="font-size:18px;"> Hot Leads </span>
-                <div>
-                    <span>10% Up this month</span>
                 </div>
-            </div>
         </div>
 
         <div class="card-mini-progress valign-wrapper block--shadow col">
             <div class="card-mini__progress">
-                <div class="purple lighten-2 dashround"><span class="count block--center">65</span></div>
+                <div class="purple lighten-2 dashround"><span class="count block--center">{{customercount}}</span></div>
             </div>
             <div>
                 <span style="font-size:18px;"> Cutomers </span>
-                <div>
-                    <span>10% Up this month</span>
-                </div>
-            </div>
+               </div>
         </div>
     </div>    
   <div class="row">
-            <!--<div class="card-wrapper block--shadow col">
-              <div class="card-panel teal">This is a card panel with a teal lighten-2 class</div>
-              <div class="card-panel-body">
-                <c3chart bindto-id="pie-plot1-chart">
-                  <chart-column column-id="Data 1" column-values="70" column-type="pie" />
-                  <chart-column column-id="Data 2" column-values="35" column-type="pie" />
-                  <chart-column column-id="Data 3" column-values="60" column-type="pie" />
-                  <chart-pie expand="true" />
-                </c3chart>
-              </div>
-            </div> -->
-            <div class="card-wrapper card-to-do block--shadow col">
+           <div class="card-wrapper card-to-do block--shadow col">
                 <div class="card-panel teal">To do list</div>
                 <div class="card-panel-body">
                     <p ng-repeat="list in todoList" ng-if="list.status !=1">
@@ -116,19 +92,19 @@
                     </a>
                 </div>
             </div>
-      <div class="card-wrapper block--shadow col">
-          <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">query_builder</i> Notification</div>
-          <div class="card-panel-body">
-              <ul class="">
-                  <li class="collection-item">
-                      <a href="#!"><i class="material-icons">send</i><span>Alvin</span></a>
-                  </li>
+            <div class="card-wrapper card-to-do block--shadow col">
+              <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">query_builder</i> Notification</div>
+              <div class="card-panel-body">
+                  <ul class="">
+                      <li class="collection-item">
+                          <a href="#!"><i class="material-icons">send</i><span>Alvin</span></a>
+                      </li>
 
-              </ul>
-          </div>
-      </div>
+                  </ul>
+              </div>
+           </div>
         </div>
-        <div class="row">
+        <!--<div class="row">
             <div class="card-wrapper block--shadow col">
                 <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">query_builder</i> Notification</div>
                 <div class="card-panel-body">
@@ -140,6 +116,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>-->
 
     </div>

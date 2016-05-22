@@ -116,7 +116,57 @@ CRM.service('HTTPService', function($http){
                         data:membership
                     });
    }
+    
+   this.getAppoinment = function () {
+       return $http({
+           method: "get",
+           url: domainURL + "appoinment"
+       });
+   }
 
+   this.getopencase = function (uid) {
+
+       var url = "";
+       if (uid == "all") {
+           url = domainURL + "getOpenCase";
+       } else {
+           url = domainURL + "getOpenCaseUser/"+uid;
+       }
+
+       return $http({
+           method: "get",
+           url: url
+       });
+   }
+
+   this.getcloasecase = function (uid) {
+
+       var url = "";
+       if (uid == "all") {
+           url = domainURL + "getCloseCase";
+       } else {
+           url = domainURL + "getCloseCaseUser/" + uid;
+       }
+
+       return $http({
+           method: "get",
+           url: url
+       });
+   }
+
+   this.getCustomer = function () {
+       return $http({
+           method: "get",
+           url: domainURL + "customer"
+       });
+   }
+
+   this.getHotCustomer = function () {
+       return $http({
+           method: "get",
+           url: domainURL + "hotcustomer"
+       });
+   }
 
 
 
