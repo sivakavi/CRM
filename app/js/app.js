@@ -1,4 +1,4 @@
-var CRM = angular.module('CRM', ['ui.router', 'ui.materialize', 'gridshore.c3js.chart', 'datatables', 'angular-svg-round-progressbar', 'ui.calendar', '720kb.datepicker']);
+var CRM = angular.module('CRM', ['ui.router', 'ui.materialize', 'gridshore.c3js.chart', 'datatables', 'angular-svg-round-progressbar', 'ui.calendar', '720kb.datepicker', 'angularModalService']);
 CRM.config(function ($stateProvider, $urlRouterProvider) {
     var authenticated = ['$q', 'AuthFactory', function ($q, AuthFactory) {
         var deferred = $q.defer();
@@ -21,7 +21,8 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
     .state('login', {
       url: "/login",
       templateUrl: "template/login.html",
-      controller: 'LoginCtrl'
+      controller: 'LoginCtrl',
+      pageTitle: 'Login',
     })
     .state('app', {
       url: "/app",
@@ -196,8 +197,15 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
         }
     });
 }).run(['$rootScope', '$http', '$state', '$stateParams', function ($rootScope, $http, $state, $stateParams) {
+    
+    $rootScope.$on('$stateChangeStart',
+        function (event, toState, toParams, fromState, fromParams) {
+            $rootScope.pageTitle = toState.pageTitle;
+            // transitionTo() promise will be rejected with
+            // a 'transition prevented' error
+        })
     $rootScope.isLoading = function () {
-        console.log($http.pendingRequests.length !== 0);
+        //console.log($http.pendingRequests.length !== 0);
         return $http.pendingRequests.length !== 0;
         //return true;
     };

@@ -1,0 +1,37 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Appionment Details</h4>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 10px;">
+                    <label for="self" style="margin-right: 10px;">Customer</label>
+                    <select class="" name="customer" ng-model="appoinment.customer" style="display:inline-block;width:50%;">
+                        <option ng-repeat="value in customers" value="{{value.id}}">{{value.fname}}</option>
+                    </select>
+                </div>
+                <p style="margin-bottom: 10px;">
+                    <input type="checkbox" id="self" ng-model="appoinment.self" />
+                    <label for="self">Self</label>
+
+                    <input type="checkbox" id="others" ng-model="appoinment.others" />
+                    <label for="others">Others</label>
+                    
+                </p>
+                <div ng-if="appoinment.others">
+
+                    <select class="" ng-model="appoinment.user" style="display:inline-block;">
+                        <option ng-repeat="value in staff" value="{{value.id}}">{{value.fname}} {{value.lname}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="close(appoinment)" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+                <button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal" style="margin-right:10px;">Cancel</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

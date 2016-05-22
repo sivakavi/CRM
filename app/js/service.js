@@ -123,6 +123,14 @@ CRM.service('HTTPService', function($http){
            url: domainURL + "appoinment"
        });
    }
+    
+   this.setAppoinment = function (params) {
+       return $http({
+           method: "post",
+           url: domainURL + "appoinment",
+           data: params
+       });
+   }
 
    this.getopencase = function (uid) {
 
@@ -172,6 +180,13 @@ CRM.service('HTTPService', function($http){
        return $http({
            method: "get",
            url: domainURL + "hotcustomer"
+       });
+   }
+
+   this.getStaff = function () {
+       return $http({
+           method: "get",
+           url: domainURL + "user"
        });
    }
 

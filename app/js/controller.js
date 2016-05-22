@@ -471,7 +471,7 @@ CRM.controller('ManageCtrl', function ($rootScope, $scope, $state, HTTPService) 
 });
 
 CRM.controller('UiCalendarCtrl',
-    function ($scope, $compile, $timeout, uiCalendarConfig) {
+    function ($scope, $compile, $timeout, uiCalendarConfig, ModalService, HTTPService, AuthFactory) {
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
@@ -479,7 +479,8 @@ CRM.controller('UiCalendarCtrl',
 
 
         //$scope.appointmentlist = appointmentObj;
-
+        $scope.userinfo = AuthFactory.getCurrentUser();
+        $scope.events = [];
         $scope.switchtotable = function () {
             $("#calandermode").hide();
             $("#tablemode").show();
@@ -490,23 +491,23 @@ CRM.controller('UiCalendarCtrl',
             $("#calandermode").show();
         };
 
-
-        $scope.changeTo = 'Hungarian';
-        /* event source that pulls from google.com */
-        $scope.eventSource = {
-            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-            className: 'gcal-event',           // an option!
-            currentTimezone: 'America/Chicago' // an option!
-        };
         /* event source that contains custom events on the scope */
-        $scope.events = [
-            { title: 'All Day Event', start: new Date(y, m, 1) },
-            { title: 'Long Event', start: new Date(y, m, 22), end: new Date(y, m, 22) },
-            { id: 999, title: 'Repeating Event', start: new Date(y, m, d - 3, 16, 0), allDay: false },
-            { id: 999, title: 'Repeating Event', start: new Date(y, m, d + 4, 16, 0), allDay: false },
-            { title: 'Birthday Party', start: new Date(y, m, d + 1, 19, 0), end: new Date(y, m, d + 1, 22, 30), allDay: false },
-            { title: 'Click for Google', start: new Date(y, m, 28), end: new Date(y, m, 29), url: 'http://google.com/' }
-        ];
+        $scope.getAppoinmentList = function () {
+            HTTPService.getAppoinment().then(function (res) {
+                console.log(res.data);
+                for (var i = 0; i < res.data.length; i++) {
+                    $scope.events[i] = {
+                        start: moment.utc(new Date(res.data[i].app_date + 'T' + res.data[i].app_time)),
+                        end: moment.utc(new Date(new Date(res.data[i].app_date + 'T' + res.data[i].app_time).getTime()+30*60000))
+                    }
+                }
+                console.log($scope.events);
+            }, function (err) {
+
+            });
+        }
+        $scope.getAppoinmentList();
+
         /* event source that calls a function on every view switch */
         $scope.eventsF = function (start, end, timezone, callback) {
             var s = new Date(start).getTime() / 1000;
@@ -516,18 +517,10 @@ CRM.controller('UiCalendarCtrl',
             callback(events);
         };
 
-        $scope.calEventsExt = {
-            color: '#f00',
-            textColor: 'yellow',
-            events: [
-                { type: 'party', title: 'Lunch', start: new Date(y, m, d, 12, 0), end: new Date(y, m, d, 14, 0), allDay: false },
-                { type: 'party', title: 'Lunch 2', start: new Date(y, m, d, 12, 0), end: new Date(y, m, d, 14, 0), allDay: false },
-                { type: 'party', title: 'Click for Google', start: new Date(y, m, 28), end: new Date(y, m, 29), url: 'http://google.com/' }
-            ]
-        };
+        
         /* alert on eventClick */
         $scope.alertOnEventClick = function (date, jsEvent, view) {
-            $scope.alertMessage = (date.title + ' was clicked ');
+            alert(date.title + ' was clicked ');
         };
         /* alert on Drop */
         $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
@@ -537,28 +530,7 @@ CRM.controller('UiCalendarCtrl',
         $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
             $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
         };
-        /* add and removes an event source of choice */
-        $scope.addRemoveEventSource = function (sources, source) {
-            var canAdd = 0;
-            angular.forEach(sources, function (value, key) {
-                if (sources[key] === source) {
-                    sources.splice(key, 1);
-                    canAdd = 1;
-                }
-            });
-            if (canAdd === 0) {
-                sources.push(source);
-            }
-        };
-        /* add custom event*/
-        $scope.addEvent = function () {
-            $scope.events.push({
-                title: 'Open Sesame',
-                start: new Date(y, m, 28),
-                end: new Date(y, m, 29),
-                className: ['openSesame']
-            });
-        };
+
         /* remove event */
         $scope.remove = function (index) {
             $scope.events.splice(index, 1);
@@ -581,52 +553,121 @@ CRM.controller('UiCalendarCtrl',
                 'tooltip': event.title,
                 'tooltip-append-to-body': true
             });
+            element.fullCalendar('changeView', 'agendaWeek');
             $compile(element)($scope);
         };
+        $scope.setAppoinment = function (params, eventData) {
+            HTTPService.setAppoinment(params).then(function (res) {
+                uiCalendarConfig.calendars['calendar'].fullCalendar('renderEvent', eventData, true);
+            }, function (err) {
+                console.log(err);
+                uiCalendarConfig.calendars['calendar'].fullCalendar('unselect');
+            })
+        };
+        $scope.selectAppoinment = function (start, end) {
+            var eventData;
+            eventData = {
+                title: "sample",
+                start: start,
+                end: end
+            };
+            //uiCalendarConfig.calendars['calendar'].fullCalendar('renderEvent', eventData, true);
+            //uiCalendarConfig.calendars['calendar'].fullCalendar('unselect');
+            ModalService.showModal({
+                templateUrl: "template/confirmAppoinment.html",
+                controller: "ConfirmAppointmentCtrl"
+            }).then(function (modal) {
+                // The modal object has the element built, if this is a bootstrap modal
+                // you can call 'modal' to show it, if it's a custom modal just show or hide
+                // it as you need to.
+                modal.element.modal();
+                modal.close.then(function (result) {
+                    if (result) {
+                        if (result.self) {
+                            var params = {
+                                customer_id: result.customer,
+                                user_id: $scope.userinfo.id,
+                                app_date: moment.utc(start).format('YYYY-MM-DD'),
+                                app_time: moment(start).format('HH:mm:ss'),
+                                status: 'open'
+                            };
+                            $scope.setAppoinment(params, eventData);
+                        } else {
+                            var params = {
+                                customer_id: result.customer,
+                                user_id: result.user,
+                                app_date: moment.utc(start).format('YYYY-MM-DD'),
+                                app_time: moment(start).format('HH:mm:ss'),
+                                status: 'open'
+                            };
+                            $scope.setAppoinment(params, eventData);
+                        }
+                        
+                    } else {
+                        uiCalendarConfig.calendars['calendar'].fullCalendar('unselect');
+                    }
+                });
+            });
+        };
+
+
+
         /* config object */
         $scope.uiConfig = {
             calendar: {
                 height: 450,
-                editable: true,
-                selectable: true,
+                editable: false,
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
+                    right: 'agendaWeek,agendaDay'
                 },
-                select: function(start, end, allDay) {
-                    uiCalendarConfig.calendars.availabilityCalendar.fullCalendar('refetchEvents');
-                },
-
+                eventLimit: true,
+                defaultView: 'agendaWeek',
+                slotEventOverlap: false,
+                selectable: true,
+                selectHelper: true,
+                select: $scope.selectAppoinment,
                 eventClick: $scope.alertOnEventClick,
                 eventDrop: $scope.alertOnDrop,
                 eventResize: $scope.alertOnResize,
                 eventRender: $scope.eventRender
             }
         };
-
-        $scope.changeLang = function () {
-            if ($scope.changeTo === 'Hungarian') {
-                $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
-                $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
-                $scope.changeTo = 'English';
-            } else {
-                $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-                $scope.changeTo = 'Hungarian';
-            }
-        };
         /* event sources array*/
-        $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
-        $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
+        $scope.eventSources = [$scope.events];
     });
 
 CRM.controller('ApplicationCtrl', function ($rootScope, $scope, $state, AuthFactory) {
+    
     $scope.userinfo = AuthFactory.getCurrentUser();
     $scope.isStaff = $scope.userinfo.role != '2' ? true : false;
     console.log($scope.currentUser);
 });
 
+CRM.controller('ConfirmAppointmentCtrl', function ($rootScope, $scope, $state, AuthFactory, HTTPService, close) {
+    $scope.close = function (result) {
+        close(result, 200); 
+    };
+    $scope.getCustomer = function () {
+        HTTPService.getCustomer().then(function (res) {
+            $scope.customers = res.data;
+        }, function (err) {
+            console.log(err);
+        });
+        
+    };
+    $scope.getStaff = function () {
+        HTTPService.getStaff().then(function (res) {
+            $scope.staff = res.data;
+        }, function (err) {
+            console.log(err);
+        });
+
+    };
+    $scope.getCustomer();
+    $scope.getStaff();
+});
 
 CRM.controller('CaseCtrl', function ($rootScope, $scope, $state) {
     $('.modal-trigger').leanModal();
