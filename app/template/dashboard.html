@@ -28,7 +28,7 @@
        </div>
      </div>
   </div>
-  <div class="card-mini-progress valign-wrapper block--shadow col">
+  <div class="card-mini-progress valign-wrapper block--shadow col" ng-click="gotoOpencase()">
       <div class="card-mini__progress">
           <div class="purple accent-3 dashround"><span class="count block--center">{{opencasecount}}</span></div>
       </div>
@@ -46,7 +46,7 @@
   </div>
   </div>
     <div class="row">
-        <div class="card-mini-progress valign-wrapper block--shadow col">
+        <div class="card-mini-progress valign-wrapper block--shadow col" ng-click="gotoClosecase()">
             <div class="card-mini__progress">
                 <div class="lime accent-3 dashround"><span class="count block--center">{{closecasecount}}</span></div>
             </div>
@@ -55,7 +55,7 @@
                 </div>
         </div>
 
-        <div class="card-mini-progress valign-wrapper block--shadow col">
+        <div class="card-mini-progress valign-wrapper block--shadow col" ng-click="gotoHotCustomerList()">
             <div class="card-mini__progress">
                 <div class="blue-grey lighten-2 dashround"><span class="count block--center">{{hotcustomercount}}</span></div>
             </div>
@@ -64,7 +64,7 @@
                 </div>
         </div>
 
-        <div class="card-mini-progress valign-wrapper block--shadow col">
+        <div class="card-mini-progress valign-wrapper block--shadow col" ng-click="gotoCustomerList()">
             <div class="card-mini__progress">
                 <div class="purple lighten-2 dashround"><span class="count block--center">{{customercount}}</span></div>
             </div>
@@ -75,7 +75,7 @@
     </div>    
   <div class="row">
            <div class="card-wrapper card-to-do block--shadow col">
-                <div class="card-panel teal">To do list</div>
+                <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">receipt</i> To do list</div>
                 <div class="card-panel-body">
                     <p ng-repeat="list in todoList" ng-if="list.status !=1">
                         <input type="checkbox" id="test{{list.id}}" ng-model="chkbox" ng-click="editTodo($event, list)"/>

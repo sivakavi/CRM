@@ -45,6 +45,14 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           authenticated: authenticated
       }
     })
+      .state('app.viewcustomer', {
+          url: "/customer/:id",
+          templateUrl: "template/viewcustomer.html",
+          controller: 'ViewCustomerCtrl',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
     .state('app.staff', {
       url: "/staff",
       templateUrl: "template/staff.html",
@@ -129,6 +137,56 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: "template/changepassword.html",
         controller: 'StaffCtrl'
     })
+      .state('app.opencase', {
+          url: "/opencase",
+          templateUrl: "template/opencase.html",
+          controller: 'OpencaseCtrl',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+      .state('app.closecase', {
+          url: "/closecase",
+          templateUrl: "template/closecase.html",
+          controller: 'ClosecaseCtrl',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+
+      .state('app.allopencase', {
+          url: "/opencase",
+          templateUrl: "template/opencase.html",
+          controller: 'OpencaseCtrl',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+      .state('app.allclosecase', {
+          url: "/closecase",
+          templateUrl: "template/closecase.html",
+          controller: 'ClosecaseCtrl',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+      .state('app.customerlist', {
+          url: "/customerlist",
+          templateUrl: "template/customerlist.html",
+          controller: 'CustomerlistCtrl',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+      .state('app.hotcustomerlist', {
+          url: "/hotcustomerlist",
+          templateUrl: "template/hotcustomerlist.html",
+          controller: 'HotCustomerlistCtrl',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+
     .state('app.manage', {
         url: "/manage",
         templateUrl: "template/manage.html",

@@ -182,6 +182,22 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
     }
 
     getallcount();
+
+    $scope.gotoOpencase = function () {
+        $state.go('app.opencase');
+    }
+
+    $scope.gotoClosecase = function () {
+        $state.go('app.closecase');
+    }
+
+    $scope.gotoCustomerList = function () {
+        $state.go('app.customerlist');
+    }
+
+    $scope.gotoHotCustomerList = function () {
+        $state.go('app.hotcustomerlist');
+    }
     
 });
 
@@ -229,57 +245,40 @@ function WidthChange(mq) {
 });
 
 
-CRM.controller('CustomerCtrl', function ($rootScope, $scope, $state) {
+CRM.controller('CustomerCtrl', function ($rootScope, $scope, $state, HTTPService, $location) {
 
-    $scope.customerlist = customerObj;
+    $scope.customerlist = {};
+    HTTPService.getCustomer().then(function (res) {
+        $scope.customerlist = res.data;
+    }, function (err) {
+        $scope.customerlist = {};
+        console.log(err);
+    });
     
-    $scope.singleCustomer = {
-        'id': '',
-        'fname': '',
-        'lname': '',
-        'phone': '',
-        'mobile': '',
-        'email': '',
-        'address1': '',
-        'address2': '',
-        'city': '',
-        'state': '',
-        'country': '',
-        'pincode': '',
-        'dob': '',
-        'gender': '',
-        'occupation': '',
-        'lead_id': '',
-        'member_id': '',
-        'interest': '',
-        'photo': ''
+    $scope.customerEdit = function (cid) {
+        $state.go('app.opencase');
     };
 
-    $scope.clickCustomer = function () {
-        $("#customerHead").empty();
-        $("#customerHead").append("Add Customer");
-        $("#viewsection").hide();
-        $("#addeditsection").show();
+    $scope.customerView = function (cid) {
+        //$state.go('app.opencase');
+        $state.go('app.viewcustomer', {
+            id: cid
+        });
+    };
+
+});
+
+CRM.controller('ViewCustomerCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    $scope.singleCustomer = {};
+    HTTPService.getSingleCustomer().then(function (res) {
+        $scope.singleCustomer = res.data;
+    }, function (err) {
         $scope.singleCustomer = {};
-    };
-    
-    $scope.customerEdit = function (customer) {
-        $("#customerHead").empty();
-        $("#customerHead").append("Edit Customer");
-        $("#viewsection").hide();
-        $("#addeditsection").show();
-        $scope.singleCustomer = customer;
-        $('ul.tabs').tabs('select_tab', 'test2');
-    };
+        console.log(err);
+    });
 
-    $scope.customerView = function (customer) {
-        $("#customerHead").empty();
-        $("#customerHead").append("View Customer");
-        $("#addeditsection").hide();
-        $("#viewsection").show();
-        $scope.singleCustomer = customer;
-        $('ul.tabs').tabs('select_tab', 'test2');
-    };
+    
 
 });
 
@@ -644,6 +643,60 @@ CRM.controller('ProductCtrl', function ($rootScope, $scope, $state) {
 
     $scope.productlist = productObj;
        
+});
+
+CRM.controller('OpencaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    var x = localStorage.getItem('user_id');
+    if ($state.current.name == 'app.allopencase') {
+        x = "all";
+    }
+    $scope.opencaselist = {};
+    HTTPService.getopencase(x).then(function (res) {
+        $scope.opencaselist = res.data;
+    }, function (err) {
+        $scope.opencaselist = {};
+        console.log(err);
+    });
+
+});
+
+CRM.controller('ClosecaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    var x = localStorage.getItem('user_id');
+    if ($state.current.name == 'app.allclosecase') {
+        x = "all";
+    }
+    $scope.closecaselist = {};
+    HTTPService.getcloasecase(x).then(function (res) {
+        $scope.closecaselist = res.data;
+    }, function (err) {
+        $scope.closecaselist = {};
+        console.log(err);
+    });
+
+});
+
+CRM.controller('CustomerlistCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
+    $scope.customerlist = {};
+    HTTPService.getCustomer().then(function (res) {
+        $scope.customerlist = res.data;
+    }, function (err) {
+        $scope.customerlist = {};
+        console.log(err);
+    });
+
+});
+
+CRM.controller('HotCustomerlistCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    $scope.hotcustomerlist = {};
+    HTTPService.getCustomer().then(function (res) {
+        $scope.hotcustomerlist = res.data;
+    }, function (err) {
+        $scope.hotcustomerlist = {};
+        console.log(err);
+    });
+
 });
 
 CRM.filter('leadSource', function () {

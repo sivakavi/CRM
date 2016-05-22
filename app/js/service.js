@@ -161,6 +161,13 @@ CRM.service('HTTPService', function($http){
        });
    }
 
+   this.getSingleCustomer = function (cid) {
+       return $http({
+           method: "get",
+           url: domainURL + "customer/"+cid
+       });
+   }
+
    this.getHotCustomer = function () {
        return $http({
            method: "get",

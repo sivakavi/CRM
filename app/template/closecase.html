@@ -13,13 +13,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="ocase in opencaselist">
+                <tr ng-repeat="ccase in closecaselist">
                     <td><i class="material-icons" style="cursor:pointer">visibility</i></td>
-                    <td>{{ ocase.case_name }}</td>
-                    <td>{{ ocase.user.fname}} {{ ocase.user.lname}}</td>
-                    <td>{{ ocase.product.prod_name }}</td>
-                    <td>{{ ocase.qty }}</td>
-                    <td>{{ ocase.description }}</td>
+                    <td>{{ ccase.case_name }}</td>
+                    <td>{{ ccase.user.fname}} {{ ccase.user.lname}}</td>
+                    <td>{{ ccase.product.prod_name }}</td>
+                    <td>{{ ccase.qty }}</td>
+                    <td>{{ ccase.description }}</td>
 
                 </tr>
             </tbody>

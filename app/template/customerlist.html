@@ -1,0 +1,29 @@
+<div>
+        <table datatable="ng" class="row-border hover" data-display-length="5">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Customer Name</th>
+                    <th>Mobile</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Membership</th>
+                    <th>Address</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cus in customerlist">
+                    <td><i class="material-icons" style="cursor:pointer">visibility</i></td>
+                    <td>{{ cus.fname}} &nbsp; {{ cus.lname}}</td>
+                    <td>{{ cus.mobile }}</td>
+                    <td>{{ cus.phone }}</td>
+                    <td>{{ cus.email }}</td>
+                    <td>{{ cus.membership.membership_name }}</td>
+                    <td>{{ cus.address1}} &nbsp; {{ cus.address2}} &nbsp; {{ cus.city}} &nbsp; {{ cus.state}} &nbsp; {{ cus.country}} &nbsp; {{ cus.pincode}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
