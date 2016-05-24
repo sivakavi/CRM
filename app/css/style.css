@@ -177,6 +177,10 @@ body{
     display: none;
 }
 
+.pagetitle{
+    position:absolute;
+    left:50%;
+}
 .row .card-wrapper {
     border-radius: 2px;
     padding: 0;
@@ -318,10 +322,18 @@ body{
         padding-left: 10px;
         padding-right: 10px;
     }
+    .pagetitle{
+        display:none;
+    }
 }
 @media only screen and (min-width : 993px) {
     .show-tablet {
         display: none;
+    }
+    .pagetitle{
+        display:block;
+        position:absolute;
+        left:50%;
     }
 }
 

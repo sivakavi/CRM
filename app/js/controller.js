@@ -268,10 +268,12 @@ CRM.controller('CustomerCtrl', function ($rootScope, $scope, $state, HTTPService
 
 });
 
-CRM.controller('ViewCustomerCtrl', function ($rootScope, $scope, $state, HTTPService) {
+CRM.controller('ViewCustomerCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+
+    var param = $stateParams.id;
 
     $scope.singleCustomer = {};
-    HTTPService.getSingleCustomer().then(function (res) {
+    HTTPService.getSingleCustomer(param).then(function (res) {
         $scope.singleCustomer = res.data;
     }, function (err) {
         $scope.singleCustomer = {};
@@ -726,6 +728,13 @@ CRM.controller('CustomerlistCtrl', function ($rootScope, $scope, $state, HTTPSer
         console.log(err);
     });
 
+    $scope.customerView = function (cid) {
+        //$state.go('app.opencase');
+        $state.go('app.viewcustomer', {
+            id: cid
+        });
+    };
+
 });
 
 CRM.controller('HotCustomerlistCtrl', function ($rootScope, $scope, $state, HTTPService) {
@@ -737,6 +746,13 @@ CRM.controller('HotCustomerlistCtrl', function ($rootScope, $scope, $state, HTTP
         $scope.hotcustomerlist = {};
         console.log(err);
     });
+
+    $scope.customerView = function (cid) {
+        //$state.go('app.opencase');
+        $state.go('app.viewcustomer', {
+            id: cid
+        });
+    };
 
 });
 

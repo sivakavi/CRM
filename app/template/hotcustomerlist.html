@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="cus in hotcustomerlist">
-                    <td><i class="material-icons" style="cursor:pointer">visibility</i></td>
+                    <td><i class="material-icons" style="cursor:pointer" ng-click="customerView(cus.id)">visibility</i></td>
                     <td>{{ cus.fname}} &nbsp; {{ cus.lname}}</td>
                     <td>{{ cus.mobile }}</td>
                     <td>{{ cus.phone }}</td>

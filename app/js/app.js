@@ -22,7 +22,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
       url: "/login",
       templateUrl: "template/login.html",
       controller: 'LoginCtrl',
-      pageTitle: 'Login',
+      pageTitle: 'Login'
     })
     .state('app', {
       url: "/app",
@@ -34,6 +34,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
       url: "/dashboard",
       templateUrl: "template/dashboard.html",
       controller: 'GraphCtrl',
+      pageTitle: 'Dashboard',
       resolve: {
           authenticated: authenticated
       }
@@ -42,6 +43,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
       url: "/customers",
       templateUrl: "template/customers.html",
       controller: 'CustomerCtrl',
+      pageTitle: 'Customers List',
       resolve: {
           authenticated: authenticated
       }
@@ -50,6 +52,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           url: "/customer/:id",
           templateUrl: "template/viewcustomer.html",
           controller: 'ViewCustomerCtrl',
+          pageTitle: 'View Customer',
           resolve: {
               authenticated: authenticated
           }
@@ -66,6 +69,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
       url: "/appoinment",
       templateUrl: "template/appoinment.html",
       controller: 'UiCalendarCtrl',
+      pageTitle: 'Appointment',
       resolve: {
           authenticated: authenticated
       }
@@ -142,6 +146,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           url: "/opencase",
           templateUrl: "template/opencase.html",
           controller: 'OpencaseCtrl',
+          pageTitle: 'Open Case List',
           resolve: {
               authenticated: authenticated
           }
@@ -150,6 +155,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           url: "/closecase",
           templateUrl: "template/closecase.html",
           controller: 'ClosecaseCtrl',
+          pageTitle: 'Close Case List',
           resolve: {
               authenticated: authenticated
           }
@@ -159,6 +165,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           url: "/opencase",
           templateUrl: "template/opencase.html",
           controller: 'OpencaseCtrl',
+          pageTitle: 'Open Case List',
           resolve: {
               authenticated: authenticated
           }
@@ -167,6 +174,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           url: "/closecase",
           templateUrl: "template/closecase.html",
           controller: 'ClosecaseCtrl',
+          pageTitle: 'Close Case List',
           resolve: {
               authenticated: authenticated
           }
@@ -175,6 +183,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           url: "/customerlist",
           templateUrl: "template/customerlist.html",
           controller: 'CustomerlistCtrl',
+          pageTitle: 'Customers List',
           resolve: {
               authenticated: authenticated
           }
@@ -183,6 +192,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           url: "/hotcustomerlist",
           templateUrl: "template/hotcustomerlist.html",
           controller: 'HotCustomerlistCtrl',
+          pageTitle: 'Hot Customers List',
           resolve: {
               authenticated: authenticated
           }
@@ -192,6 +202,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
         url: "/manage",
         templateUrl: "template/manage.html",
         controller: 'ManageCtrl',
+        pageTitle: 'Manage Setting',
         resolve: {
             authenticated: authenticated
         }
