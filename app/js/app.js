@@ -57,6 +57,24 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
               authenticated: authenticated
           }
       })
+      .state('app.editcustomer', {
+          url: "/editcustomer/:id",
+          templateUrl: "template/editcustomer.html",
+          controller: 'EditCustomerCtrl',
+          pageTitle: 'Edit Customer',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+      .state('app.addcustomer', {
+          url: "/addcustomer",
+          templateUrl: "template/addcustomer.html",
+          controller: 'AddCustomerCtrl',
+          pageTitle: 'Add Customer',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
     .state('app.staff', {
       url: "/staff",
       templateUrl: "template/staff.html",

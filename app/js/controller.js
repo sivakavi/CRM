@@ -260,10 +260,13 @@ CRM.controller('CustomerCtrl', function ($rootScope, $scope, $state, HTTPService
     };
 
     $scope.customerView = function (cid) {
-        //$state.go('app.opencase');
-        $state.go('app.viewcustomer', {
+         $state.go('app.viewcustomer', {
             id: cid
         });
+    };
+
+    $scope.gotoAdd = function () {
+        $state.go('app.addcustomer');
     };
 
 });
@@ -284,6 +287,78 @@ CRM.controller('ViewCustomerCtrl', function ($rootScope, $scope, $state, HTTPSer
 
 });
 
+CRM.controller('AddCustomerCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+
+    $scope.singleCustomer = {
+        address1: "",
+        address2: "",
+        city: "",
+        country: "",
+        dob: "",
+        email: "",
+        fname: "",
+        gender: "",
+        hot: "",
+        interest: "",
+        lead_id: "",
+        lname: "",
+        membership_id: "",
+        mobile: "",
+        occupation: "",
+        phone: "",
+        pincode: "",
+        state: "",
+        image: ""
+    };
+
+    $scope.getMembershipData = function () {
+        HTTPService.getMembership().then(function (res) {
+            $scope.membership = res.data;
+        }, function (err) {
+            $scope.membership = {};
+            console.log(err);
+        });
+    };
+
+    $scope.getMembershipData();
+
+    $scope.addCustomer = function (singleCustomer) {
+        $scope.cus = {
+            address1: singleCustomer.address1,
+            address2: singleCustomer.address2,
+            city: singleCustomer.city,
+            country: singleCustomer.country,
+            dob: singleCustomer.dob,
+            email: singleCustomer.email,
+            fname: singleCustomer.fname,
+            gender: singleCustomer.gender,
+            hot: singleCustomer.hot == "" ? 0 : singleCustomer.hot,
+            interest: singleCustomer.interest,
+            lead_id: singleCustomer.lead_id,
+            lname: singleCustomer.lname,
+            membership_id: singleCustomer.membership_id,
+            mobile: singleCustomer.mobile,
+            occupation: singleCustomer.occupation,
+            phone: singleCustomer.phone,
+            pincode: singleCustomer.pincode,
+            state: singleCustomer.state,
+            image:""
+        };
+
+        HTTPService.addCustomer($scope.cus).then(function (res) {
+            console.log(res);
+        }, function (err) {
+            $scope.membership = {};
+            console.log(err);
+        });
+        
+    };
+
+
+
+
+
+});
 
 CRM.controller('StaffCtrl', function ($rootScope, $scope, $state) {
 

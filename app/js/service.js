@@ -190,6 +190,13 @@ CRM.service('HTTPService', function($http){
        });
    }
 
+   this.addCustomer = function (params) {
+       return $http({
+           method: "post",
+           url: domainURL + "customer",
+           data: params
+       });
+   }
 
 
 });
