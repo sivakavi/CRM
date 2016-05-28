@@ -198,6 +198,14 @@ CRM.service('HTTPService', function($http){
        });
    }
 
+   this.editCustomer = function (params) {
+       return $http({
+           method: "post",
+           url: domainURL + "customer/edit/"+params.id,
+           data: params
+       });
+   }
+
 
 });
 

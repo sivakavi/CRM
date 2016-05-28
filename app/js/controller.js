@@ -45,10 +45,10 @@ CRM.controller('LoginCtrl', function ($rootScope, $scope, $state, loginService) 
     $scope.login = function (params) {
         loginService.login(params).then(function (res) {
             if (res.data.status) {
-                Materialize.toast('Invalid Username and Password', 3000);
+                Materialize.toast('Invalid Username and Password', 2000);
             } else {
                 localStorage.setItem('user_id', res.data.id);
-                Materialize.toast('Login Success!!', 3000);
+                Materialize.toast('Login Success!!', 2000);
                 $state.go('app.dashboard');
             }
             
@@ -256,7 +256,9 @@ CRM.controller('CustomerCtrl', function ($rootScope, $scope, $state, HTTPService
     });
     
     $scope.customerEdit = function (cid) {
-        $state.go('app.opencase');
+        $state.go('app.editcustomer', {
+            id: cid
+        });
     };
 
     $scope.customerView = function (cid) {
@@ -299,8 +301,8 @@ CRM.controller('AddCustomerCtrl', function ($rootScope, $scope, $state, HTTPServ
         fname: "",
         gender: "",
         hot: "",
-        interest: "",
-        lead_id: "",
+        interst: "",
+        lead_source: "",
         lname: "",
         membership_id: "",
         mobile: "",
@@ -333,8 +335,8 @@ CRM.controller('AddCustomerCtrl', function ($rootScope, $scope, $state, HTTPServ
             fname: singleCustomer.fname,
             gender: singleCustomer.gender,
             hot: singleCustomer.hot == "" ? 0 : singleCustomer.hot,
-            interest: singleCustomer.interest,
-            lead_id: singleCustomer.lead_id,
+            interst: singleCustomer.interst,
+            lead_source: singleCustomer.lead_source,
             lname: singleCustomer.lname,
             membership_id: singleCustomer.membership_id,
             mobile: singleCustomer.mobile,
@@ -345,20 +347,98 @@ CRM.controller('AddCustomerCtrl', function ($rootScope, $scope, $state, HTTPServ
             image:""
         };
 
+        //console.log(singleCustomer);
+        //console.log($scope.cus);
+
         HTTPService.addCustomer($scope.cus).then(function (res) {
-            console.log(res);
+            //console.log(res);
+
+            Materialize.toast('Customer added successfully !!', 2000);
+
+            $state.go('app.customers');
+
+
         }, function (err) {
-            $scope.membership = {};
+            //$scope.membership = {};
+            Materialize.toast('Customer not added !!', 2000);
             console.log(err);
         });
         
     };
 
+});
 
+
+CRM.controller('EditCustomerCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+
+    $scope.getMembershipData = function () {
+        HTTPService.getMembership().then(function (res) {
+            $scope.membership = res.data;
+        }, function (err) {
+            $scope.membership = {};
+            console.log(err);
+        });
+    };
+
+    $scope.getMembershipData();
+
+    var param = $stateParams.id;
+
+    $scope.singleCustomer = {};
+    HTTPService.getSingleCustomer(param).then(function (res) {
+        $scope.singleCustomer = res.data;
+    }, function (err) {
+        $scope.singleCustomer = {};
+        console.log(err);
+    });
+
+
+    $scope.editCustomer = function (singleCustomer) {
+        //$scope.cus = {
+        //    address1: singleCustomer.address1,
+        //    address2: singleCustomer.address2,
+        //    city: singleCustomer.city,
+        //    country: singleCustomer.country,
+        //    dob: singleCustomer.dob,
+        //    email: singleCustomer.email,
+        //    fname: singleCustomer.fname,
+        //    gender: singleCustomer.gender,
+        //    hot: singleCustomer.hot == "" ? 0 : singleCustomer.hot,
+        //    interst: singleCustomer.interst,
+        //    lead_source: singleCustomer.lead_source,
+        //    lname: singleCustomer.lname,
+        //    membership_id: singleCustomer.membership_id,
+        //    mobile: singleCustomer.mobile,
+        //    occupation: singleCustomer.occupation,
+        //    phone: singleCustomer.phone,
+        //    pincode: singleCustomer.pincode,
+        //    state: singleCustomer.state,
+        //    image: ""
+        //};
+
+        //console.log(singleCustomer);
+        //console.log($scope.cus);
+
+        HTTPService.editCustomer(singleCustomer).then(function (res) {
+            //console.log(res);
+
+            Materialize.toast('Customer edited successfully !!', 2000);
+
+            $state.go('app.customers');
+
+
+        }, function (err) {
+            //$scope.membership = {};
+            Materialize.toast('Customer not edited !!', 2000);
+            console.log(err);
+        });
+
+    };
 
 
 
 });
+
 
 CRM.controller('StaffCtrl', function ($rootScope, $scope, $state) {
 
