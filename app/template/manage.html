@@ -159,43 +159,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="collapsible-header waves-effect waves-light"><i class="material-icons">today</i>Appoinment Status</div>
-                    <div class="collapsible-body">
-                        <div class="row">
-                            <div class="col m4 s12 get-input-from-User">
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="fname" type="text" class="validate" ng-model="appoinmentStatus.id">
-                                    <label for="fname">Appoinment Status ID</label>
-                                </div>
-                                <div class="input-field manage-wrapper__input">
-                                    <input id="lname" type="text" class="validate" ng-model="appoinmentStatus.name">
-                                    <label for="lname">Status Name</label>
-                                </div>
-                                <a class="btn-floating btn-large waves-effect waves-light btn-perple">
-                                    <i class="material-icons">done</i>
-                                </a>
-                            </div>
-                            <div class="col m8 s12">
-                                <table datatable="ng" data-length-change="false" data-filter="false" data-display-length="3" data-info="false" class="row-border hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Appoinment Status ID</th>
-                                            <th>Status Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="appoinment in appoinmentStatusList">
-                                            <td>{{ appoinment.status_id }}</td>
-                                            <td>{{ appoinment.status_name }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                </ul>
         </div>
      </div>
 </div>

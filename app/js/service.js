@@ -206,6 +206,15 @@ CRM.service('HTTPService', function($http){
        });
    }
 
+   this.addStaff = function (params) {
+       return $http({
+           method: "post",
+           url: domainURL + "user",
+           data: params
+       });
+   }
+
+   
 
 });
 
@@ -243,3 +252,7 @@ CRM.factory('AuthFactory', ['$q', '$rootScope', '$http', '$state',
             };
             return factory;
         }]);
+
+
+
+

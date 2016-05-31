@@ -440,62 +440,91 @@ CRM.controller('EditCustomerCtrl', function ($rootScope, $scope, $state, HTTPSer
 });
 
 
-CRM.controller('StaffCtrl', function ($rootScope, $scope, $state) {
+CRM.controller('StaffCtrl', function ($rootScope, $scope, $state,HTTPService) {
 
-    $scope.stafflist = userObj;
+    $scope.stafflist = {};
+    HTTPService.getStaff().then(function (res) {
+        $scope.stafflist = res.data;
+    }, function (err) {
+        $scope.stafflist = {};
+        console.log(err);
+    });
+
+    $scope.staffEdit = function (cid) {
+        $state.go('app.editstaff', {
+            id: cid
+        });
+    };
+
+    $scope.staffView = function (cid) {
+        $state.go('app.viewstaff', {
+            id: cid
+        });
+    };
+
+    $scope.gotoAdd = function () {
+        $state.go('app.addstaff');
+    };
+});
+
+CRM.controller('AddStaffCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
 
     $scope.singleStaff = {
-        'id': '',
-        'fname': '',
-        'lname': '',
-        'phone': '',
-        'mobile': '',
-        'email': '',
-        'address1': '',
-        'address2': '',
-        'city': '',
-        'state': '',
-        'country': '',
-        'pincode': '',
-        'dob': '',
-        'gender': '',
-        'photo': '',
-        'role_id': '',
-        'username': '',
-        'password': '',
-        'host': '',
-        'port': '',
-        'smtp_name': '',
-        'smtp_pass': ''
+        address1: "",
+        address2: "",
+        city: "",
+        country: "",
+        dob: "",
+        doj: "",
+        email: "",
+        fname: "",
+        gender: "",
+        lname: "",
+        mobile: "",
+        phone: "",
+        pincode: "",
+        state: "",
+        image: "",
+        role: "2",
+        user_name: "",
+        password: "",
+        cpassword:""
     };
 
-    $scope.clickStaff = function () {
-        $("#staffHead").empty();
-        $("#staffHead").append("Add Staff");
-        $("#viewsection").hide();
-        $("#addeditsection").show();
-        $scope.showconfirmpassword = true;
-        $scope.singleStaff= {};
-    };
+   
+    $scope.addStaff = function (singleStaff) {
+        $scope.staf = {
+            address1: singleStaff.address1,
+            address2: singleStaff.address2,
+            city: singleStaff.city,
+            country: singleStaff.country,
+            dob: singleStaff.dob,
+            doj: singleStaff.doj,
+            email: singleStaff.email,
+            fname: singleStaff.fname,
+            gender: singleStaff.gender,
+            lname: singleStaff.lname,
+            mobile: singleStaff.mobile,
+            phone: singleStaff.phone,
+            pincode: singleStaff.pincode,
+            state: singleStaff.state,
+            image: "",
+            role: "2",
+            user_name: singleStaff.username,
+            password: singleStaff.password
+        };
 
-    $scope.staffEdit = function (staff) {
-        $("#staffHead").empty();
-        $("#staffHead").append("Edit Staff");
-        $("#viewsection").hide();
-        $("#addeditsection").show();
-        $scope.showconfirmpassword = false;
-        $scope.singleStaff = staff;
-        $('ul.tabs').tabs('select_tab', 'test2');
-    };
+        
+        HTTPService.addStaff($scope.staf).then(function (res) {
+            Materialize.toast('Staff added successfully !!', 2000);
+            $state.go('app.staff');
 
-    $scope.staffView = function (staff) {
-        $("#staffHead").empty();
-        $("#staffHead").append("View Staff");
-        $("#addeditsection").hide();
-        $("#viewsection").show();
-        $scope.showconfirmpassword = true;
-        $scope.singleStaff = staff;
-        $('ul.tabs').tabs('select_tab', 'test2');
+
+        }, function (err) {
+            Materialize.toast('Staff not added !!', 2000);
+            console.log(err);
+        });
+
     };
 
 });

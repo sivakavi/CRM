@@ -75,7 +75,7 @@
                     <span>Product</span>
                 </a>
             </li>
-            <li>
+            <li ng-if="isStaff">
                 <a ui-sref="app.manage" class="waves-effect waves-light" ng-class="{active: $state.includes('app.manage')}">
                     <i class="fa fa-cogs" aria-hidden="true"></i>
                     <span>Manage</span>
