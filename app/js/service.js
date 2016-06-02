@@ -31,10 +31,10 @@ CRM.service('HTTPService', function($http){
                     });
    }
 
-   this.getTodo = function() {
+   this.getTodoUser = function (uid) {
       return $http({
                         method: "get",
-                        url: domainURL+"todo"
+                        url: domainURL + "getUserTodo/" + uid
                     });
    }
 
@@ -123,6 +123,34 @@ CRM.service('HTTPService', function($http){
            url: domainURL + "appoinment"
        });
    }
+
+   this.getAppoinmentUser = function (uid) {
+       return $http({
+           method: "get",
+           url: domainURL + "getAppoinmentUser/"+uid
+       });
+   }
+
+   this.getAppoinmentUserOpen = function (uid) {
+       return $http({
+           method: "get",
+           url: domainURL + "getAppoinmentUserOpen/" + uid
+       });
+   }
+
+   this.getAppoinmentUserUpcoming = function (uid) {
+       return $http({
+           method: "get",
+           url: domainURL + "getAppoinmentUserUpcoming/" + uid
+       });
+   }
+
+   this.getAppoinmentUserClose = function (uid) {
+       return $http({
+           method: "get",
+           url: domainURL + "getAppoinmentUserClose/" + uid
+       });
+   }
     
    this.setAppoinment = function (params) {
        return $http({
@@ -139,7 +167,7 @@ CRM.service('HTTPService', function($http){
            url = domainURL + "getOpenCase";
        } else {
            url = domainURL + "getOpenCaseUser/"+uid;
-       }
+       } 
 
        return $http({
            method: "get",
@@ -214,6 +242,27 @@ CRM.service('HTTPService', function($http){
        });
    }
 
+   this.editStaff = function (params) {
+       return $http({
+           method: "post",
+           url: domainURL + "user/edit/" + params.id,
+           data: params
+       });
+   }
+
+   this.getSingleUser = function (uid) {
+       return $http({
+           method: "get",
+           url: domainURL + "user/" + uid
+       });
+   }
+
+   this.getNotification = function (uid) {
+       return $http({
+           method: "get",
+           url: domainURL + "notification/" + uid
+       });
+   }
    
 
 });

@@ -60,7 +60,7 @@ CRM.controller('LoginCtrl', function ($rootScope, $scope, $state, loginService) 
 });
 CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
     $scope.getTodoList = function () {
-        HTTPService.getTodo().then(function (res) {
+        HTTPService.getTodoUser(localStorage.getItem('user_id')).then(function (res) {
             console.log(res);
             $scope.todoList = res.data;
         }, function (err) {
@@ -69,6 +69,18 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
     };
     //$scope.chkbox = true;
     $scope.getTodoList();
+
+    $scope.notificationlist = {};
+
+    $scope.getNotification = function () {
+        HTTPService.getNotification(localStorage.getItem('user_id')).then(function (res) {
+            $scope.notificationlist = res.data;
+        }, function (err) {
+            console.log(err);
+        });
+    };
+
+    $scope.getNotification();
 
     $scope.addTodo = function () {
         var params = {
@@ -173,9 +185,9 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
             console.log(err);
         });
 
-        HTTPService.getAppoinment().then(function (res) {
+        HTTPService.getAppoinmentUserUpcoming(localStorage.getItem('user_id')).then(function (res) {
            // console.log("appoint----"+res.data.length);
-            $scope.appoinmentcount = res.data.length;
+            $scope.upcomingappoinmentcount = res.data.length;
         }, function (err) {
             console.log(err);
         });
@@ -456,9 +468,9 @@ CRM.controller('StaffCtrl', function ($rootScope, $scope, $state,HTTPService) {
         });
     };
 
-    $scope.staffView = function (cid) {
+    $scope.staffView = function (uid) {
         $state.go('app.viewstaff', {
-            id: cid
+            id: uid
         });
     };
 
@@ -528,6 +540,57 @@ CRM.controller('AddStaffCtrl', function ($rootScope, $scope, $state, HTTPService
     };
 
 });
+
+
+CRM.controller('EditStaffCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+
+    var param = $stateParams.id;
+
+    $scope.singleStaff = {};
+    HTTPService.getSingleUser(param).then(function (res) {
+        $scope.singleStaff = res.data;
+    }, function (err) {
+        $scope.singleStaff = {};
+        console.log(err);
+    });
+
+
+    $scope.editStaff = function (singleStaff) {
+       
+        HTTPService.editStaff(singleStaff).then(function (res) {
+            //console.log(res);
+
+            Materialize.toast('Staff edited successfully !!', 2000);
+
+            $state.go('app.staff');
+
+
+        }, function (err) {
+            //$scope.membership = {};
+            Materialize.toast('Staff not edited !!', 2000);
+            console.log(err);
+        });
+
+    };
+
+});
+
+CRM.controller('ViewStaffCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+
+    var param = $stateParams.id;
+
+    $scope.singleStaff = {};
+    HTTPService.getSingleUser(param).then(function (res) {
+        $scope.singleStaff = res.data;
+    }, function (err) {
+        $scope.singleStaff = {};
+        console.log(err);
+    });
+
+
+
+});
+
 
 
 CRM.controller('ManageCtrl', function ($rootScope, $scope, $state, HTTPService) {
@@ -664,7 +727,7 @@ CRM.controller('UiCalendarCtrl',
         var y = date.getFullYear();
 
 
-        //$scope.appointmentlist = appointmentObj;
+        $scope.appointmentlist = {};
         $scope.userinfo = AuthFactory.getCurrentUser();
         $scope.events = [];
         $scope.switchtotable = function () {
@@ -679,19 +742,23 @@ CRM.controller('UiCalendarCtrl',
 
         /* event source that contains custom events on the scope */
         $scope.getAppoinmentList = function () {
-            HTTPService.getAppoinment().then(function (res) {
-                console.log(res.data);
+            HTTPService.getAppoinmentUser(localStorage.getItem('user_id')).then(function (res) {
+                //console.log(res.data);
+                $scope.appointmentlist = res.data;
                 for (var i = 0; i < res.data.length; i++) {
                     $scope.events[i] = {
+                        id:res.data[i].id,
+                        title:"Appointment",
                         start: moment.utc(new Date(res.data[i].app_date + 'T' + res.data[i].app_time)),
                         end: moment.utc(new Date(new Date(res.data[i].app_date + 'T' + res.data[i].app_time).getTime()+30*60000))
                     }
                 }
-                console.log($scope.events);
+               // console.log($scope.events);
             }, function (err) {
 
             });
         }
+
         $scope.getAppoinmentList();
 
         /* event source that calls a function on every view switch */
@@ -706,7 +773,10 @@ CRM.controller('UiCalendarCtrl',
         
         /* alert on eventClick */
         $scope.alertOnEventClick = function (date, jsEvent, view) {
-            alert(date.title + ' was clicked ');
+            console.log(date);
+            console.log(jsEvent);
+            console.log(view);
+            alert(date.id + ' was clicked ');
         };
         /* alert on Drop */
         $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
@@ -1029,4 +1099,18 @@ CRM.filter('productType', function () {
             }
         }
     }
+});
+
+CRM.filter('notificationImg', function () {
+    return function (input) {
+        if (input == "normal") {
+            return "img/info.png";
+        } else if (input == "critical") {
+            return "img/critical.png";
+        } else if (input == "appointment") {
+            return "img/calendar.jpg";
+        } else {
+            return "img/info.png";
+        }
+    };
 });

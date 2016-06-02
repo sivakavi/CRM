@@ -38,7 +38,7 @@
   </div>
   <div class="card-mini-progress valign-wrapper block--shadow col">
       <div class="card-mini__progress">
-          <div class="green accent-3 dashround"><span class="count block--center">{{appoinmentcount}}</span></div>
+          <div class="green accent-3 dashround"><span class="count block--center">{{upcomingappoinmentcount}}</span></div>
       </div>
      <div>
        <span style="font-size:18px;"> Upcoming Appointments </span>
@@ -94,28 +94,21 @@
             </div>
             <div class="card-wrapper card-to-do block--shadow col">
               <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">query_builder</i> Notification</div>
-              <div class="card-panel-body">
-                  <ul class="">
-                      <li class="collection-item">
-                          <a href="#!"><i class="material-icons">send</i><span>Alvin</span></a>
-                      </li>
-
-                  </ul>
+              <div class="card-panel-body" style="height:416px;">
+                  <table>
+                      <tr>
+                          <th>Type</th>
+                          <th>Title</th>
+                          <th>Status</th>
+                      </tr>
+                      <tr ng-repeat="note in notificationlist">
+                          <td>{{note.type}}</td>
+                          <td>{{note.title}}</td>
+                          <td><img ng-src="{{note.mode | notificationImg}}" alt="app" style="width:30px;height:30px;"/></td>
+                      </tr>
+                  </table>
               </div>
            </div>
         </div>
-        <!--<div class="row">
-            <div class="card-wrapper block--shadow col">
-                <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">query_builder</i> Notification</div>
-                <div class="card-panel-body">
-                    <ul class="">
-                        <li class="collection-item">
-                            <a href="#!"><i class="material-icons">send</i><span>Alvin</span></a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>-->
-
+        
     </div>

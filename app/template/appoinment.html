@@ -24,7 +24,6 @@
                     <th>Time</th>
                     <th>Customer</th>
                     <th>Customer Mobile</th>
-                    <th>Assignee</th>
                     <th>Status</th>
 
 
@@ -32,12 +31,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="app in appointmentlist">
-                    <td>{{ app.date }}</td>
-                    <td>{{ app.time }}</td>
-                    <td>{{ app.customer | customerType }}</td>
-                    <td>{{ app.cmobile }}</td>
-                    <td>{{ app.assignee | staffType }}</td>
-                    <td>{{ app.status | statusType }}</td>
+                    <td>{{ app.app_date }}</td>
+                    <td>{{ app.app_time }}</td>
+                    <td>{{ app.customer.fname}} {{ app.customer.lname}}</td>
+                    <td>{{ app.customer.mobile }}</td>
+                    <td>{{ app.status}}</td>
 
                 </tr>
             </tbody>
