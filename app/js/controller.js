@@ -994,7 +994,7 @@ CRM.controller('CustomerlistCtrl', function ($rootScope, $scope, $state, HTTPSer
 CRM.controller('HotCustomerlistCtrl', function ($rootScope, $scope, $state, HTTPService) {
 
     $scope.hotcustomerlist = {};
-    HTTPService.getCustomer().then(function (res) {
+    HTTPService.getHotCustomer().then(function (res) {
         $scope.hotcustomerlist = res.data;
     }, function (err) {
         $scope.hotcustomerlist = {};
