@@ -151,12 +151,29 @@ CRM.service('HTTPService', function($http){
            url: domainURL + "getAppoinmentUserClose/" + uid
        });
    }
+
+   this.getSingleAppoinment = function (aid) {
+       return $http({
+           method: "get",
+           url: domainURL + "appoinment/" + aid
+       });
+   }
     
    this.setAppoinment = function (params) {
        return $http({
            method: "post",
            url: domainURL + "appoinment",
            data: params
+       });
+   }
+
+   this.changeStatusAppoinment = function (id,status) {
+       return $http({
+           method: "post",
+           url: domainURL + "appoinment/edit/"+id,
+           data: {
+               status:status
+           }
        });
    }
 

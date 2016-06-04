@@ -479,6 +479,12 @@ CRM.controller('StaffCtrl', function ($rootScope, $scope, $state,HTTPService) {
     };
 });
 
+
+CRM.controller('ProfileCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    
+});
+
 CRM.controller('AddStaffCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
 
     $scope.singleStaff = {
@@ -726,6 +732,8 @@ CRM.controller('UiCalendarCtrl',
         var m = date.getMonth();
         var y = date.getFullYear();
 
+        $('.modal-trigger').leanModal();
+
 
         $scope.appointmentlist = {};
         $scope.userinfo = AuthFactory.getCurrentUser();
@@ -740,6 +748,64 @@ CRM.controller('UiCalendarCtrl',
             $("#calandermode").show();
         };
 
+        function changeAppStatus(id,status,callback) {
+            HTTPService.changeStatusAppoinment(id,status).then(function (res) {
+                if (res.data.status == "1") {
+                    $scope.getAppoinmentList();
+                    callback(true);
+                }
+                else {
+                    $scope.getAppoinmentList();
+                    callback(false);
+                }
+            }, function (err) {
+                $scope.getAppoinmentList();
+                callback(false);
+            })
+        }
+
+        $scope.chagetocancel = function (appid) {
+            $.confirm({
+                title: 'Status Change',
+                content: 'Are you sure , you want this appointment move to CANCEL status',
+                confirm: function () {
+                    changeAppStatus(appid, "cancel", function (data) {
+                        if (data == true) {
+                            $.alert('Appointment Status Changed Successfully !');
+                        } else {
+                            $.alert('Appointment Status not Changed');
+                        }
+
+                    });
+                    
+                },
+                cancel: function () {
+                    
+                }
+            });
+        };
+
+        $scope.chagetoclose = function (appid) {
+            $.confirm({
+                title: 'Status Change',
+                content: 'Are you sure , you want this appointment move to CLOSE status',
+                confirm: function () {
+                    changeAppStatus(appid, "close", function (data) {
+                        if (data == true) {
+                            $.alert('Appointment Status Changed Successfully !');
+                        } else {
+                            $.alert('Appointment Status not Changed');
+                        }
+
+                    });
+
+                },
+                cancel: function () {
+
+                }
+            });
+        };
+
         /* event source that contains custom events on the scope */
         $scope.getAppoinmentList = function () {
             HTTPService.getAppoinmentUser(localStorage.getItem('user_id')).then(function (res) {
@@ -748,7 +814,7 @@ CRM.controller('UiCalendarCtrl',
                 for (var i = 0; i < res.data.length; i++) {
                     $scope.events[i] = {
                         id:res.data[i].id,
-                        title:"Appointment",
+                        title: res.data[i].status,
                         start: moment.utc(new Date(res.data[i].app_date + 'T' + res.data[i].app_time)),
                         end: moment.utc(new Date(new Date(res.data[i].app_date + 'T' + res.data[i].app_time).getTime()+30*60000))
                     }
@@ -773,10 +839,21 @@ CRM.controller('UiCalendarCtrl',
         
         /* alert on eventClick */
         $scope.alertOnEventClick = function (date, jsEvent, view) {
-            console.log(date);
-            console.log(jsEvent);
-            console.log(view);
-            alert(date.id + ' was clicked ');
+            //console.log(date);
+            //console.log(jsEvent);
+            //console.log(view);
+            //alert(date.id + ' was clicked ');
+
+
+            HTTPService.getSingleAppoinment(date.id).then(function (res) {
+                $scope.singleApp = res.data;
+                $('#appDetail').openModal();
+            }, function (err) {
+                $scope.singleApp = {};
+            });
+
+
+           
         };
         /* alert on Drop */
         $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
@@ -897,7 +974,7 @@ CRM.controller('UiCalendarCtrl',
 CRM.controller('ApplicationCtrl', function ($rootScope, $scope, $state, AuthFactory) {
     
     $scope.userinfo = AuthFactory.getCurrentUser();
-    $scope.isStaff = $scope.userinfo.role != '2' ? true : false;
+    $rootScope.isStaff = $scope.userinfo.role != '2' ? true : false;
     console.log($scope.currentUser);
 });
 

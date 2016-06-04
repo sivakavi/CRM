@@ -17,9 +17,10 @@
     </div>
 
     <div>
-        <table datatable="ng" class="row-border hover" data-display-length="5">
+        <table datatable="ng" class="row-border hover" data-display-length="4">
             <thead>
                 <tr>
+                    <th>Status Change</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Customer</th>
@@ -31,6 +32,12 @@
             </thead>
             <tbody>
                 <tr ng-repeat="app in appointmentlist">
+                    <td ng-if="app.status=='open'">
+                    <button tooltipped data-position="bottom" data-delay="50" data-tooltip="Appointment Cancel" ng-click="chagetocancel(app.id)" class="btn-floating btn-large waves-effect waves-light red" style="width:38.5px; height:38.5px;"><i class="material-icons" style="line-height:0px;">not_interested</i></button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button tooltipped data-position="bottom" data-delay="50" data-tooltip="Appointment Close" ng-click="chagetoclose(app.id)" class="btn-floating btn-large waves-effect waves-light green" style="width:38.5px; height:38.5px;"><i class="material-icons" style="line-height:0px;">done</i></button>
+                    </td>
+                    <td ng-if="app.status!='open'"></td>
                     <td>{{ app.app_date }}</td>
                     <td>{{ app.app_time }}</td>
                     <td>{{ app.customer.fname}} {{ app.customer.lname}}</td>
@@ -41,4 +48,24 @@
             </tbody>
         </table>
     </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="appDetail" class="modal bottom-sheet">
+    <div class="modal-content">
+        <div class="row">
+            <div class="input-field col m6 s12">
+                <input id="appdate" type="text" class="validate" value="{{singleApp.app_date}}" readonly>
+            </div>
+            <div class="input-field col m6 s12">
+                <input id="apptime" type="text" class="validate" value="{{singleApp.app_time}}" readonly>
+            </div>
+            <div class="input-field col m6 s12">
+                <input id="customer" type="text" class="validate" value="{{singleApp.customer.fname}} {{singleApp.customer.lname}}" readonly>
+            </div>
+            <div class="input-field col m6 s12">
+                <input id="cmobile" type="text" class="validate" value="{{singleApp.customer.mobile}}" readonly>
+            </div>
+        </div>
+</div>
 </div>

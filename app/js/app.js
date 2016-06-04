@@ -178,7 +178,8 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
     .state('app.profile', {
       url: "/profile",
       templateUrl: "template/profile.html",
-      controller: 'StaffCtrl',
+      controller: 'ProfileCtrl',
+      pageTitle: 'Profile Page',
       resolve: {
           authenticated: authenticated
       }

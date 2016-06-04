@@ -1,4 +1,4 @@
-<button ng-click="gotoAdd()" class="btn waves-effect waves-light">Add Staff<i class="material-icons right">add</i></button>
+<button ng-if="isStaff" ng-click="gotoAdd()" class="btn waves-effect waves-light">Add Staff<i class="material-icons right">add</i></button>
 <div style="padding-top:30px;">
     <div class="row">
         <div id="test1" class="col s12" style="padding-top:20px;">
@@ -17,7 +17,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="stf in stafflist">
-                        <td><i ng-click="staffEdit(stf.id)" class="material-icons" style="cursor:pointer">mode_edit</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i ng-click="staffView(stf.id)" class="material-icons" style="cursor:pointer">visibility</i></td>
+                        <td><i ng-if="isStaff" ng-click="staffEdit(stf.id)" class="material-icons" style="cursor:pointer">mode_edit</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i ng-click="staffView(stf.id)" class="material-icons" style="cursor:pointer">visibility</i></td>
                         <td>{{ stf.fname }} {{ stf.lname }}</td>
                         <td>{{ stf.gender }}</td>
                         <td>{{ stf.mobile }}</td>
