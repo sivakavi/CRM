@@ -1,56 +1,27 @@
 <div id="tablemode">
-    <div class="row center-align">
-        <button data-target="addCase" class="btn modal-trigger waves-effect waves-light">Add Case<i class="material-icons right">add</i></button>
-    </div>
-    <div ui-view="caseTables"></div>
 
-    <!-- Modal Structure -->
-    <div id="addCase" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <div class="row">
-                <div class="input-field col m6 s12">
-                    <input id="cname" type="text" class="validate">
-                    <label for="cname">Case Name</label>
-                </div>
-                <div class="input-field col m6 s12">
-                    <input id="description" type="text" class="validate">
-                    <label for="description">Description</label>
-                </div>
-                <div class="input-field col m6 s12">
-                    <select material-select id="customer">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option ng-repeat="user in customername" value="{{user.id}}">{{user.fname}} {{user.lname}}</option>
-                    </select>
-                    <label for="customer">Customer</label>
-                </div>
-                <div class="input-field col m6 s12">
-                    <select material-select id="assignee">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option ng-repeat="ass in assigneename" value="{{ass.id}}">{{ass.fname}} {{ass.lname}}</option>
-                    </select>
-                    <label for="assignee">Assignee</label>
-                </div>
-                <div class="input-field col m6 s12">
-                    <select material-select id="status">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Confirmed</option>
-                        <option value="2">Pending</option>
-                        <option value="3">Inprogress</option>
-                        <option value="4">Cancelled</option>
-                        </select>
-                    <label for="status">Status</label>
-                </div>
-                <div class="input-field col m6 s12">
-                    <datepicker date-format="dd/MM/yyyy">
-                        <input ng-model="dob" type="text" />
-                    </datepicker>
-                    <label class="active" for="dob">End Date</label>
-                    </div>
-                </div>
+    <div class="row" style="border-bottom:2px solid black; padding-bottom:10px;">
+        <div class="col s6 m4 center-align">
+            <button ng-click="showOpenCaseView()" class="btn modal-trigger waves-effect waves-light casebtn">Live Case</button>
         </div>
-        <div class="modal-footer">
-            <button class="btn waves-effect waves-light">Submit<i class="material-icons right">add</i></button>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showPastCaseView()" class="btn modal-trigger waves-effect waves-light casebtn">Past Case</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showAddCaseView()" class="btn modal-trigger waves-effect waves-light casebtn">Open Case</button>
+        </div>
+    
+        <div class="col s6 m4 center-align">
+            <button ng-click="showOpenTicketView()" class="btn modal-trigger waves-effect waves-light casebtn">Live Ticket</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showPastTicketView()" class="btn modal-trigger waves-effect waves-light casebtn">Past Ticket</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showAddTicketView()" class="btn modal-trigger waves-effect waves-light casebtn">Open Ticket</button>
         </div>
     </div>
+    
+    <div ui-view="caseTables"></div>
 
 </div>

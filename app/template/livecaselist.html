@@ -1,0 +1,25 @@
+<div>
+    <table datatable="ng" class="row-border hover" data-display-length="4">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Case Name</th>
+                <th>User</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ocase in opencaselist">
+                <td><i class="material-icons" style="cursor:pointer">visibility</i></td>
+                <td>{{ ocase.case_name }}</td>
+                <td>{{ ocase.user.fname}} {{ ocase.user.lname}}</td>
+                <td>{{ ocase.product.prod_name }}</td>
+                <td>{{ ocase.qty }}</td>
+                <td>{{ ocase.description }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

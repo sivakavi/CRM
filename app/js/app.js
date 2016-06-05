@@ -123,14 +123,17 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
     .state('app.case', {
         url: "/case",
         abstract: true,
-        templateUrl: "template/case.html"
+        templateUrl: "template/case.html",
+        controller: 'CaseCtrl',
       
     })
-      .state('app.case.list', {
-          url: "/case/list",
+      .state('app.case.livecaselist', {
+          url: "/case/livecaselist",
+          pageTitle: 'Live Case List',
           views: {
               'caseTables': {
-                  templateUrl: "template/case-list.html"
+                  templateUrl: "template/livecaselist.html",
+                  controller: 'LiveCaseCtrl'
               }
           },
           resolve: {
@@ -138,19 +141,77 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           }
 
       })
-    .state('app.addcase', {
-        url: "/addcase",
-        templateUrl: "template/addcase.html",
-        controller: 'CaseCtrl',
-        resolve: {
-            authenticated: authenticated
-        }
-    })
-    .state('app.editcase', {
-        url: "/editcase",
-        templateUrl: "template/editcase.html",
-        controller: 'CaseCtrl'
-    })
+      .state('app.case.liveticketlist', {
+          url: "/case/liveticketlist",
+          pageTitle: 'Live Ticket List',
+          views: {
+              'caseTables': {
+                  templateUrl: "template/liveticketlist.html",
+                  controller: 'LiveTicketCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+      .state('app.case.pastcaselist', {
+          url: "/case/pastcaselist",
+          pageTitle: 'Past Case List',
+          views: {
+              'caseTables': {
+                  templateUrl: "template/pastcaselist.html",
+                  controller: 'PastCaseCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+      .state('app.case.pastticketlist', {
+          url: "/case/pastticketlist",
+          pageTitle: 'Past Ticket List',
+          views: {
+              'caseTables': {
+                  templateUrl: "template/pastticketlist.html",
+                  controller: 'PastTicketCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+      .state('app.case.addcase', {
+          url: "/case/addcase",
+          pageTitle: 'Add Case',
+          views: {
+              'caseTables': {
+                  templateUrl: "template/addopencase.html",
+                  controller: 'AddCaseCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+      .state('app.case.addticket', {
+          url: "/case/addticket",
+          pageTitle: 'Add Ticket',
+          views: {
+              'caseTables': {
+                  templateUrl: "template/addopenticket.html",
+                  controller: 'AddTicketCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+    
       .state('app.product', {
           url: "/product",
           templateUrl: "template/product.html",

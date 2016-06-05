@@ -1043,12 +1043,31 @@ CRM.controller('ConfirmAppointmentCtrl', function ($rootScope, $scope, $state, A
 });
 
 CRM.controller('CaseCtrl', function ($rootScope, $scope, $state) {
-    $('.modal-trigger').leanModal();
-    $scope.caselist = caseObj;
 
-    $scope.customername = customerObj;
-    $scope.assigneename = userObj;
+    $scope.showOpenCaseView = function (cid) {
+        $state.go('app.case.livecaselist');
+    };
 
+    $scope.showOpenTicketView = function (cid) {
+        $state.go('app.case.liveticketlist');
+    };
+
+    $scope.showAddCaseView = function (cid) {
+        $state.go('app.case.addcase');
+    };
+
+    $scope.showAddTicketView = function (cid) {
+        $state.go('app.case.addticket');
+    };
+
+    $scope.showPastCaseView = function (cid) {
+        $state.go('app.case.pastcaselist');
+    };
+
+    $scope.showPastTicketView = function (cid) {
+        $state.go('app.case.pastticketlist');
+    };
+    
 });
 
 CRM.controller('ProductCtrl', function ($rootScope, $scope, $state) {
@@ -1073,6 +1092,48 @@ CRM.controller('OpencaseCtrl', function ($rootScope, $scope, $state, HTTPService
     });
 
 });
+
+CRM.controller('LiveCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    var x = localStorage.getItem('user_id');
+    if ($state.current.name == 'app.allopencase') {
+        x = "all";
+    }
+    $scope.opencaselist = {};
+    HTTPService.getopencase(x).then(function (res) {
+        $scope.opencaselist = res.data;
+    }, function (err) {
+        $scope.opencaselist = {};
+        console.log(err);
+    });
+
+});
+
+CRM.controller('LiveTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+   
+});
+
+CRM.controller('PastCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+
+});
+
+CRM.controller('PastTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+
+});
+
+CRM.controller('AddCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+
+});
+
+CRM.controller('AddTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+
+});
+
+
 
 CRM.controller('ClosecaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
     var x = localStorage.getItem('user_id');
