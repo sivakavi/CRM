@@ -505,7 +505,7 @@ span.count{
   width: 150px;
   position: relative;
   margin: auto;
-  top: -60px;
+  top: -115px;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -549,4 +549,14 @@ span.count{
   line-height: 26px;
   margin-bottom: 20px;
   color: #666;
+}
+
+.general_pro td{
+    padding:10px 5px;
+}
+
+.btnedit{
+    position: relative;
+    left: -255px;
+    top: 17px;
 }

@@ -1,14 +1,74 @@
 <div style="background-color: #f0f0f0;">
     <div class="row">
-        
         <div class="container1">
+            <div class="btnedit">
+                <button ng-click="profileEdit()" class="btn-floating btn-large waves-effect waves-light"><i class="large material-icons">mode_edit</i></button>
+            </div>
             <div class="avatar-flip">
                 <img src="img/default.png" height="150" width="150">
                 <img src="img/default.png" height="150" width="150">
             </div>
-            <h2 style="margin-top:-20px;">John Smith</h2>
-            <h4>Admin</h4>
-        </div>
+            <h2 style="margin-top:-80px;">{{proUser.fname}} {{proUser.fname}}</h2>
+            <h4 style="margin-top:-10px;">{{proUser.role | userRole}}</h4>
+            <h4 style="margin-top:-10px;">{{proUser.doj}}</h4>
+            <ul class="collapsible popout" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header" style="text-align:left">GENERAL INFORMATION</div>
+                    <div class="collapsible-body">
+                        <table style="width:85%;margin:0 auto;" class="general_pro">
+                            <tr>
+                                <td style="width:100px;">DOB</td>
+                                <td> : </td>
+                                <td>{{proUser.dob}}</td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td> : </td>
+                                <td>{{proUser.gender}}</td>
+                            </tr>
+                            <tr>
+                                <td>User Name</td>
+                                <td> : </td>
+                                <td>{{proUser.user_name}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header active" style="text-align:left">CONTACT INFORMATION</div>
+                    <div class="collapsible-body">
+                        <table style="width:85%;margin:0 auto;" class="general_pro">
+                            <tr>
+                                <td><i class="material-icons prefix">email</i></td>
+                                <td> : </td>
+                                <td>{{proUser.email}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="material-icons prefix">phone</i></td>
+                                <td> : </td>
+                                <td>{{proUser.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="material-icons prefix">stay_primary_portrait</i></td>
+                                <td> : </td>
+                                <td>{{proUser.mobile}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="material-icons prefix">location_on</i></td>
+                                <td> : </td>
+                                <td>
+                                    <span>{{proUser.address1}} {{proUser.address2}}</span>
+                                    <span>{{proUser.city}}</span>
+                                    <span>{{proUser.state}}</span>
+                                    <span>{{proUser.country}} {{proUser.pincode}}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </li>
 
+            </ul>
+
+        </div>
     </div>
 </div>

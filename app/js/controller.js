@@ -482,7 +482,47 @@ CRM.controller('StaffCtrl', function ($rootScope, $scope, $state,HTTPService) {
 
 CRM.controller('ProfileCtrl', function ($rootScope, $scope, $state, HTTPService) {
 
+    HTTPService.getSingleUser(localStorage.getItem('user_id')).then(function (res) {
+        $scope.proUser = res.data;
+    }, function (err) {
+        $scope.proUser = {};
+        console.log(err);
+    });
+
+    $scope.profileEdit = function () {
+        $state.go('app.editprofile', {
+            id: localStorage.getItem('user_id')
+        });
+    };
     
+});
+
+
+CRM.controller('EditProfileCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+
+    var param = $stateParams.id;
+
+    $scope.singleStaff = {};
+    HTTPService.getSingleUser(param).then(function (res) {
+        $scope.singleStaff = res.data;
+    }, function (err) {
+        $scope.singleStaff = {};
+        console.log(err);
+    });
+
+
+    $scope.editStaff = function (singleStaff) {
+
+        HTTPService.editStaff(singleStaff).then(function (res) {
+            Materialize.toast('Profile edited successfully !!', 2000);
+            $state.go('app.profile');
+        }, function (err) {
+            Materialize.toast('Profile not edited !!', 2000);
+            console.log(err);
+        });
+
+    };
+
 });
 
 CRM.controller('AddStaffCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {

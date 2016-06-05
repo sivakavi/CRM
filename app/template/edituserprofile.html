@@ -1,0 +1,103 @@
+<div class="row">
+    <div class="col s10 offset-s1">
+        <div style="padding-top:20px;">
+            <form>
+                <div class="row">
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="fname" type="text" class="validate" ng-model="singleStaff.fname">
+                        <label for="fname">First Name</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="lname" type="text" class="validate" ng-model="singleStaff.lname">
+                        <label for="lname">Last Name</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="phone" type="tel" class="validate" ng-model="singleStaff.phone">
+                        <label for="phone">Telephone</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">stay_primary_portrait</i>
+                        <input id="mobile" type="tel" class="validate" ng-model="singleStaff.mobile">
+                        <label for="mobile">Mobile</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">email</i>
+                        <input id="email" type="email" class="validate" ng-model="singleStaff.email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">perm_identity</i>
+                        <select material-select id="gender" ng-model="singleStaff.gender">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Others</option>
+                        </select>
+                        <label>Gender</label>
+                        <span class="droparrow"><img src="../img/arrow.png" /></span>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">perm_contact_calendar</i>
+                        <datepicker date-format="yyyy-MM-dd" class="datepic">
+                            <input ng-model="singleStaff.doj" type="text" />
+                        </datepicker>
+                        <label class="active" for="dob">DOJ</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">location_on</i>
+                        <input id="address1" type="text" class="validate" ng-model="singleStaff.address1">
+                        <label for="address1">Address Line1</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">location_on</i>
+                        <input id="address2" type="text" class="validate" ng-model="singleStaff.address2">
+                        <label for="address2">Address Line2</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">location_on</i>
+                        <input id="city" type="text" class="validate" ng-model="singleStaff.city">
+                        <label for="city">City</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">location_on</i>
+                        <input id="state" type="text" class="validate" ng-model="singleStaff.state">
+                        <label for="state">State</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">location_on</i>
+                        <input id="country" type="text" class="validate" ng-model="singleStaff.country">
+                        <label class="active" for="country">Country</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">perm_contact_calendar</i>
+                        <datepicker date-format="yyyy-MM-dd" class="datepic">
+                            <input ng-model="singleStaff.dob" type="text" />
+                        </datepicker>
+                        <label class="active" for="dob">DOB</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">location_on</i>
+                        <input id="pincode" type="text" class="validate" ng-model="singleStaff.pincode">
+                        <label for="pincode">Pincode</label>
+                    </div>
+                    <div class="file-field input-field col l6 m12 s12">
+                        <i class="material-icons prefix">launch</i>
+                        <input type="file">
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" style="padding-left:30px;" placeholder="Upload profile image">
+                        </div>
+                    </div>
+                </div>
+                <div class="row center-align">
+                    <button class="btn waves-effect waves-light" type="button" name="action" ng-click="editStaff(singleStaff)">
+                        Submit
+                        <i class="material-icons right">add</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

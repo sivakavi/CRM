@@ -184,6 +184,15 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           authenticated: authenticated
       }
     })
+      .state('app.editprofile', {
+          url: "/editprofile/:id",
+          templateUrl: "template/edituserprofile.html",
+          controller: 'EditProfileCtrl',
+          pageTitle: 'Profile Edit',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
     .state('app.changepassword', {
         url: "/changepassword",
         templateUrl: "template/changepassword.html",
