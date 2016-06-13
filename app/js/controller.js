@@ -1109,28 +1109,58 @@ CRM.controller('LiveCaseCtrl', function ($rootScope, $scope, $state, HTTPService
 });
 
 CRM.controller('LiveTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
-
+    var uid = "all";
+    HTTPService.getOpenTicket(uid).then(function (res) {
+        $scope.liveticketlist = res.data;
+    }, function (err) {
+        $scope.opencaselist = {};
+        console.log(err);
+    });
    
 });
 
-CRM.controller('PastCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
 
+CRM.controller('PastCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    var uid = "all";
+    HTTPService.getcloasecase(uid).then(function (res) {        
+        $scope.closecaselist = res.data;
+    }, function (err) {
+        $scope.opencaselist = {};
+        console.log(err);
+    });
 
 });
 
 CRM.controller('PastTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
-
+    var uid = "all";
+    HTTPService.getCloseTicket(uid).then(function (res) {
+        $scope.pastticketlist = res.data;
+    }, function (err) {
+        $scope.opencaselist = {};
+        console.log(err);
+    });
+    
 
 });
 
 CRM.controller('AddCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    $scope.openCase;
+    HTTPService.addCase($scope.cus).then(function (res) {
 
+    }, function (err) {
+
+    });
 
 });
 
 CRM.controller('AddTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
 
+    $scope.openTicket;
+    HTTPService.addTicket($scope.cus).then(function (res) {
 
+    }, function (err) {
+
+    });
 });
 
 

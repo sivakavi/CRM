@@ -1,3 +1,58 @@
-<div>
-    <h2>Add Open Case</h2>
+<div class="row">
+    <div class="col s10 offset-s1">
+        <div style="padding-top:20px;">
+            <form>
+                <div class="row">
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">stars</i>
+                        <select class="" ng-model="openCase.product_id" material-select watch>
+                            <option value="" disabled selected>Choose product</option>
+                            <option ng-repeat="value in membership" value="{{value.id}}">{{value.membership_name}}</option>
+                        </select>
+                        <label>Product name</label>
+                        <span class="droparrow"><img src="../img/arrow.png" /></span>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">stars</i>
+                        <select class="" ng-model="openCase.customer_id" material-select watch>
+                            <option value="" disabled selected>Choose customer</option>
+                            <option ng-repeat="value in membership" value="{{value.id}}">{{value.membership_name}}</option>
+                        </select>
+                        <label>Customer id</label>
+                        <span class="droparrow"><img src="../img/arrow.png" /></span>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="fname" type="text" class="validate" ng-model="openCase.case_name">
+                        <label for="fname">Case Name</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">perm_contact_calendar</i>
+                        <datepicker date-format="yyyy-MM-dd" class="datepic">
+                            <input ng-model="openCase.expire" type="text" />
+                        </datepicker>
+                        <label for="dob">Expire Date</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="fname" type="text" class="validate" ng-model="openCase.qty">
+                        <label for="fname">Quantity</label>
+                    </div>
+                    
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="fname" type="text" class="validate" ng-model="openCase.description">
+                        <label for="fname">Description</label>
+                    </div>
+                    
+                </div>
+                <div class="row center-align">
+                    <button class="btn waves-effect waves-light" type="button" name="action" ng-click="addOpenCase(openCase)">
+                        Submit
+                        <i class="material-icons right">add</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

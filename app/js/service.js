@@ -177,6 +177,14 @@ CRM.service('HTTPService', function($http){
        });
    }
 
+   this.addCase = function (params) {
+
+       return $http({
+           method: "post",
+           url: domainURL + "case",
+           data: params
+       });
+   }
    this.getopencase = function (uid) {
 
        var url = "";
@@ -185,6 +193,44 @@ CRM.service('HTTPService', function($http){
        } else {
            url = domainURL + "getOpenCaseUser/"+uid;
        } 
+
+       return $http({
+           method: "get",
+           url: url
+       });
+   }
+
+   this.addTicket = function (params) {
+
+       return $http({
+           method: "post",
+           url: domainURL + "ticket",
+           data: params
+       });
+   }
+   this.getOpenTicket = function (uid) {
+
+       var url = "";
+       if (uid == "all") {
+           url = domainURL + "getOpenTicket";
+       } else {
+           url = domainURL + "getOpenTicket/" + uid;
+       }
+
+       return $http({
+           method: "get",
+           url: url
+       });
+   }
+
+   this.getCloseTicket = function (uid) {
+
+       var url = "";
+       if (uid == "all") {
+           url = domainURL + "getCloseTicket";
+       } else {
+           url = domainURL + "getCloseTicket/" + uid;
+       }
 
        return $http({
            method: "get",

@@ -1,3 +1,40 @@
-<div>
-    <h2>Add Open Ticket</h2>
+<div class="row">
+    <div class="col s10 offset-s1">
+        <div style="padding-top:20px;">
+            <form>
+                <div class="row">
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="fname" type="text" class="validate" ng-model="openTicket.ticket_name">
+                        <label for="fname">Ticket name</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">stars</i>
+                        <select class="" ng-model="openTicket.case_id" material-select watch>
+                            <option value="" disabled selected>Choose Case</option>
+                            <option ng-repeat="value in membership" value="{{value.id}}">{{value.case_name}}</option>
+                        </select>
+                        <label>Case name</label>
+                        <span class="droparrow"><img src="../img/arrow.png" /></span>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="phone" type="tel" class="validate" ng-model="openTicket.discription">
+                        <label for="phone">Description</label>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">stay_primary_portrait</i>
+                        <input id="mobile" type="tel" class="validate" ng-model="openTicket.assigned_to">
+                        <label for="mobile">Assigned To</label>
+                    </div>                    
+                </div>
+                <div class="row center-align">
+                    <button class="btn waves-effect waves-light" type="button" name="action" ng-click="addOpenTicket(openTicket)">
+                        Submit
+                        <i class="material-icons right">add</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

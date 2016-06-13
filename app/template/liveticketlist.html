@@ -1,3 +1,26 @@
 <div>
-    <h2>Live Ticket List</h2>
+    <table datatable="ng" class="row-border hover" data-display-length="4">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Case Name</th>
+                <th>User</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="lticket in liveticketlist">
+                <td><i class="material-icons" style="cursor:pointer">visibility</i></td>
+                <td>{{ lticket.cased.case_name }}</td>
+                <td>{{ lticket.user.fname}} {{ lticket.user.lname}}</td>
+                <td>{{ lticket.product.prod_name }}</td>
+                <td>{{ lticket.product.qty }}</td>
+                <td>{{ lticket.description }}</td>
+
+            </tr>
+        </tbody>
+    </table>
 </div>
+

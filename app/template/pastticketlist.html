@@ -1,3 +1,26 @@
 <div>
-    <h2>Past Ticket</h2>
+    <table datatable="ng" class="row-border hover" data-display-length="4">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Case Name</th>
+                <th>User</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pticket in pastticketlist">
+                <td><i class="material-icons" style="cursor:pointer">visibility</i></td>
+                <td>{{ pticket.cased.case_name }}</td>
+                <td>{{ pticket.user.fname}} {{ pticket.user.lname}}</td>
+                <td>{{ pticket.product.prod_name }}</td>
+                <td>{{ pticket.product.qty }}</td>
+                <td>{{ pticket.description }}</td>
+
+            </tr>
+        </tbody>
+    </table>
 </div>
+
