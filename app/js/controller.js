@@ -1322,3 +1322,270 @@ CRM.filter('notificationImg', function () {
         }
     };
 });
+
+
+CRM.controller('GmailCtrl', function ($rootScope, $scope, $state, $compile) {
+    // $scope.gmailMsg = [];
+    // $scope.login = function () {
+    //     googleService.login().then(function (data) {
+    //         // do something with returned data
+    //         window.r = data;
+    //         $scope.gmailMsg.push(data);
+    //         console.log(data);
+    //     }, function (err) {
+    //         console.log('Failed: ' + err);
+    //     });
+    // };
+    var clientId = '533488848522-cco40mbl3gu0k3g24enpj8l8bkjpb898.apps.googleusercontent.com';
+      var apiKey = 'AIzaSyCnr3IZdDVYkY8wgyS6hjjj3MpLTaArJGo';
+      var scopes =
+        'https://www.googleapis.com/auth/gmail.readonly '+
+        'https://www.googleapis.com/auth/gmail.send';
+
+      function handleClientLoad() {
+        gapi.client.setApiKey(apiKey);
+        window.setTimeout(checkAuth, 1);
+      }
+
+      function checkAuth() {
+        gapi.auth.authorize({
+          client_id: clientId,
+          scope: scopes,
+          immediate: true
+        }, handleAuthResult);
+      }
+
+      function handleAuthClick() {
+        gapi.auth.authorize({
+          client_id: clientId,
+          scope: scopes,
+          immediate: false
+        }, handleAuthResult);
+        return false;
+      }
+
+      function handleAuthResult(authResult) {
+        if(authResult && !authResult.error) {
+          loadGmailApi();
+          $('#authorize-button').remove();
+          $('.table-inbox').removeClass("hidden");
+          $('#compose-button').removeClass("hidden");
+        } else {
+          $('#authorize-button').removeClass("hidden");
+          $('#authorize-button').on('click', function(){
+            handleAuthClick();
+          });
+        }
+      }
+      $('#authorize-button').on('click', function(){
+            handleAuthClick();
+          });
+      function loadGmailApi() {
+        gapi.client.load('gmail', 'v1', displayInbox);
+      }
+
+      function displayInbox() {
+        var request = gapi.client.gmail.users.messages.list({
+          'userId': 'me',
+          'labelIds': 'INBOX',
+          'maxResults': 10
+        });
+        request.execute(function(response) {
+          $.each(response.messages, function() {
+            var messageRequest = gapi.client.gmail.users.messages.get({
+              'userId': 'me',
+              'id': this.id
+            });
+            messageRequest.execute(appendMessageRow);
+          });
+        });
+      }
+
+      function appendMessageRow(message) {
+        $('.table-inbox tbody').append(
+          '<tr>\
+            <td>'+getHeader(message.payload.headers, 'From')+'</td>\
+            <td>\
+              <a data-target="#message-modal-' + message.id +
+                '" data-toggle="modal" id="message-link-' + message.id+'">' +
+                getHeader(message.payload.headers, 'Subject') +
+              '</a>\
+            </td>\
+            <td>'+getHeader(message.payload.headers, 'Date')+'</td>\
+          </tr>'
+        );
+        var reply_to = (getHeader(message.payload.headers, 'Reply-to') !== '' ?
+          getHeader(message.payload.headers, 'Reply-to') :
+          getHeader(message.payload.headers, 'From')).replace(/\"/g, '&quot;');
+
+        var reply_subject = 'Re: '+getHeader(message.payload.headers, 'Subject').replace(/\"/g, '&quot;');
+        var modal_string = '<div class="modal fade gmail-modal" id="message-modal-' + message.id +
+              '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
+            <div class="modal-dialog modal-lg">\
+              <div class="modal-content">\
+                <div class="modal-header">\
+                  <button type="button"\
+                          class="close"\
+                          data-dismiss="modal"\
+                          aria-label="Close">\
+                    <span aria-hidden="true">&times;</span></button>\
+                  <h4 class="modal-title" id="myModalLabel">' +
+                    getHeader(message.payload.headers, 'Subject') +
+                  '</h4>\
+                </div>\
+                <div class="modal-body">\
+                  <iframe id="message-iframe-'+message.id+'" srcdoc="<p>Loading...</p>">\
+                  </iframe>\
+                </div>\
+                <div class="modal-footer">\
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+                  <button type="button" class="btn btn-primary reply-button" data-dismiss="modal" data-toggle="modal" data-target="#reply-modal"\
+                  ng-click="fillInReply(\
+                    \''+reply_to+'\', \
+                    \''+reply_subject+'\', \
+                    \''+getHeader(message.payload.headers, 'Message-ID')+'\'\
+                    );"\
+                  >Reply</button>\
+                </div>\
+              </div>\
+            </div>\
+          </div>';
+        var trustme =  $compile( modal_string )( $scope );
+        $('body').append(trustme);
+        
+        $('#message-link-'+message.id).on('click', function(){
+          var ifrm = $('#message-iframe-'+message.id)[0].contentWindow.document;
+          $('body', ifrm).html(getBody(message.payload));
+        });
+      }
+
+      
+
+      function composeTidy()
+      {
+        $('#compose-modal').modal('hide');
+
+        $('#compose-to').val('');
+        $('#compose-subject').val('');
+        $('#compose-message').val('');
+
+        $('#send-button').removeClass('disabled');
+      }
+
+      $scope.sendReply = function ()
+      {
+        $('#reply-button').addClass('disabled');
+
+        sendMessage(
+          {
+            'To': $('#reply-to').val(),
+            'Subject': $('#reply-subject').val(),
+            'In-Reply-To': $('#reply-message-id').val()
+          },
+          $('#reply-message').val(),
+          replyTidy
+        );
+
+        return false;
+      }
+
+      function replyTidy()
+      {
+        $('#reply-modal').modal('hide');
+
+        $('#reply-message').val('');
+
+        $('#reply-button').removeClass('disabled');
+      }
+
+      $scope.fillInReply = function(to, subject, message_id)
+      {
+        $('#reply-to').val(to);
+        $('#reply-subject').val(subject);
+        $('#reply-message-id').val(message_id);
+      };
+
+      function sendMessage(headers_obj, message, callback)
+      {
+        var email = '';
+
+        for(var header in headers_obj)
+          email += header += ": "+headers_obj[header]+"\r\n";
+
+        email += "\r\n" + message;
+
+        var sendRequest = gapi.client.gmail.users.messages.send({
+          'userId': 'me',
+          'resource': {
+            'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
+          }
+        });
+
+        return sendRequest.execute(callback);
+      }
+
+      function getHeader(headers, index) {
+        var header = '';
+        $.each(headers, function(){
+          if(this.name.toLowerCase() === index.toLowerCase()){
+            header = this.value;
+          }
+        });
+        return header;
+      }
+
+      function getBody(message) {
+        var encodedBody = '';
+        if(typeof message.parts === 'undefined')
+        {
+          encodedBody = message.body.data;
+        }
+        else
+        {
+          encodedBody = getHTMLPart(message.parts);
+        }
+        encodedBody = encodedBody.replace(/-/g, '+').replace(/_/g, '/').replace(/\s/g, '');
+        return decodeURIComponent(escape(window.atob(encodedBody)));
+      }
+
+      function getHTMLPart(arr) {
+        for(var x = 0; x <= arr.length; x++)
+        {
+          if(typeof arr[x].parts === 'undefined')
+          {
+            if(arr[x].mimeType === 'text/html')
+            {
+              return arr[x].body.data;
+            }
+          }
+          else
+          {
+            return getHTMLPart(arr[x].parts);
+          }
+        }
+        return '';
+      }
+
+      $scope.sendEmail = function (e)
+      {
+          e.preventDefault();
+        $('#send-button').addClass('disabled');
+
+        sendMessage(
+          {
+            'To': $('#compose-to').val(),
+            'Subject': $('#compose-subject').val()
+          },
+          $('#compose-message').val(),
+          composeTidy
+        );
+
+        return false;
+      };
+handleClientLoad();
+
+    //   var s = document.createElement("script");
+    //     s.type = "text/javascript";
+    //     s.src = "http://somedomain.com/somescript";
+    //     $("body").append(s);
+});

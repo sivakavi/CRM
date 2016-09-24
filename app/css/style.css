@@ -567,3 +567,19 @@ span.count{
     height:35px;
     margin-top:10px;
 }
+
+.modal-body iframe {
+    width: 100%;
+    border: 0;
+    min-height: 80%;
+    height: 600px;
+    display: flex;
+}
+.modal.fade.in{
+    background-color: transparent;
+    max-height: initial;
+    width: auto;
+}
+.modal .modal-footer .btn{
+    float: initial;
+}

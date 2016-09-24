@@ -30,6 +30,12 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: "template/main.html",
       controller: 'MainCtrl'
     })
+    .state('app.gmail', {
+      url: "/gmailinfo",
+      templateUrl: "template/gmaildetails.html",
+      controller: 'GmailCtrl',
+      pageTitle: 'Your Gmail details'
+    })
     .state('app.dashboard', {
       url: "/dashboard",
       templateUrl: "template/dashboard.html",
@@ -331,6 +337,9 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
             $rootScope.pageTitle = toState.pageTitle;
             // transitionTo() promise will be rejected with
             // a 'transition prevented' error
+            if(toState.name == 'app.gmail') {
+                $rootScope.isGmailPage = true;
+            }
         })
     $rootScope.isLoading = function () {
         //console.log($http.pendingRequests.length !== 0);
