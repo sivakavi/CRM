@@ -172,7 +172,6 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
         });
 
         HTTPService.getCustomer().then(function (res) {
-            //console.log("cus----" + res.data.length);
             $scope.customercount = res.data.length;
         }, function (err) {
             console.log(err);
@@ -1070,11 +1069,80 @@ CRM.controller('CaseCtrl', function ($rootScope, $scope, $state) {
     
 });
 
-CRM.controller('ProductCtrl', function ($rootScope, $scope, $state) {
+CRM.controller('ProductCtrl', function ($rootScope, $scope, $state, HTTPService) {
     
     $('.modal-trigger').leanModal();
 
-    $scope.productlist = productObj;
+    $scope.choosecat = true;
+    
+    $('.modal-trigger').click(function(){
+
+        $scope.choosecat = true;
+        $(".prod_name").val("");
+        $(".price").val("");
+        $(".qty").val("");
+        $(".category_id").val("");
+    });
+
+    $scope.changedValue = function(changevalue){
+       if(changevalue==""){
+           $scope.choosecat = true;
+       }else{
+           $scope.choosecat = false;
+       }
+    }
+
+    $scope.addProduct = function (product) {
+        //alert(product.prod_name + "----" + product.price + "---" + product.category_id + "---" + product.qty)
+        HTTPService.addProduct(product).then(function (res) {
+            if(res.data.status!="1"){
+                Materialize.toast('Product add error', 3000);
+            }else{
+                Materialize.toast('Product added successfully', 2000);
+            }
+            $('#addProduct').closeModal();
+            $scope.choosecat = true;
+            $scope.product.prod_name = "";
+            $scope.product.price = "";
+            $scope.product.qty = "";
+            $scope.product.category_id = "";
+            loadProduct();
+        }, function (err) {
+            Materialize.toast('Product add error', 3000);
+            $('#addProduct').closeModal();
+            $scope.choosecat = true;
+            $scope.product.prod_name = "";
+            $scope.product.price = "";
+            $scope.product.qty = "";
+            $scope.product.category_id = "";
+            loadProduct();
+        });
+
+    }
+
+
+
+    $scope.productlist = {};
+
+    function loadProduct() {
+        HTTPService.getProduct().then(function (res) {
+            $scope.productlist = res.data;
+        }, function (err) {
+            $scope.productlist = {};
+            console.log(err);
+        });
+    }
+
+    loadProduct();
+    
+
+    $scope.productCategoryList={};
+
+    HTTPService.getProductCategory().then(function (res) {
+        $scope.productCategoryList = res.data;
+    }, function (err) {
+        console.log(err)
+    });
        
 });
 
@@ -1144,23 +1212,67 @@ CRM.controller('PastTicketCtrl', function ($rootScope, $scope, $state, HTTPServi
 });
 
 CRM.controller('AddCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
-    $scope.openCase;
-    HTTPService.addCase($scope.cus).then(function (res) {
 
-    }, function (err) {
+    $scope.addOpenCase = function(opencase){
+        HTTPService.addCase(opencase).then(function (res) {
+            if(res.data.status=="0"){
+                Materialize.toast(res.data.error, 3000);
+            }else if(res.data.status=="1"){
+                Materialize.toast('Case added successfully !!', 2000);
+                $scope.openCase.product_id="";
+                $scope.openCase.customer_id="";
+                $scope.openCase.case_name="";
+                $scope.openCase.expire="";
+                $scope.openCase.qty="";
+                $scope.openCase.description="";
+                $state.go('app.case.livecaselist');
+            }else{
+                $scope.openCase.product_id="";
+                $scope.openCase.customer_id="";
+                $scope.openCase.case_name="";
+                $scope.openCase.expire="";
+                $scope.openCase.qty="";
+                $scope.openCase.description="";
+            }
+        }, function (err) {
+            Materialize.toast('Case add error !!', 2000);
+        });
+    }
 
-    });
+    $scope.customelist = {};
+
+    function loadcustomer(){
+        HTTPService.getCustomer().then(function (res) {
+            $scope.customelist = res.data;
+        }, function (err) {
+            console.log(err);
+        });
+    }
+
+    $scope.productlist = {};
+
+    function loadProduct() {
+        HTTPService.getProduct().then(function (res) {
+            $scope.productlist = res.data;
+        }, function (err) {
+            $scope.productlist = {};
+            console.log(err);
+        });
+    }
+
+    loadcustomer();
+    loadProduct();
 
 });
 
 CRM.controller('AddTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
 
     $scope.openTicket;
-    HTTPService.addTicket($scope.cus).then(function (res) {
+    // HTTPService.addTicket($scope.cus).then(function (res) {
 
-    }, function (err) {
+    // }, function (err) {
 
-    });
+    // });
 });
 
 

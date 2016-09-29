@@ -221,6 +221,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
       .state('app.product', {
           url: "/product",
           templateUrl: "template/product.html",
+          pageTitle: 'Product',
           controller: 'ProductCtrl',
           resolve: {
               authenticated: authenticated

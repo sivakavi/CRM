@@ -179,6 +179,11 @@ CRM.service('HTTPService', function($http){
 
    this.addCase = function (params) {
 
+       var x = localStorage.getItem('user_id');
+
+       params.status="open";
+       params.user_id=x;
+
        return $http({
            method: "post",
            url: domainURL + "case",
@@ -324,6 +329,21 @@ CRM.service('HTTPService', function($http){
        return $http({
            method: "get",
            url: domainURL + "notification/" + uid
+       });
+   }
+
+   this.getProduct = function () {
+       return $http({
+           method: "get",
+           url: domainURL + "product"
+       });
+   }
+
+   this.addProduct = function (params) {
+       return $http({
+           method: "post",
+           url: domainURL + "product",
+           data: params
        });
    }
    

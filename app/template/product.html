@@ -1,31 +1,26 @@
 <div id="tablemode">
-    <div class="row center-align">
-        
+    <div class="row">
+
         <button data-target="addProduct" class="btn modal-trigger waves-effect waves-light">Add Product<i class="material-icons right">add</i></button>
-        
+
     </div>
 
     <div>
         <table datatable="ng" class="row-border hover" data-display-length="5">
             <thead>
                 <tr>
-                    <th></th>
                     <th>Product Name</th>
                     <th>Category</th>
-                    <th>Brand</th>
+                    <th>Quantity</th>
                     <th>Prize</th>
-                  
-
-
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="pro in productlist">
-                    <td><i class="material-icons" style="cursor:pointer">mode_edit</i></td>
-                    <td>{{ pro.pname }}</td>
-                    <td>{{ pro.category | productType }}</td>
-                    <td>{{ pro.brand }}</td>
-                    <td>{{ pro.prize }}</td>
+                    <td>{{ pro.prod_name }}</td>
+                    <td>{{ pro.category.category_name}}</td>
+                    <td>{{ pro.qty }}</td>
+                    <td> $ {{ pro.price }}</td>
 
                 </tr>
             </tbody>
@@ -36,34 +31,32 @@
     <div id="addProduct" class="modal bottom-sheet">
         <div class="modal-content">
             <div class="row">
+                <form name="productform">
                 <div class="input-field col m6 s12">
-                    <input id="pname" type="text" class="validate">
+                    <input type="text" class="validate prod_name" ng-model="product.prod_name" required="true">
                     <label for="pname">Product Name</label>
                 </div>
                 <div class="input-field col m6 s12">
-                    <input id="prize" type="text" class="validate">
+                    <input   type="number" class="validate price" ng-model="product.price" required="true">
                     <label for="prize">Prize ($)</label>
                 </div>
                 <div class="input-field col m6 s12">
-                    <select material-select id="gender">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">System accessories</option>
-                        <option value="2">Furniture</option>
-                        <option value="3">Electronics</option>
-                        <option value="4">Tiles</option>
-                        <option value="5">Mechanical tools</option>
-                    </select>
-                    <label for="lname">Product Category</label>
+                    <select class="category_id" ng-model="product.category_id" material-select watch ng-change="changedValue(product.category_id)">
+                            <option value="" selected>Choose Product Category</option>
+                            <option ng-repeat="value in productCategoryList" value="{{value.id}}">{{value.category_name}}</option>
+                        </select>
+                    <label>Product Category</label>
+                    <span class="droparrow"><img src="img/arrow.png" /></span>
                 </div>
                 <div class="input-field col m6 s12">
-                    <input id="brand" type="text" class="validate">
-                    <label for="brand">Brand</label>
+                    <input type="number" class="validate qty" ng-model="product.qty" required="true">
+                    <label for="brand">Quantity</label>
                 </div>
-                
+                </form>
             </div>
             <div class="row center-align">
-                <button class="btn waves-effect waves-light">Submit<i class="material-icons right">add</i></button>
+                <button class="btn waves-effect waves-light" ng-click="addProduct(product)" ng-disabled="productform.$invalid || choosecat">Submit<i class="material-icons right">add</i></button>
             </div>
-       </div>
-      </div>  
+        </div>
+    </div>
 </div>

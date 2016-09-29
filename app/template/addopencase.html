@@ -7,40 +7,40 @@
                         <i class="material-icons prefix">stars</i>
                         <select class="" ng-model="openCase.product_id" material-select watch>
                             <option value="" disabled selected>Choose product</option>
-                            <option ng-repeat="value in membership" value="{{value.id}}">{{value.membership_name}}</option>
+                            <option ng-repeat="value in productlist" value="{{value.id}}">{{value.prod_name}} - ({{value.qty}} qty)</option>
                         </select>
-                        <label>Product name</label>
-                        <span class="droparrow"><img src="../img/arrow.png" /></span>
-                    </div>
-                    <div class="input-field col l6 m12 s12">
-                        <i class="material-icons prefix">stars</i>
-                        <select class="" ng-model="openCase.customer_id" material-select watch>
-                            <option value="" disabled selected>Choose customer</option>
-                            <option ng-repeat="value in membership" value="{{value.id}}">{{value.membership_name}}</option>
-                        </select>
-                        <label>Customer id</label>
-                        <span class="droparrow"><img src="../img/arrow.png" /></span>
+                        <label>Product</label>
+                        <span class="droparrow"><img src="img/arrow.png" /></span>
                     </div>
                     <div class="input-field col l6 m12 s12">
                         <i class="material-icons prefix">account_circle</i>
+                        <select class="" ng-model="openCase.customer_id" material-select watch>
+                            <option value="" disabled selected>Choose customer</option>
+                            <option ng-repeat="value in customelist" value="{{value.id}}">{{ value.fname }} {{ value.lname }}</option>
+                        </select>
+                        <label>Customer</label>
+                        <span class="droparrow"><img src="img/arrow.png" /></span>
+                    </div>
+                    <div class="input-field col l6 m12 s12">
+                        <i class="material-icons prefix">assignment</i>
                         <input id="fname" type="text" class="validate" ng-model="openCase.case_name">
                         <label for="fname">Case Name</label>
                     </div>
                     <div class="input-field col l6 m12 s12">
-                        <i class="material-icons prefix">perm_contact_calendar</i>
+                        <i class="material-icons prefix">today</i>
                         <datepicker date-format="yyyy-MM-dd" class="datepic">
                             <input ng-model="openCase.expire" type="text" />
                         </datepicker>
-                        <label for="dob">Expire Date</label>
+                        <label class="active" for="dob">Expire Date</label>
                     </div>
                     <div class="input-field col l6 m12 s12">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="fname" type="text" class="validate" ng-model="openCase.qty">
+                        <i class="material-icons prefix">shopping_basket</i>
+                        <input id="fname" type="number" class="validate" ng-model="openCase.qty">
                         <label for="fname">Quantity</label>
                     </div>
                     
                     <div class="input-field col l6 m12 s12">
-                        <i class="material-icons prefix">account_circle</i>
+                        <i class="material-icons prefix">turned_in_not</i>
                         <input id="fname" type="text" class="validate" ng-model="openCase.description">
                         <label for="fname">Description</label>
                     </div>
