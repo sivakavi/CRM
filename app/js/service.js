@@ -207,6 +207,10 @@ CRM.service('HTTPService', function($http){
 
    this.addTicket = function (params) {
 
+       var x = localStorage.getItem('user_id');
+       params.status="open";
+       params.user_id=x;
+
        return $http({
            method: "post",
            url: domainURL + "ticket",
@@ -219,7 +223,7 @@ CRM.service('HTTPService', function($http){
        if (uid == "all") {
            url = domainURL + "getOpenTicket";
        } else {
-           url = domainURL + "getOpenTicket/" + uid;
+           url = domainURL + "getOpenTicketUser/" + uid;
        }
 
        return $http({
@@ -234,7 +238,7 @@ CRM.service('HTTPService', function($http){
        if (uid == "all") {
            url = domainURL + "getCloseTicket";
        } else {
-           url = domainURL + "getCloseTicket/" + uid;
+           url = domainURL + "getCloseTicketUser/" + uid;
        }
 
        return $http({

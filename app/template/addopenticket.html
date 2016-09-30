@@ -12,21 +12,21 @@
                         <i class="material-icons prefix">stars</i>
                         <select class="" ng-model="openTicket.case_id" material-select watch>
                             <option value="" disabled selected>Choose Case</option>
-                            <option ng-repeat="value in dropdowncaselist" value="{{value.id}}">{{value.case_name}} - {{value.id}}</option>
+                            <option ng-repeat="value in opencaselist" value="{{value.id}}">{{value.case_name}} - {{value.id}}</option>
                         </select>
                         <label>Case</label>
                         <span class="droparrow"><img src="img/arrow.png" /></span>
                     </div>
                     <div class="input-field col l6 m12 s12">
                         <i class="material-icons prefix">turned_in_not</i>
-                        <input id="phone" type="tel" class="validate" ng-model="openTicket.discription">
+                        <input id="phone" type="tel" class="validate" ng-model="openTicket.description">
                         <label for="phone">Description</label>
                     </div>
                     <div class="input-field col l6 m12 s12">
                         <i class="material-icons prefix">account_circle</i>
                         <select class="" ng-model="openTicket.assigned_id" material-select watch>
                             <option value="" disabled selected>Choose Staff</option>
-                            <option ng-repeat="value in dropdownstafflist" value="{{value.id}}">{{value.case_name}}</option>
+                            <option ng-repeat="value in stafflist" value="{{value.id}}">{{value.fname}} {{value.lname}}</option>
                         </select>
                         <label>Assign To</label>
                         <span class="droparrow"><img src="img/arrow.png" /></span>

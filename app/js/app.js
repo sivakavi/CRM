@@ -34,7 +34,7 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
       url: "/gmailinfo",
       templateUrl: "template/gmaildetails.html",
       controller: 'GmailCtrl',
-      pageTitle: 'Your Gmail details'
+      pageTitle: 'Inbox'
     })
     .state('app.dashboard', {
       url: "/dashboard",
@@ -210,6 +210,140 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
               'caseTables': {
                   templateUrl: "template/addopenticket.html",
                   controller: 'AddTicketCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+
+      .state('app.report', {
+        url: "/report",
+        abstract: true,
+        templateUrl: "template/report.html",
+        controller: 'ReportCtrl',
+      
+    })
+      .state('app.report.fullreport', {
+          url: "/report/fullreport",
+          pageTitle: 'General Report',
+          views: {
+              'reportTables': {
+                  templateUrl: "template/fullreport.html",
+                  controller: 'FullReportCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+	  .state('app.report.yearreport', {
+          url: "/report/yearreport",
+          pageTitle: 'Yearly Report',
+          views: {
+              'reportTables': {
+                  templateUrl: "template/yearreport.html",
+                  controller: 'YearReportCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+	  .state('app.report.monthreport', {
+          url: "/report/monthreport",
+          pageTitle: 'Monthly Report',
+          views: {
+              'reportTables': {
+                  templateUrl: "template/monthreport.html",
+                  controller: 'MonthReportCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+	  .state('app.report.productreport', {
+          url: "/report/productreport",
+          pageTitle: 'General Product Report',
+          views: {
+              'reportTables': {
+                  templateUrl: "template/productreport.html",
+                  controller: 'ProductReportCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+	  .state('app.report.productyearreport', {
+          url: "/report/productyearreport",
+          pageTitle: 'Product Year Report',
+          views: {
+              'reportTables': {
+                  templateUrl: "template/productyearreport.html",
+                  controller: 'ProductYearReportCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+	  .state('app.report.productmonthreport', {
+          url: "/report/productmonthreport",
+          pageTitle: 'Product Month Report',
+          views: {
+              'reportTables': {
+                  templateUrl: "template/productmonthreport.html",
+                  controller: 'ProductMonthReportCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+	  .state('app.report.userreport', {
+          url: "/report/userreport",
+          pageTitle: 'General User Report',
+          views: {
+              'reportTables': {
+                  templateUrl: "template/userreport.html",
+                  controller: 'UserReportCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+	  .state('app.report.useryearreport', {
+          url: "/report/useryearreport",
+          pageTitle: 'User Year Report',
+          views: {
+              'reportTables': {
+                  templateUrl: "template/useryearreport.html",
+                  controller: 'UserYearReportCtrl'
+              }
+          },
+          resolve: {
+              authenticated: authenticated
+          }
+
+      })
+	  .state('app.report.usermonthreport', {
+          url: "/report/usermonthreport",
+          pageTitle: 'User Month Report',
+          views: {
+              'reportTables': {
+                  templateUrl: "template/usermonthreport.html",
+                  controller: 'UserMonthReportCtrl'
               }
           },
           resolve: {

@@ -1,0 +1,35 @@
+<div id="tablemode">
+
+    <div class="row" style="border-bottom:2px solid black; padding-bottom:10px;">
+        <div class="col s6 m4 center-align">
+            <button ng-click="showFullReport()" class="btn modal-trigger waves-effect waves-light casebtn">Full Report</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showYearReport()" class="btn modal-trigger waves-effect waves-light casebtn">Year Report</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showMonthReport()" class="btn modal-trigger waves-effect waves-light casebtn">Month Report</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showProductReport()" class="btn modal-trigger waves-effect waves-light casebtn">Product Report</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showProductYearReport()" class="btn modal-trigger waves-effect waves-light casebtn">Product - Year</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showProductMonthReport()" class="btn modal-trigger waves-effect waves-light casebtn">Product - Month</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showUserReport()" class="btn modal-trigger waves-effect waves-light casebtn">User Report</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showUserYearReport()" class="btn modal-trigger waves-effect waves-light casebtn">User - Year</button>
+        </div>
+        <div class="col s6 m4 center-align">
+            <button ng-click="showUserMonthReport()" class="btn modal-trigger waves-effect waves-light casebtn">User - Month</button>
+        </div>
+    </div>
+    
+    <div ui-view="reportTables"></div>
+
+</div>

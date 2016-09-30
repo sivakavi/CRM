@@ -1069,6 +1069,46 @@ CRM.controller('CaseCtrl', function ($rootScope, $scope, $state) {
     
 });
 
+CRM.controller('ReportCtrl', function ($rootScope, $scope, $state) {
+
+    $scope.showFullReport = function (cid) {
+        $state.go('app.report.fullreport');
+    };
+
+    $scope.showYearReport = function (cid) {
+        $state.go('app.report.yearreport');
+    };
+
+    $scope.showMonthReport = function (cid) {
+        $state.go('app.report.monthreport');
+    };
+
+    $scope.showProductReport = function (cid) {
+        $state.go('app.report.productreport');
+    };
+
+    $scope.showProductYearReport = function (cid) {
+        $state.go('app.report.productyearreport');
+    };
+
+    $scope.showProductMonthReport = function (cid) {
+        $state.go('app.report.productmonthreport');
+    };
+
+    $scope.showUserReport = function (cid) {
+        $state.go('app.report.userreport');
+    };
+
+    $scope.showUserYearReport = function (cid) {
+        $state.go('app.report.useryearreport');
+    };
+
+    $scope.showUserMonthReport = function (cid) {
+        $state.go('app.report.usermonthreport');
+    };
+    
+});
+
 CRM.controller('ProductCtrl', function ($rootScope, $scope, $state, HTTPService) {
     
     $('.modal-trigger').leanModal();
@@ -1163,9 +1203,6 @@ CRM.controller('OpencaseCtrl', function ($rootScope, $scope, $state, HTTPService
 
 CRM.controller('LiveCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
     var x = localStorage.getItem('user_id');
-    if ($state.current.name == 'app.allopencase') {
-        x = "all";
-    }
     $scope.opencaselist = {};
     HTTPService.getopencase(x).then(function (res) {
         $scope.opencaselist = res.data;
@@ -1177,7 +1214,7 @@ CRM.controller('LiveCaseCtrl', function ($rootScope, $scope, $state, HTTPService
 });
 
 CRM.controller('LiveTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
-    var uid = "all";
+    var uid = localStorage.getItem('user_id');
     HTTPService.getOpenTicket(uid).then(function (res) {
         $scope.liveticketlist = res.data;
     }, function (err) {
@@ -1189,7 +1226,7 @@ CRM.controller('LiveTicketCtrl', function ($rootScope, $scope, $state, HTTPServi
 
 
 CRM.controller('PastCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
-    var uid = "all";
+    var uid = localStorage.getItem('user_id');
     HTTPService.getcloasecase(uid).then(function (res) {        
         $scope.closecaselist = res.data;
     }, function (err) {
@@ -1200,7 +1237,7 @@ CRM.controller('PastCaseCtrl', function ($rootScope, $scope, $state, HTTPService
 });
 
 CRM.controller('PastTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
-    var uid = "all";
+    var uid = localStorage.getItem('user_id');
     HTTPService.getCloseTicket(uid).then(function (res) {
         $scope.pastticketlist = res.data;
     }, function (err) {
@@ -1267,12 +1304,53 @@ CRM.controller('AddCaseCtrl', function ($rootScope, $scope, $state, HTTPService)
 
 CRM.controller('AddTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
 
-    $scope.openTicket;
-    // HTTPService.addTicket($scope.cus).then(function (res) {
+    $scope.addOpenTicket = function (openticket) {
+        HTTPService.addTicket(openticket).then(function (res) {
 
-    // }, function (err) {
+            if(res.data.status=="1"){
+                Materialize.toast('Ticket added successfully !!', 2000);
+                $scope.openTicket.case_id="";
+                $scope.openTicket.assigned_id="";
+                $scope.openTicket.ticket_name="";
+                $scope.openTicket.description="";
+                $state.go('app.case.liveticketlist');
+            }else{
+                $scope.openTicket.case_id="";
+                $scope.openTicket.assigned_id="";
+                $scope.openTicket.ticket_name="";
+                $scope.openTicket.description="";
+            }
 
-    // });
+        }, function (err) {
+            Materialize.toast('Ticket add error !!', 2000);
+        });
+    }
+
+    
+
+    function loadopencase() {
+        $scope.opencaselist = {};
+        HTTPService.getopencase(localStorage.getItem('user_id')).then(function (res) {
+            $scope.opencaselist = res.data;
+        }, function (err) {
+            $scope.opencaselist = {};
+            console.log(err);
+        });
+    }
+
+    function loadassigne() {
+        $scope.stafflist = {};
+        HTTPService.getStaff().then(function (res) {
+            $scope.stafflist = res.data;
+        }, function (err) {
+            $scope.stafflist = {};
+            console.log(err);
+        });
+    }
+
+    loadopencase();
+    loadassigne();
+
 });
 
 
@@ -1328,6 +1406,42 @@ CRM.controller('HotCustomerlistCtrl', function ($rootScope, $scope, $state, HTTP
         });
     };
 
+});
+
+CRM.controller('FullReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
+});
+
+CRM.controller('YearReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
+});
+
+CRM.controller('MonthReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
+});
+
+CRM.controller('ProductReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
+});
+
+CRM.controller('ProductYearReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
+});
+
+CRM.controller('ProductMonthReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
+});
+
+CRM.controller('UserReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
+});
+
+CRM.controller('UserYearReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
+});
+
+CRM.controller('UserMonthReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    
 });
 
 CRM.filter('leadSource', function () {

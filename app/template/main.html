@@ -75,6 +75,12 @@
                     <span>Product</span>
                 </a>
             </li>
+            <li>
+                <a ui-sref="app.gmail" class="waves-effect waves-light" ng-class="{active: $state.includes('app.gmail')}">
+                    <i class="fa fa-google" aria-hidden="true"></i> 
+                    <span>Inbox</span>
+                </a>
+            </li>
             <li ng-if="isStaff">
                 <a ui-sref="app.manage" class="waves-effect waves-light" ng-class="{active: $state.includes('app.manage')}">
                     <i class="fa fa-cogs" aria-hidden="true"></i>
@@ -82,7 +88,7 @@
                 </a>
             </li>
             <li ng-if="isStaff">
-                <a ui-sref="app.dashboard" class="waves-effect waves-light" ng-class="{active: $state.includes('app.dashboard')}">
+                <a ui-sref="app.report.fullreport" class="waves-effect waves-light" ng-class="{active: $state.includes('app.report.fullreport')}">
                     <i class="fa fa-bar-chart" aria-hidden="true"></i>
                     <span>Report</span>
                 </a>
