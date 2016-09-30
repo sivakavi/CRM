@@ -6,7 +6,7 @@
     <table>
         <thead>
           <tr>
-              <th>Status Change</th>
+              <th ng-if="singleTicket.status=='open'">Status Change</th>
               <th>Ticket Name</th>
               <th>Status</th>
               <th>Case Name</th>
@@ -16,10 +16,10 @@
 
         <tbody>
           <tr>
-              <td>
-                    <button tooltipped data-position="bottom" data-delay="50" data-tooltip="Case Cancel" ng-click="chagetocancel(ocase.id,ocase.product_id,ocase.qty)" class="btn-floating btn-large waves-effect waves-light red" style="width:38.5px; height:38.5px;"><i class="material-icons" style="line-height:0px;">not_interested</i></button>
+              <td ng-if="singleTicket.status=='open'">
+                    <button tooltipped data-position="bottom" data-delay="50" data-tooltip="Case Cancel" ng-click="chagetocancel(singleTicket.id)" class="btn-floating btn-large waves-effect waves-light red" style="width:38.5px; height:38.5px;"><i class="material-icons" style="line-height:0px;">not_interested</i></button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button tooltipped data-position="bottom" data-delay="50" data-tooltip="Case Close" ng-click="chagetoclose(ocase.id,ocase.product_id,ocase.qty)" class="btn-floating btn-large waves-effect waves-light green" style="width:38.5px; height:38.5px;"><i class="material-icons" style="line-height:0px;">done</i></button>
+                        <button tooltipped data-position="bottom" data-delay="50" data-tooltip="Case Close" ng-click="chagetoclose(singleTicket.id)" class="btn-floating btn-large waves-effect waves-light green" style="width:38.5px; height:38.5px;"><i class="material-icons" style="line-height:0px;">done</i></button>
                     </td>
             <td>{{singleTicket.ticket_name}}</td>
             <td>{{singleTicket.status}}</td>

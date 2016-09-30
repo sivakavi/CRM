@@ -327,6 +327,13 @@ CRM.service('HTTPService', function($http){
        });
    }
 
+   this.getLowProductList = function (qty) {
+       return $http({
+           method: "get",
+           url: domainURL + "lessQty/"+qty
+       });
+   }
+
    this.getSingleCustomer = function (cid) {
        return $http({
            method: "get",

@@ -73,7 +73,7 @@
                </div>
         </div>
     </div>    
-  <div class="row">
+  <div class="row" style="padding-top:20px;">
            <div class="card-wrapper card-to-do block--shadow col">
                 <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">receipt</i> To do list</div>
                 <div class="card-panel-body">
@@ -109,6 +109,36 @@
                   </table>
               </div>
            </div>
+        </div>
+
+
+        <div ng-if="lowproductlist.length!=0" class="row" style="padding-top:20px;">
+           <div class="card-wrapper1 card-to-do block--shadow col">
+                <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">receipt</i> Low Quantity Product List</div>
+                <div class="card-panel-body">
+                   <table class="bordered striped">
+        <thead>
+          <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Item Price</th>
+              <th>Quantity</th>
+          </tr>
+        </thead>
+
+        <tbody>
+           <tr ng-repeat="low in lowproductlist">
+            <td>{{low.id}}</td>
+            <td>{{low.prod_name}}</td>
+            <td>{{low.category.category_name}}</td>
+            <td>$ {{low.price}}</td>
+            <td>{{low.qty}}</td>
+        </tr>
+        </tbody>
+      </table>
+                </div>
+            </div>
         </div>
         
     </div>

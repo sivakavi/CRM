@@ -56,6 +56,21 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
 
     $scope.getNotification();
 
+    $scope.lowproductlist = [];
+
+    $scope.getLowProductList = function () {
+        HTTPService.getLowProductList(10).then(function (res) {
+            $scope.lowproductlist = res.data;
+        }, function (err) {
+            console.log(err);
+            $scope.lowproductlist = [];
+        });
+    };
+
+    $scope.getLowProductList();
+
+
+
     $scope.addTodo = function () {
         var params = {
             title: $scope.todayTask,
@@ -1520,7 +1535,9 @@ CRM.controller('SingleCaseCtrl', function ($rootScope, $scope, $state, HTTPServi
 CRM.controller('SingleTicketCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
     var param = $stateParams.id;
     $scope.singleTicket = {};
-    HTTPService.getSingleTicket(param).then(function (res) {
+
+    function loadsingleticket(){
+        HTTPService.getSingleTicket(param).then(function (res) {
         $scope.singleTicket = res.data;
         HTTPService.getSingleUser(res.data.assigned_id).then(function (res) {
             $scope.singleStaff = res.data;
@@ -1533,6 +1550,69 @@ CRM.controller('SingleTicketCtrl', function ($rootScope, $scope, $state, HTTPSer
         $scope.singleTicket = {};
         console.log(err);
     });
+    }
+
+
+    loadsingleticket();
+
+    function changeAppStatus(id,status,callback) {
+            HTTPService.changeStatusTicket(id,status).then(function (res) {
+                if (res.data.status == "1") {
+                    callback(true);
+                    loadsingleticket();
+                }
+                else {
+                    callback(false);
+                    loadsingleticket();
+                }
+            }, function (err) {
+                callback(false);
+                loadsingleticket();
+            })
+        }
+
+        $scope.chagetocancel = function (appid) {
+            $.confirm({
+                title: 'Status Change',
+                content: 'Are you sure , you want this Ticket move to CANCEL status',
+                confirm: function () {
+                    changeAppStatus(appid, "cancel", function (data) {
+                        if (data == true) {
+                            $.alert('Ticket Status Changed Successfully !');
+                        } else {
+                            $.alert('Ticket Status not Changed');
+                        }
+
+                    });
+                    
+                },
+                cancel: function () {
+                    
+                }
+            });
+        };
+
+        $scope.chagetoclose = function (appid) {
+            $.confirm({
+                title: 'Status Change',
+                content: 'Are you sure , you want this Ticket move to CLOSE status',
+                confirm: function () {
+                    changeAppStatus(appid, "close", function (data) {
+                        if (data == true) {
+                            $.alert('Ticket Status Changed Successfully !');
+                        } else {
+                            $.alert('Ticket Status not Changed');
+                        }
+
+                    });
+
+                },
+                cancel: function () {
+
+                }
+            });
+        };
+
     
 });
 

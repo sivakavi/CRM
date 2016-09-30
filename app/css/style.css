@@ -192,6 +192,14 @@ body{
     width: calc(50% - 40px);
     margin: 0 20px;
 }
+
+.row .card-wrapper1 {
+    border-radius: 2px;
+    padding: 0;
+    width: calc(100% - 40px);
+    margin: 0 20px;
+}
+
 .row .card-to-do {
     min-height: 422px;
 }
@@ -203,6 +211,16 @@ body{
 .card-wrapper .card-panel-body {
     padding: 20px;
 }
+
+.card-wrapper1 .card-panel {
+    margin: 0;
+    color: #fff;
+    border-radius: 0;
+}
+.card-wrapper1 .card-panel-body {
+    padding: 20px;
+}
+
 .card-to-do .card-panel-body {
     height: 300px;
     overflow-y: auto;
