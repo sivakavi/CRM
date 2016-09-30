@@ -592,7 +592,7 @@ CRM.controller('AddStaffCtrl', function ($rootScope, $scope, $state, HTTPService
             state: singleStaff.state,
             image: "",
             role: "2",
-            user_name: singleStaff.username,
+            user_name: singleStaff.user_name,
             password: singleStaff.password
         };
 
