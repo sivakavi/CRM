@@ -191,11 +191,11 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
         });
         }
 
-        // if(type=="Ticket"){
-        //     $state.go('app.singleticket', {
-        //     id: id
-        // });
-        // }
+        if(type=="Ticket"){
+            $state.go('app.singleticket', {
+            id: id
+        });
+        }
 
         if(type=="Appointment"){
             $state.go('app.singleappointment', {
@@ -1006,7 +1006,6 @@ CRM.controller('ApplicationCtrl', function ($rootScope, $scope, $state, AuthFact
     
     $scope.userinfo = AuthFactory.getCurrentUser();
     $rootScope.isStaff = $scope.userinfo.role != '2' ? true : false;
-    console.log($scope.currentUser);
 });
 
 CRM.controller('ConfirmAppointmentCtrl', function ($rootScope, $scope, $state, AuthFactory, HTTPService, close) {
@@ -1102,6 +1101,12 @@ CRM.controller('ReportCtrl', function ($rootScope, $scope, $state) {
 });
 
 CRM.controller('ProductCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    $scope.showproductbtn=false;
+
+    if($rootScope.isStaff){
+        $scope.showproductbtn=true;
+    }
     
     $('.modal-trigger').leanModal();
 
@@ -1132,7 +1137,7 @@ CRM.controller('ProductCtrl', function ($rootScope, $scope, $state, HTTPService)
             }else{
                 Materialize.toast('Product added successfully', 2000);
             }
-            $('#addProduct').closeModal();
+            $('#addProductModel').closeModal();
             $scope.choosecat = true;
             $scope.product.prod_name = "";
             $scope.product.price = "";
@@ -1141,7 +1146,7 @@ CRM.controller('ProductCtrl', function ($rootScope, $scope, $state, HTTPService)
             loadProduct();
         }, function (err) {
             Materialize.toast('Product add error', 3000);
-            $('#addProduct').closeModal();
+            $('#addProductModel').closeModal();
             $scope.choosecat = true;
             $scope.product.prod_name = "";
             $scope.product.price = "";
@@ -1202,18 +1207,81 @@ CRM.controller('OpencaseCtrl', function ($rootScope, $scope, $state, HTTPService
 CRM.controller('LiveCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
     var x = localStorage.getItem('user_id');
     $scope.opencaselist = {};
-    HTTPService.getopencase(x).then(function (res) {
+    function loadcaselist(){
+        HTTPService.getopencase(x).then(function (res) {
         $scope.opencaselist = res.data;
     }, function (err) {
         $scope.opencaselist = {};
         console.log(err);
     });
+    }
+
+    loadcaselist();
+    
 
     $scope.singleCaseView = function (cid) {
         $state.go('app.singlecase', {
             id: cid
         });
     };
+
+    function changeAppStatus(id,pid,qty,status,callback) {
+            HTTPService.changeStatusCase(id,pid,qty,status).then(function (res) {
+                if (res.data.status == "1") {
+                    loadcaselist();
+                    callback(true);
+                }
+                else {
+                    loadcaselist();
+                    callback(false);
+                }
+            }, function (err) {
+                loadcaselist();
+                callback(false);
+            })
+        }
+
+        $scope.chagetocancel = function (cid,pid,qty) {
+            $.confirm({
+                title: 'Status Change',
+                content: 'Are you sure , you want this case move to CANCEL status',
+                confirm: function () {
+                    changeAppStatus(cid,pid,qty,"cancel", function (data) {
+                        if (data == true) {
+                            $.alert('Case Status Changed Successfully !');
+                        } else {
+                            $.alert('Case Status not Changed');
+                        }
+
+                    });
+                    
+                },
+                cancel: function () {
+                    
+                }
+            });
+        };
+
+        $scope.chagetoclose = function (cid,pid,qty) {
+            $.confirm({
+                title: 'Status Change',
+                content: 'Are you sure , you want this case move to CLOSE status',
+                confirm: function () {
+                    changeAppStatus(cid,pid,qty,"close", function (data) {
+                        if (data == true) {
+                            $.alert('Case Status Changed Successfully !');
+                        } else {
+                            $.alert('Case Status not Changed');
+                        }
+
+                    });
+
+                },
+                cancel: function () {
+
+                }
+            });
+        };
 
 });
 
@@ -1225,6 +1293,12 @@ CRM.controller('LiveTicketCtrl', function ($rootScope, $scope, $state, HTTPServi
         $scope.opencaselist = {};
         console.log(err);
     });
+
+    $scope.singleTicView = function (tid) {
+        $state.go('app.singleticketx', {
+            id: tid
+        });
+    };
    
 });
 
@@ -1254,6 +1328,12 @@ CRM.controller('PastTicketCtrl', function ($rootScope, $scope, $state, HTTPServi
         $scope.opencaselist = {};
         console.log(err);
     });
+
+    $scope.singleTicView = function (tid) {
+        $state.go('app.singleticketx', {
+            id: tid
+        });
+    };
     
 
 });
@@ -1442,6 +1522,32 @@ CRM.controller('SingleTicketCtrl', function ($rootScope, $scope, $state, HTTPSer
     $scope.singleTicket = {};
     HTTPService.getSingleTicket(param).then(function (res) {
         $scope.singleTicket = res.data;
+        HTTPService.getSingleUser(res.data.assigned_id).then(function (res) {
+            $scope.singleStaff = res.data;
+        }, function (err) {
+            $scope.singleStaff = {};
+            console.log(err);
+        });
+
+    }, function (err) {
+        $scope.singleTicket = {};
+        console.log(err);
+    });
+    
+});
+
+CRM.controller('SingleTicketXCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+    var param = $stateParams.id;
+    $scope.singleTicket = {};
+    HTTPService.getSingleTicket(param).then(function (res) {
+        $scope.singleTicket = res.data;
+        HTTPService.getSingleUser(res.data.assigned_id).then(function (res) {
+            $scope.singleStaff = res.data;
+        }, function (err) {
+            $scope.singleStaff = {};
+            console.log(err);
+        });
+
     }, function (err) {
         $scope.singleTicket = {};
         console.log(err);

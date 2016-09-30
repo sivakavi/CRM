@@ -191,16 +191,20 @@ CRM.service('HTTPService', function($http){
        });
    }
 
-   this.changeStatusCase = function (id,status) {
-       return $http({
+   this.changeStatusCase = function (id,pid,qty,status) {
+    
+      return $http({
            method: "post",
            url: domainURL + "case/edit/"+id,
            data: {
-               status:status
+               status:status,
+               product_id:pid,
+               qty:qty
            }
        });
    }
 
+   
    this.changeStatusTicket = function (id,status) {
        return $http({
            method: "post",

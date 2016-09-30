@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="lticket in liveticketlist">
-                <td><i class="material-icons" style="cursor:pointer">visibility</i></td>
+                <td><i class="material-icons" style="cursor:pointer" ng-click="singleTicView(lticket.id)">visibility</i></td>
                 <td>{{ lticket.ticket_name }}</td>
                 <td>{{ lticket.cased.case_name}}</td>
                 <td>{{ lticket.assigned_id }}</td>

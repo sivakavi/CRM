@@ -1,8 +1,9 @@
 <div id="tablemode">
     <div class="row">
 
-        <button ng-if="isStaff" data-target="addProduct" class="btn modal-trigger waves-effect waves-light">Add Product<i class="material-icons right">add</i></button>
-
+       
+            <button ng-show="showproductbtn" data-target="addProductModel" class="btn modal-trigger waves-effect waves-light">Add Product<i class="material-icons right">add</i></button>
+       
     </div>
 
     <div>
@@ -28,7 +29,7 @@
     </div>
 
     <!-- Modal Structure -->
-    <div id="addProduct" class="modal bottom-sheet">
+    <div id="addProductModel" class="modal bottom-sheet">
         <div class="modal-content">
             <div class="row">
                 <form name="productform">

@@ -476,6 +476,16 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           }
       })
 
+      .state('app.singleticketx', {
+          url: "/singleticketx/:id",
+          templateUrl: "template/singleticketx.html",
+          controller: 'SingleTicketXCtrl',
+          pageTitle: 'Ticket Details',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+
       .state('app.singleappointment', {
           url: "/singleappointment/:id",
           templateUrl: "template/singleappointment.html",

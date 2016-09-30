@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th></th>
+                <th>Status Change</th>
                 <th>Case Name</th>
                 <th>User</th>
                 <th>Product Name</th>
@@ -13,6 +14,11 @@
         <tbody>
             <tr ng-repeat="ocase in opencaselist">
                 <td><i class="material-icons" style="cursor:pointer" ng-click="singleCaseView(ocase.id)">visibility</i></td>
+                <td>
+                    <button tooltipped data-position="bottom" data-delay="50" data-tooltip="Case Cancel" ng-click="chagetocancel(ocase.id,ocase.product_id,ocase.qty)" class="btn-floating btn-large waves-effect waves-light red" style="width:38.5px; height:38.5px;"><i class="material-icons" style="line-height:0px;">not_interested</i></button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button tooltipped data-position="bottom" data-delay="50" data-tooltip="Case Close" ng-click="chagetoclose(ocase.id,ocase.product_id,ocase.qty)" class="btn-floating btn-large waves-effect waves-light green" style="width:38.5px; height:38.5px;"><i class="material-icons" style="line-height:0px;">done</i></button>
+                    </td>
                 <td>{{ ocase.case_name }}</td>
                 <td>{{ ocase.user.fname}} {{ ocase.user.lname}}</td>
                 <td>{{ ocase.product.prod_name }}</td>
