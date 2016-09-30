@@ -1,2 +1,61 @@
 <div class="row">
+    <div class="input-field col l3 m6 s6">
+                        <i class="material-icons prefix">stars</i>
+                        <select class="" ng-model="rep_product_id" material-select watch>
+                            <option value="" disabled selected>Choose product</option>
+                            <option ng-repeat="value in productlist" value="{{value.id}}">{{value.prod_name}} - ({{value.qty}} qty)</option>
+                        </select>
+                        <label>Product</label>
+                        <span class="droparrow"><img src="img/arrow.png" /></span>
+                    </div>
+
+                    <div class="input-field col m6 s6 l3">
+                        <i class="material-icons prefix">assignment</i>
+                        <select material-select id="yearreport">
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                        </select>
+                        <label>Year</label>
+                        <span class="droparrow"><img src="img/arrow.png" /></span>
+                    </div>
+       <button type="button" class="btn-floating btn-large waves-effect waves-light" ng-click="getProductYearReport()">
+                                        <i class="material-icons">done</i>
+                                    </button>
+</div>
+<div class="row" ng-show="showtable">
+    <div class="col s12 m12 l12">
+        <table class="bordered striped">
+        <thead>
+          <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Total Quantity</th>
+              <th>Total Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-if="productYearReport.length==0">
+                <td colspan="5" style="text-align:center">--- No Data Available ---</td>
+            </tr>
+          <tr ng-repeat="full in productYearReport">
+            <td>{{full.product_id}}</td>
+            <td>{{full.prod_name}}</td>
+            <td>$ {{full.unitprice}}</td>
+            <td>{{full.tot_qty}}</td>
+            <td>$ {{full.total_price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>

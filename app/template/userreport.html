@@ -1,2 +1,42 @@
 <div class="row">
+    <div class="input-field col l3 m6 s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <select class="" ng-model="rep_staff_id" material-select watch>
+                            <option value="" disabled selected>Choose Staff</option>
+                            <option ng-repeat="value in stafflist" value="{{value.id}}">{{value.fname}} {{value.lname}}</option>
+                        </select>
+                        <label>Staff</label>
+                        <span class="droparrow"><img src="img/arrow.png" /></span>
+                    </div>
+       <button type="button" class="btn-floating btn-large waves-effect waves-light" ng-click="getUserReport()">
+                                        <i class="material-icons">done</i>
+                                    </button>
+</div>
+<div class="row" ng-show="showtable">
+    <div class="col s12 m12 l12">
+        <table class="bordered striped">
+        <thead>
+          <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Total Quantity</th>
+              <th>Total Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-if="userReport.length==0">
+                <td colspan="5" style="text-align:center">--- No Data Available ---</td>
+            </tr>
+          <tr ng-repeat="full in userReport">
+            <td>{{full.product_id}}</td>
+            <td>{{full.prod_name}}</td>
+            <td>$ {{full.unitprice}}</td>
+            <td>{{full.tot_qty}}</td>
+            <td>$ {{full.total_price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>

@@ -404,6 +404,69 @@ CRM.service('HTTPService', function($http){
            data: params
        });
    }
+
+   this.getFullReport = function () {
+       return $http({
+           method: "get",
+           url: domainURL + "report"
+       });
+   }
+
+   this.getReportYear = function (year) {
+       return $http({
+           method: "get",
+           url: domainURL + "getReportYear/"+year
+       });
+   }
+
+   this.getReportYearMonth = function (year,month) {
+       return $http({
+           method: "get",
+           url: domainURL + "getReportYearMonth/"+year+"/"+month
+       });
+   }
+
+   this.getReportProduct = function (pid) {
+       return $http({
+           method: "get",
+           url: domainURL + "getReportProduct/"+pid
+       });
+   }
+
+   this.getReportProductYear = function (pid,year) {
+       return $http({
+           method: "get",
+           url: domainURL + "getReportProductYear/"+pid+"/"+year
+       });
+   }
+
+   this.getReportProductYearMonth = function (pid,year,month) {
+       return $http({
+           method: "get",
+           url: domainURL + "getReportProductYearMonth/"+pid+"/"+year+"/"+month
+       });
+   }
+
+   this.getReportUser = function (uid) {
+       return $http({
+           method: "get",
+           url: domainURL + "getReportUser/"+uid
+       });
+   }
+
+   this.getReportUserYear = function (uid,year) {
+       return $http({
+           method: "get",
+           url: domainURL + "getReportUserYear/"+uid+"/"+year
+       });
+   }
+
+   this.getReportUserYearMonth = function (uid,year,month) {
+       return $http({
+           method: "get",
+           url: domainURL + "getReportUserYearMonth/"+uid+"/"+year+"/"+month
+       });
+   }
    
 
 });

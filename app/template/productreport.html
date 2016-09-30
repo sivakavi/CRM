@@ -1,2 +1,42 @@
 <div class="row">
+    <div class="input-field col l3 m6 s6">
+                        <i class="material-icons prefix">stars</i>
+                        <select class="" ng-model="rep_product_id" material-select watch>
+                            <option value="" disabled selected>Choose product</option>
+                            <option ng-repeat="value in productlist" value="{{value.id}}">{{value.prod_name}} - ({{value.qty}} qty)</option>
+                        </select>
+                        <label>Product</label>
+                        <span class="droparrow"><img src="img/arrow.png" /></span>
+                    </div>
+       <button type="button" class="btn-floating btn-large waves-effect waves-light" ng-click="getProductReport()">
+                                        <i class="material-icons">done</i>
+                                    </button>
+</div>
+<div class="row" ng-show="showtable">
+    <div class="col s12 m12 l12">
+        <table class="bordered striped">
+        <thead>
+          <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Total Quantity</th>
+              <th>Total Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-if="productReport.length==0">
+                <td colspan="5" style="text-align:center">--- No Data Available ---</td>
+            </tr>
+          <tr ng-repeat="full in productReport">
+            <td>{{full.product_id}}</td>
+            <td>{{full.prod_name}}</td>
+            <td>$ {{full.unitprice}}</td>
+            <td>{{full.tot_qty}}</td>
+            <td>$ {{full.total_price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>

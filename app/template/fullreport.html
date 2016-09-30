@@ -1,2 +1,28 @@
-<div class="row">
+<div class="row" style="padding-top:50px;">
+    <div class="col s12 m12 l12">
+        <table class="bordered striped">
+        <thead>
+          <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Total Quantity</th>
+              <th>Total Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-if="fullReport.length==0">
+                <td colspan="5">--- No Data Available---</td>
+            </tr>
+          <tr ng-repeat="full in fullReport">
+            <td>{{full.product_id}}</td>
+            <td>{{full.prod_name}}</td>
+            <td>$ {{full.unitprice}}</td>
+            <td>{{full.tot_qty}}</td>
+            <td>$ {{full.total_price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>

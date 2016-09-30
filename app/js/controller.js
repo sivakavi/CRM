@@ -1462,38 +1462,335 @@ CRM.controller('SingleAppointmentCtrl', function ($rootScope, $scope, $state, HT
 });
 
 CRM.controller('FullReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
-    
+    $scope.fullReport = {};
+    HTTPService.getFullReport().then(function (res) {
+        $scope.fullReport = res.data;
+    }, function (err) {
+        $scope.fullReport = {};
+        console.log(err);
+    });
 });
 
 CRM.controller('YearReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
-    
+    $scope.yearReport = {};
+    var d = new Date();
+    var n = d.getFullYear();
+
+    $("#yearreport").val(n);
+
+    function loadyearreport(year) {
+        HTTPService.getReportYear(year).then(function (res) {
+            $scope.yearReport = res.data;
+        }, function (err) {
+            $scope.yearReport = {};
+            console.log(err);
+        });
+    }
+
+    $scope.getYearReport = function(){
+        loadyearreport($("#yearreport").val());
+    }
+
+    loadyearreport(n);
 });
 
 CRM.controller('MonthReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+    $scope.monthReport = {};
+    var d = new Date();
+    var n = d.getFullYear();
+    var m = d.getMonth()+1;
+
+    $("#yearreport").val(n);
+    $("#monthreport").val(m);
+
+    function loadmonthreport(year,month) {
+        HTTPService.getReportYearMonth(year,month).then(function (res) {
+            $scope.monthReport = res.data;
+        }, function (err) {
+            $scope.monthReport = {};
+            console.log(err);
+        });
+    }
+
+    $scope.getMonthReport = function(){
+        loadmonthreport($("#yearreport").val(),$("#monthreport").val());
+    }
+
+    loadmonthreport(n,m);
     
 });
 
 CRM.controller('ProductReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    $scope.productlist = {};
+
+    $scope.productReport = [];
+
+    $scope.showtable=false;
+
+    $scope.rep_product_id="";
+
+    function loadProduct() {
+        HTTPService.getProduct().then(function (res) {
+            $scope.productlist = res.data;
+        }, function (err) {
+            $scope.productlist = {};
+            console.log(err);
+        });
+    }
+
+    loadProduct();
+
+    $scope.getProductReport = function(){
+        if($scope.rep_product_id!=""){
+            loadproductreport($scope.rep_product_id);
+        }
+        
+    }
+
+    function loadproductreport(pid) {
+        HTTPService.getReportProduct(pid).then(function (res) {
+            $scope.productReport = res.data;
+            $scope.showtable=true;
+        }, function (err) {
+            $scope.productReport = [];
+            console.log(err);
+            $scope.showtable=true;
+        });
+    }
+
     
 });
 
 CRM.controller('ProductYearReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    var d = new Date();
+    var n = d.getFullYear();
+
+    $("#yearreport").val(n);
+
+    $scope.productlist = {};
+
+    $scope.productYearReport = [];
+
+    $scope.showtable=false;
+
+    $scope.rep_product_id="";
+
+    function loadProduct() {
+        HTTPService.getProduct().then(function (res) {
+            $scope.productlist = res.data;
+        }, function (err) {
+            $scope.productlist = {};
+            console.log(err);
+        });
+    }
+
+    loadProduct();
+
+    $scope.getProductYearReport = function(){
+        if($scope.rep_product_id!=""){
+            loadproductyearreport($scope.rep_product_id,$("#yearreport").val());
+        }
+        
+    }
+
+    function loadproductyearreport(pid,year) {
+        HTTPService.getReportProductYear(pid,year).then(function (res) {
+            $scope.productYearReport = res.data;
+            $scope.showtable=true;
+        }, function (err) {
+            $scope.productYearReport = [];
+            console.log(err);
+            $scope.showtable=true;
+        });
+    }
     
 });
 
 CRM.controller('ProductMonthReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    var d = new Date();
+    var n = d.getFullYear();
+    var m = d.getMonth()+1;
+
+    $("#yearreport").val(n);
+    $("#monthreport").val(m);
+
+    $scope.productlist = {};
+
+    $scope.productMonthReport = [];
+
+    $scope.showtable=false;
+
+    $scope.rep_product_id="";
+
+    function loadProduct() {
+        HTTPService.getProduct().then(function (res) {
+            $scope.productlist = res.data;
+        }, function (err) {
+            $scope.productlist = {};
+            console.log(err);
+        });
+    }
+
+    loadProduct();
+
+    $scope.getProductMonthReport = function(){
+        if($scope.rep_product_id!=""){
+            loadproductmonthreport($scope.rep_product_id,$("#yearreport").val(),$("#monthreport").val());
+        }
+        
+    }
+
+    function loadproductmonthreport(pid,year,month) {
+        HTTPService.getReportProductYearMonth(pid,year,month).then(function (res) {
+            $scope.productMonthReport = res.data;
+            $scope.showtable=true;
+        }, function (err) {
+            $scope.productMonthReport = [];
+            console.log(err);
+            $scope.showtable=true;
+        });
+    }
     
 });
 
 CRM.controller('UserReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    $scope.stafflist = {};
+
+    $scope.userReport = [];
+
+    $scope.showtable=false;
+
+    $scope.rep_staff_id="";
+
+    function loadstaff() {
+        $scope.stafflist = {};
+        HTTPService.getStaff().then(function (res) {
+            $scope.stafflist = res.data;
+        }, function (err) {
+            $scope.stafflist = {};
+            console.log(err);
+        });
+    }
+
+    loadstaff();
+
+    $scope.getUserReport = function(){
+        if($scope.rep_staff_id!=""){
+            loaduserreport($scope.rep_staff_id);
+        }
+        
+    }
+
+    function loaduserreport(uid) {
+        HTTPService.getReportUser(uid).then(function (res) {
+            $scope.userReport = res.data;
+            $scope.showtable=true;
+        }, function (err) {
+            $scope.userReport = [];
+            console.log(err);
+            $scope.showtable=true;
+        });
+    }
     
 });
 
 CRM.controller('UserYearReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    var d = new Date();
+    var n = d.getFullYear();
+
+    $("#yearreport").val(n);
+
+    $scope.stafflist = {};
+
+    $scope.userYearReport = [];
+
+    $scope.showtable=false;
+
+    $scope.rep_staff_id="";
+
+    function loadstaff() {
+        $scope.stafflist = {};
+        HTTPService.getStaff().then(function (res) {
+            $scope.stafflist = res.data;
+        }, function (err) {
+            $scope.stafflist = {};
+            console.log(err);
+        });
+    }
+
+    loadstaff();
+
+    $scope.getUserYearReport = function(){
+        if($scope.rep_staff_id!=""){
+            loaduseryearreport($scope.rep_staff_id,$("#yearreport").val());
+        }
+        
+    }
+
+    function loaduseryearreport(uid,year) {
+        HTTPService.getReportUserYear(uid,year).then(function (res) {
+            $scope.userYearReport = res.data;
+            $scope.showtable=true;
+        }, function (err) {
+            $scope.userYearReport = [];
+            console.log(err);
+            $scope.showtable=true;
+        });
+    }
     
 });
 
 CRM.controller('UserMonthReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
+
+    var d = new Date();
+    var n = d.getFullYear();
+    var m = d.getMonth()+1;
+
+    $("#yearreport").val(n);
+    $("#monthreport").val(m);
+
+    $scope.stafflist = {};
+
+    $scope.userMonthReport = [];
+
+    $scope.showtable=false;
+
+    $scope.rep_staff_id="";
+
+    function loadstaff() {
+        $scope.stafflist = {};
+        HTTPService.getStaff().then(function (res) {
+            $scope.stafflist = res.data;
+        }, function (err) {
+            $scope.stafflist = {};
+            console.log(err);
+        });
+    }
+
+    loadstaff();
+
+    $scope.getUserMonthReport = function(){
+        if($scope.rep_staff_id!=""){
+            loadusermonthreport($scope.rep_staff_id,$("#yearreport").val(),$("#monthreport").val());
+        }
+        
+    }
+
+    function loadusermonthreport(uid,year,month) {
+        HTTPService.getReportUserYearMonth(uid,year,month).then(function (res) {
+            $scope.userMonthReport = res.data;
+            $scope.showtable=true;
+        }, function (err) {
+            $scope.userMonthReport = [];
+            console.log(err);
+            $scope.showtable=true;
+        });
+    }
     
 });
 
