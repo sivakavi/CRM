@@ -115,7 +115,7 @@
         <div ng-if="lowproductlist.length!=0" class="row" style="padding-top:20px;">
            <div class="card-wrapper1 card-to-do block--shadow col">
                 <div class="card-panel teal"><i class="material-icons" style="vertical-align: bottom;margin-right: 10px;">receipt</i> Low Quantity Product List</div>
-                <div class="card-panel-body">
+                <div class="card-panel-body" style="height:600px;">
                    <table class="bordered striped">
         <thead>
           <tr>
@@ -124,6 +124,7 @@
               <th>Category</th>
               <th>Item Price</th>
               <th>Quantity</th>
+              <th>Add Product</th>
           </tr>
         </thead>
 
@@ -134,6 +135,15 @@
             <td>{{low.category.category_name}}</td>
             <td>$ {{low.price}}</td>
             <td>{{low.qty}}</td>
+            <td>
+                <div class="input-field col s6">
+                    <input id="addqty" type="number" class="validate">
+                    <label for="addqty">Quantity</label>
+                </div>
+                 <button  style="margin-top:20px; margin-left:20px;" type="button" class="btn-floating btn-large waves-effect waves-light" ng-click="updateProductQty(low.id)">
+                                        <i class="material-icons">done</i>
+                                    </button>
+            </td>
         </tr>
         </tbody>
       </table>

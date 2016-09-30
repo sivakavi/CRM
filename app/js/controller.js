@@ -59,7 +59,7 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
     $scope.lowproductlist = [];
 
     $scope.getLowProductList = function () {
-        HTTPService.getLowProductList(10).then(function (res) {
+        HTTPService.getLowProductList(0).then(function (res) {
             $scope.lowproductlist = res.data;
         }, function (err) {
             console.log(err);
@@ -68,6 +68,22 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
     };
 
     $scope.getLowProductList();
+
+
+    $scope.updateProductQty = function(pid){
+
+        if ($("#addqty").val() != "") {
+            HTTPService.changeProductQty(pid, $("#addqty").val()).then(function (res) {
+                Materialize.toast('Product Qty added successfully !!', 2000);
+                $scope.getLowProductList();
+            }, function (err) {
+                console.log(err);
+                Materialize.toast('Product Qty add error !!', 2000);
+                $scope.getLowProductList();
+            });
+        }
+
+    }
 
 
 

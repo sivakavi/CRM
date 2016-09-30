@@ -416,6 +416,18 @@ CRM.service('HTTPService', function($http){
        });
    }
 
+
+   this.changeProductQty = function (id,qty) {
+       return $http({
+           method: "post",
+           url: domainURL + "product/edit/"+id,
+           data: {
+               qty:qty
+           }
+       });
+   }
+
+
    this.getFullReport = function () {
        return $http({
            method: "get",
