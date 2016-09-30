@@ -6,6 +6,10 @@ body{
 
 /* common css */
 
+.boldtext{
+    font-weight: bold;
+}
+
 .dis_none{
     display:none;
 }

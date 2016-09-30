@@ -6,16 +6,18 @@
                 <th>Case Name</th>
                 <th>User</th>
                 <th>Product Name</th>
+                <th>Status</th>
                 <th>Quantity</th>
                 <th>Description</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="ccase in closecaselist">
-                <td><i class="material-icons" style="cursor:pointer">visibility</i></td>
+                <td><i class="material-icons" style="cursor:pointer" ng-click="singleCaseView(ccase.id)">visibility</i></td>
                 <td>{{ ccase.case_name }}</td>
                 <td>{{ ccase.user.fname}} {{ ccase.user.lname}}</td>
                 <td>{{ ccase.product.prod_name }}</td>
+                <td>{{ ccase.status }}</td>
                 <td>{{ ccase.qty }}</td>
                 <td>{{ ccase.description }}</td>
 

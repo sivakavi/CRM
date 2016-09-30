@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="ocase in opencaselist">
-                    <td><i class="material-icons" style="cursor:pointer">visibility</i></td>
+                    <td><i class="material-icons" style="cursor:pointer" ng-click="singleCaseView(ocase.id)">visibility</i></td>
                     <td>{{ ocase.case_name }}</td>
                     <td>{{ ocase.user.fname}} {{ ocase.user.lname}}</td>
                     <td>{{ ocase.product.prod_name }}</td>

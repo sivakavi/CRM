@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col s12 m12 l6">
+        <div class="center-align">
+            <h5>Appointment Details</h5>
+        </div>
+        <table class="striped bordered">
+        <thead>
+          <tr>
+              <th>Field</th>
+              <th>Value</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="boldtext">Date</td>
+            <td>{{singleApp.app_date}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Time</td>
+            <td>{{singleApp.app_time}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Status</td>
+            <td>{{singleApp.status}}</td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+    <div class="col s12 m12 l6 ">
+        <div class="center-align">
+            <h5>Customer Details</h5>
+        </div>
+        <table class="striped bordered">
+        <thead>
+          <tr>
+              <th>Field</th>
+              <th>Value</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="boldtext">First Name</td>
+            <td>{{singleApp.customer.fname}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Last Name</td>
+            <td>{{singleApp.customer.lname}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Mobile</td>
+            <td>{{singleApp.customer.mobile}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Phone</td>
+            <td>{{singleApp.customer.phone}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Email</td>
+            <td>{{singleApp.customer.email}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Hot Customer</td>
+            <td>{{ singleApp.customer.hot | hotType }}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Address</td>
+            <td>{{ singleApp.customer.address1}}<br/>{{ singleApp.customer.address2}}<br/>{{ singleApp.customer.city}} , {{ singleApp.customer.state}}</br>{{ singleApp.customer.country}} {{ singleApp.customer.pincode}}  </td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+</div>

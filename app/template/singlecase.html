@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col s12 m12 l6">
+        <div class="center-align">
+            <h5>Case Details</h5>
+        </div>
+        <table class="striped bordered">
+        <thead>
+          <tr>
+              <th>Field</th>
+              <th>Value</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="boldtext">Case Name</td>
+            <td>{{singleCase.case_name}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Quantity</td>
+            <td>{{singleCase.qty}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Case Value</td>
+            <td>$ {{casevalue}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Status</td>
+            <td>{{singleCase.status}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Expire</td>
+            <td>{{singleCase.expire}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Description</td>
+            <td>{{singleCase.description}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Product Name</td>
+            <td>{{singleCase.product.prod_name}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Product Unit Price</td>
+            <td>$ {{singleCase.product.price}}</td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+    <div class="col s12 m12 l6 ">
+        <div class="center-align">
+            <h5>Customer Details</h5>
+        </div>
+        <table class="striped bordered">
+        <thead>
+          <tr>
+              <th>Field</th>
+              <th>Value</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="boldtext">First Name</td>
+            <td>{{singleCase.customer.fname}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Last Name</td>
+            <td>{{singleCase.customer.lname}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Mobile</td>
+            <td>{{singleCase.customer.mobile}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Phone</td>
+            <td>{{singleCase.customer.phone}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Email</td>
+            <td>{{singleCase.customer.email}}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Hot Customer</td>
+            <td>{{ singleCase.customer.hot | hotType }}</td>
+          </tr>
+          <tr>
+            <td class="boldtext">Address</td>
+            <td>{{ singleCase.customer.address1}}<br/>{{ singleCase.customer.address2}}<br/>{{ singleCase.customer.city}} , {{ singleCase.customer.state}}</br>{{ singleCase.customer.country}} {{ singleCase.customer.pincode}}  </td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+</div>

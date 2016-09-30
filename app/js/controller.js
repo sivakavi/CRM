@@ -1,5 +1,3 @@
-
-
 var leadSource = [
     { 'lead_id': '1', 'lead_name': 'Web' },
     { 'lead_id': '2', 'lead_name': 'Google' },
@@ -11,31 +9,6 @@ var userRole = [
     { 'role_id': '1', 'role_type': 'Admin' },
     { 'role_id': '2', 'role_type': 'Staff' }
 ];
-
-var appoinmentStatus = [
-    { 'status_id': '1', 'status_name': 'Confirmed' },
-    { 'status_id': '2', 'status_name': 'Pending' },
-    { 'status_id': '3', 'status_name': 'Inprogress' },
-    { 'status_id': '4', 'status_name': 'Cancelled' }
-];
-
-var caseObj = [
-    { 'id': '1', 'casename': 'Case Name', 'cdate': '21/04/2016', 'edate': '25/04/2016', 'customer': '2', 'cmobile': '9629129377', 'assignee': '2', 'status': '3', 'description': 'Case Details' },
-    { 'id': '2', 'casename': 'Case Name', 'cdate': '23/04/2016', 'edate': '26/04/2016', 'customer': '13', 'cmobile': '9629129377', 'assignee': '3', 'status': '3', 'description': 'Case Details' },
-    { 'id': '3', 'casename': 'Case Name', 'cdate': '24/04/2016', 'edate': '26/04/2016', 'customer': '10', 'cmobile': '9629129377', 'assignee': '4', 'status': '3', 'description': 'Case Details' },
-    { 'id': '4', 'casename': 'Case Name', 'cdate': '26/04/2016', 'edate': '29/04/2016', 'customer': '6', 'cmobile': '9629129377', 'assignee': '3', 'status': '3', 'description': 'Case Details' },
-    { 'id': '5', 'casename': 'Case Name', 'cdate': '29/04/2016', 'edate': '30/04/2016', 'customer': '11', 'cmobile': '9629129377', 'assignee': '2', 'status': '3', 'description': 'Case Details' },
-];
-
-
-var productObj = [
-    { 'id': '1', 'pname': 'Monitor', 'category': '1', 'brand':'Dell', 'prize':'$ 500'},
-    { 'id': '2', 'pname': 'Mouse', 'category': '1', 'brand': 'Dell', 'prize': '$ 50' },
-    { 'id': '3', 'pname': 'Mobile', 'category': '3', 'brand': 'Sony', 'prize': '$ 1000' },
-    { 'id': '4', 'pname': 'RAM', 'category': '1', 'brand': 'Dell', 'prize': '$ 300' },
-    { 'id': '5', 'pname': 'Hard Disk', 'category': '1', 'brand': 'Dell', 'prize': '$ 500' },
-];
-
 
 CRM.controller('LoginCtrl', function ($rootScope, $scope, $state, loginService) {
     $scope.userd = {
@@ -58,6 +31,7 @@ CRM.controller('LoginCtrl', function ($rootScope, $scope, $state, loginService) 
     };
     
 });
+
 CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
     $scope.getTodoList = function () {
         HTTPService.getTodoUser(localStorage.getItem('user_id')).then(function (res) {
@@ -209,6 +183,26 @@ CRM.controller('GraphCtrl', function ($rootScope, $scope, $state, HTTPService) {
     $scope.gotoHotCustomerList = function () {
         $state.go('app.hotcustomerlist');
     }
+
+    $scope.singleView = function (id,type) {
+        if(type=="Case"){
+            $state.go('app.singlecase', {
+            id: id
+        });
+        }
+
+        // if(type=="Ticket"){
+        //     $state.go('app.singleticket', {
+        //     id: id
+        // });
+        // }
+
+        if(type=="Appointment"){
+            $state.go('app.singleappointment', {
+            id: id
+        });
+        }
+    };
     
 });
 
@@ -641,8 +635,6 @@ CRM.controller('ViewStaffCtrl', function ($rootScope, $scope, $state, HTTPServic
 CRM.controller('ManageCtrl', function ($rootScope, $scope, $state, HTTPService) {
     $scope.userRoleList = userRole;
     $scope.leadSourceList = leadSource;
-    $scope.appoinmentStatusList = appoinmentStatus;
-
     $scope.editProduct=false;
     $scope.editMembership=false;
     
@@ -1199,6 +1191,12 @@ CRM.controller('OpencaseCtrl', function ($rootScope, $scope, $state, HTTPService
         console.log(err);
     });
 
+    $scope.singleCaseView = function (cid) {
+        $state.go('app.singlecase', {
+            id: cid
+        });
+    };
+
 });
 
 CRM.controller('LiveCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
@@ -1210,6 +1208,12 @@ CRM.controller('LiveCaseCtrl', function ($rootScope, $scope, $state, HTTPService
         $scope.opencaselist = {};
         console.log(err);
     });
+
+    $scope.singleCaseView = function (cid) {
+        $state.go('app.singlecase', {
+            id: cid
+        });
+    };
 
 });
 
@@ -1227,18 +1231,24 @@ CRM.controller('LiveTicketCtrl', function ($rootScope, $scope, $state, HTTPServi
 
 CRM.controller('PastCaseCtrl', function ($rootScope, $scope, $state, HTTPService) {
     var uid = localStorage.getItem('user_id');
-    HTTPService.getcloasecase(uid).then(function (res) {        
+    HTTPService.getcancelcloasecase(uid).then(function (res) {        
         $scope.closecaselist = res.data;
     }, function (err) {
         $scope.opencaselist = {};
         console.log(err);
     });
 
+    $scope.singleCaseView = function (cid) {
+        $state.go('app.singlecase', {
+            id: cid
+        });
+    };
+
 });
 
 CRM.controller('PastTicketCtrl', function ($rootScope, $scope, $state, HTTPService) {
     var uid = localStorage.getItem('user_id');
-    HTTPService.getCloseTicket(uid).then(function (res) {
+    HTTPService.getCancelCloseTicket(uid).then(function (res) {
         $scope.pastticketlist = res.data;
     }, function (err) {
         $scope.opencaselist = {};
@@ -1368,6 +1378,12 @@ CRM.controller('ClosecaseCtrl', function ($rootScope, $scope, $state, HTTPServic
         console.log(err);
     });
 
+    $scope.singleCaseView = function (cid) {
+        $state.go('app.singlecase', {
+            id: cid
+        });
+    };
+
 });
 
 CRM.controller('CustomerlistCtrl', function ($rootScope, $scope, $state, HTTPService) {
@@ -1406,6 +1422,43 @@ CRM.controller('HotCustomerlistCtrl', function ($rootScope, $scope, $state, HTTP
         });
     };
 
+});
+
+CRM.controller('SingleCaseCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+    var param = $stateParams.id;
+    $scope.singleCase = {};
+    HTTPService.getSingleCase(param).then(function (res) {
+        $scope.singleCase = res.data;
+        $scope.casevalue = res.data.qty * res.data.product.price;
+    }, function (err) {
+        $scope.singleCase = {};
+        console.log(err);
+    });
+    
+});
+
+CRM.controller('SingleTicketCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+    var param = $stateParams.id;
+    $scope.singleTicket = {};
+    HTTPService.getSingleTicket(param).then(function (res) {
+        $scope.singleTicket = res.data;
+    }, function (err) {
+        $scope.singleTicket = {};
+        console.log(err);
+    });
+    
+});
+
+CRM.controller('SingleAppointmentCtrl', function ($rootScope, $scope, $state, HTTPService, $stateParams) {
+    var param = $stateParams.id;
+    $scope.singleApp = {};
+    HTTPService.getSingleAppoinment(param).then(function (res) {
+        $scope.singleApp = res.data;
+    }, function (err) {
+        $scope.singleApp = {};
+        console.log(err);
+    });
+    
 });
 
 CRM.controller('FullReportCtrl', function ($rootScope, $scope, $state, HTTPService) {
@@ -1494,17 +1547,6 @@ CRM.filter('genderType', function () {
     }
 });
 
-
-CRM.filter('statusType', function () {
-    return function (number) {
-        for (var i = 0; i < appoinmentStatus.length; i++) {
-            if (appoinmentStatus[i].status_id == number) {
-                return appoinmentStatus[i].status_name;
-            }
-        }
-    }
-});
-
 CRM.filter('customerType', function () {
     return function (number) {
         for (var i = 0; i < customerObj.length; i++) {
@@ -1547,6 +1589,21 @@ CRM.filter('notificationImg', function () {
             return "img/info.png";
         }
     };
+});
+
+CRM.filter('hotType', function () {
+    return function (number) {
+        
+            if (number == 1) {
+                return "YES";
+            }else if (number == 0) {
+                return "NO";
+            }else{
+                return " ";
+            }
+
+        
+    }
 });
 
 

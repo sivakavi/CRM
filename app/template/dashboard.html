@@ -14,7 +14,7 @@
         rounded="false"
         clockwise="true"
         responsive="true"
-        duration="800"
+        duration="1500"
         animation="easeInBounce"
         animation-delay="0" >
         </div>
@@ -104,7 +104,7 @@
                       <tr ng-repeat="note in notificationlist">
                           <td>{{note.type}}</td>
                           <td>{{note.title}}</td>
-                          <td><img ng-src="{{note.mode | notificationImg}}" alt="app" style="width:30px;height:30px;"/></td>
+                          <td><img ng-src="{{note.mode | notificationImg}}" alt="app" style="width:30px;height:30px;cursor:pointer" ng-click="singleView(note.id,note.type)"/></td>
                       </tr>
                   </table>
               </div>

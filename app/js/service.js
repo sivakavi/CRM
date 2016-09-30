@@ -158,6 +158,20 @@ CRM.service('HTTPService', function($http){
            url: domainURL + "appoinment/" + aid
        });
    }
+
+   this.getSingleTicket = function (tid) {
+       return $http({
+           method: "get",
+           url: domainURL + "ticket/" + tid
+       });
+   }
+
+   this.getSingleCase = function (cid) {
+       return $http({
+           method: "get",
+           url: domainURL + "case/" + cid
+       });
+   }
     
    this.setAppoinment = function (params) {
        return $http({
@@ -171,6 +185,26 @@ CRM.service('HTTPService', function($http){
        return $http({
            method: "post",
            url: domainURL + "appoinment/edit/"+id,
+           data: {
+               status:status
+           }
+       });
+   }
+
+   this.changeStatusCase = function (id,status) {
+       return $http({
+           method: "post",
+           url: domainURL + "case/edit/"+id,
+           data: {
+               status:status
+           }
+       });
+   }
+
+   this.changeStatusTicket = function (id,status) {
+       return $http({
+           method: "post",
+           url: domainURL + "ticket/edit/"+id,
            data: {
                status:status
            }
@@ -247,6 +281,16 @@ CRM.service('HTTPService', function($http){
        });
    }
 
+   this.getCancelCloseTicket = function (uid) {
+
+       var url = "";
+       url = domainURL + "getCancelCloseTicketUser/" + uid;
+       return $http({
+           method: "get",
+           url: url
+       });
+   }
+
    this.getcloasecase = function (uid) {
 
        var url = "";
@@ -256,6 +300,16 @@ CRM.service('HTTPService', function($http){
            url = domainURL + "getCloseCaseUser/" + uid;
        }
 
+       return $http({
+           method: "get",
+           url: url
+       });
+   }
+
+   this.getcancelcloasecase = function (uid) {
+
+       var url = "";
+       url = domainURL + "getCancelCloseCaseUser/" + uid;
        return $http({
            method: "get",
            url: url

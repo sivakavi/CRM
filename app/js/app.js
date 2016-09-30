@@ -456,6 +456,36 @@ CRM.config(function ($stateProvider, $urlRouterProvider) {
           }
       })
 
+      .state('app.singlecase', {
+          url: "/singlecase/:id",
+          templateUrl: "template/singlecase.html",
+          controller: 'SingleCaseCtrl',
+          pageTitle: 'Case Details',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+
+      .state('app.singleticket', {
+          url: "/singleticket/:id",
+          templateUrl: "template/singleticket.html",
+          controller: 'SingleTicketCtrl',
+          pageTitle: 'Ticket Details',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+
+      .state('app.singleappointment', {
+          url: "/singleappointment/:id",
+          templateUrl: "template/singleappointment.html",
+          controller: 'SingleAppointmentCtrl',
+          pageTitle: 'Appointment Details',
+          resolve: {
+              authenticated: authenticated
+          }
+      })
+
     .state('app.manage', {
         url: "/manage",
         templateUrl: "template/manage.html",
